@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Checkout Page]">
+  <parameter name="Browser" value="Chrome"/>
+  <test name="Checkout Page-Tests(failed)">
+    <classes>
+      <class name="testingxperts.web.tests.IGP_TC_159">
+        <methods>
+          <include name="test"/>
+        </methods>
+      </class> <!-- testingxperts.web.tests.IGP_TC_159 -->
+    </classes>
+  </test> <!-- Checkout Page-Tests(failed) -->
+</suite> <!-- Failed suite [Checkout Page] -->

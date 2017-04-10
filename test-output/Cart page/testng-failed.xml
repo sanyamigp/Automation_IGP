@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="Failed suite [Cart page]">
+  <parameter name="Browser" value="Chrome"/>
+  <test name="Cart page-Tests(failed)">
+    <classes>
+      <class name="testingxperts.web.tests.IGP_TC_090">
+        <methods>
+          <include name="test"/>
+        </methods>
+      </class> <!-- testingxperts.web.tests.IGP_TC_090 -->
+      <class name="testingxperts.web.tests.IGP_TC_091">
+        <methods>
+          <include name="test"/>
+        </methods>
+      </class> <!-- testingxperts.web.tests.IGP_TC_091 -->
+    </classes>
+  </test> <!-- Cart page-Tests(failed) -->
+</suite> <!-- Failed suite [Cart page] -->

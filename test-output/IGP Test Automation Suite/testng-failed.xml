@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite guice-stage="DEVELOPMENT" name="Failed suite [IGP Test Automation Suite]">
+  <test name="AllScripts(failed)">
+    <classes>
+      <class name="suite.runner.CustomSuiteRunner">
+        <methods>
+          <include name="suiteRunner"/>
+        </methods>
+      </class> <!-- suite.runner.CustomSuiteRunner -->
+    </classes>
+  </test> <!-- AllScripts(failed) -->
+</suite> <!-- Failed suite [IGP Test Automation Suite] -->
