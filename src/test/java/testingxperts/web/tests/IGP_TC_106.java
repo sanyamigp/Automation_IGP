@@ -9,8 +9,10 @@ import listeners.ExecutionStartEndListner;
 import testingxperts.web.pages.CartPage;
 import testingxperts.web.pages.CheckOutPage;
 import testingxperts.web.pages.Constants;
+import testingxperts.web.pages.CountriesPage;
 import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
+import testingxperts.web.pages.LoginPage;
 import testingxperts.web.pages.OrderSummaryPage;
 import testingxperts.web.pages.PaymentPage;
 import testingxperts.web.pages.ProductDetailPage;
@@ -28,7 +30,7 @@ public class IGP_TC_106 extends KeywordUtil{
 	@Test(
 			testName="IGP_TC_106",
 			groups={"Product Description page."}, 
-			description="Image of the gift-Ensure that the Image box should be in the left of the product description page and it has to display multiple thumbnails in different angles of the gift below it."
+			description="Image of the gift:Ensure that the Image box should be in the left of the product description page and it has to display multiple thumbnails in different angles of the gift below it."
 			)
 	public void test() throws Throwable {
 		try{
@@ -52,16 +54,31 @@ public class IGP_TC_106 extends KeywordUtil{
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
 			
-			
-			stepInfo="Select product from best selling";
+			stepInfo="Login to application";
 			logStep(stepInfo);
-			verifyStep(HomePage.selectItemEditorPick(2),stepInfo);
+			LoginPage.doLogin(ConfigReader.getValue("loginUser"), ConfigReader.getValue("loginPassword"));
+			verifyStep(LoginPage.isLogin(), stepInfo);
+			
+			stepInfo="Click on 'Send Gifts Worldwide' from Homepage.";
+			logStep(stepInfo);
+			verifyStep(HomePage.sendgiftsWorldwide(),stepInfo);
+			CountriesPage.isCountriesPageLoaded();
 			pause(3000);
 			
-			stepInfo="Select the item";
+			stepInfo="Click on any name of the City/Country gifts";
 			logStep(stepInfo);
-			verifyStep(ProductDetailPage.zoomOnImage(),stepInfo);
+			verifyStep(CountriesPage.verifyCountryentered(),stepInfo);
 			pause(3000);
+			
+			stepInfo="Select the item.";
+			logStep(stepInfo);
+			verifyStep(CountriesPage.selectItemFromList(4), stepInfo);
+			
+			stepInfo="Check the image with different angles.";
+			logStep(stepInfo);
+			verifyStep(ProductDetailPage.verifyimageangles(), stepInfo);
+			
+			
 			
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']/section[1]/div[1]")),"Product Desc. page");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);

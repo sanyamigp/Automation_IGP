@@ -96,7 +96,7 @@ public class IGP_TC_205 extends KeywordUtil{
 			stepInfo="Verify User should Navigate to Payment page";
 			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
 			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
-			pause(3000);
+			
 			
 			stepInfo="Click on Debit card.";
 			logStep(stepInfo);

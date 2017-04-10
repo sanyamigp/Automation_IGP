@@ -59,7 +59,7 @@ public class KeywordUtil extends Utility {
 	public static void navigateToUrl(String url) {
 		KeywordUtil.lastAction="Navigate to: " +url;
 		LogUtil.infoLog(KeywordUtil.class, KeywordUtil.lastAction);
-		getDriver().navigate().to(url);
+		getDriver().get(url);
 	}
 	
 	public static String getCurrentUrl() {
@@ -68,6 +68,9 @@ public class KeywordUtil extends Utility {
 	
 	public static WebElement waitForClickable(By locator) {
 		WebDriverWait wait = new WebDriverWait(getDriver(), DEFAULT_WAIT_SECONDS);
+		wait.ignoring(ElementNotVisibleException.class);
+		wait.ignoring(WebDriverException.class);
+		
 		return wait.until(ExpectedConditions.elementToBeClickable(locator));
 	}
 
@@ -104,11 +107,6 @@ public class KeywordUtil extends Utility {
 		return wait.until(ExpectedConditions.visibilityOfElementLocated(locator));
 	}
 	
-	
-	
-	
-	
-
 	/**
 	 * @param locator
 	 * @param seconds
@@ -118,7 +116,8 @@ public class KeywordUtil extends Utility {
 	 */
 	public static WebElement findWithFluintWait(By locator, int seconds, int poolingMil) throws Exception {
 		// Because if implicit wait is set then fluint wait will not work
-		//getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
+
+		getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
 		WebElement element = null;
 		try {
 			Wait<WebDriver> wait = new FluentWait<WebDriver>(getDriver())
@@ -152,6 +151,7 @@ public class KeywordUtil extends Utility {
 	 * @throws Exception
 	 */
 	public static WebElement findWithFluintWait(By locator) throws Exception {
+		getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.MILLISECONDS);
 		// Because if implict wait is set then fluint wait will not work
 		KeywordUtil.lastAction="Find Element: " +locator.toString();
 		//getDriver().manage().timeouts().implicitlyWait(0, TimeUnit.SECONDS);
@@ -200,6 +200,7 @@ public class KeywordUtil extends Utility {
 	 * @return
 	 */
 	public static boolean click(By locator) {
+		
 		KeywordUtil.lastAction="Click: " +locator.toString();
 		LogUtil.infoLog(KeywordUtil.class, KeywordUtil.lastAction);
 		WebElement elm = waitForClickable(locator);
@@ -268,6 +269,13 @@ public class KeywordUtil extends Utility {
 		LogUtil.infoLog(KeywordUtil.class, KeywordUtil.lastAction);
 		WebElement elm = waitForVisibile(locator);
 		return elm.isDisplayed();
+	}
+	
+	public static boolean isWebElementEnable(By locator) {
+		KeywordUtil.lastAction="Check Element visible: " +locator.toString();
+		LogUtil.infoLog(KeywordUtil.class, KeywordUtil.lastAction);
+		WebElement elm = waitForVisibile(locator);
+		return elm.isEnabled();
 	}
 
 	/**
@@ -419,6 +427,16 @@ public class KeywordUtil extends Utility {
 		String actual = element.getAttribute(VALUE);
 		LogUtil.infoLog(KeywordUtil.class, "Actual:" +actual);
 		return actual.equalsIgnoreCase(data);
+
+	}
+	
+	public static String getInputText(By locator) {
+		KeywordUtil.lastAction="Get Input Text: "+locator.toString();
+		LogUtil.infoLog(KeywordUtil.class, KeywordUtil.lastAction);
+		WebElement element = waitForVisibile(locator);
+		String actual = element.getAttribute(VALUE).trim();
+		LogUtil.infoLog(KeywordUtil.class, "Input Text:" +actual);
+		return actual;
 
 	}
 
@@ -644,7 +662,7 @@ public class KeywordUtil extends Utility {
 		String[] b = data.split("");
 		for (int i = 0; i < b.length; i++) {
 			element.sendKeys(b[i]);
-			Thread.sleep(500);
+			Thread.sleep(250);
 		}
 		return true;
 	}
@@ -793,16 +811,15 @@ public static String getElementInfo(WebElement element) throws Exception{
 		return delDestination.delete();
 	}
 	
-	public static boolean hoverElement(By locator) throws InterruptedException{
+	public static void hoverElement(By locator) throws InterruptedException{
 		KeywordUtil.lastAction="Hover Element: "+locator.toString();
 		LogUtil.infoLog(KeywordUtil.class, KeywordUtil.lastAction);
 		
 		WebElement element = waitForClickable(locator);
 		Point p =element.getLocation();
 		Actions builder = new Actions(getDriver());
-		builder.moveToElement(element,0, 0).build().perform();
+		builder.moveToElement(element, p.getX(), p.getY()).build().perform();
 		pause(1000);
-		return true;
 		
 	}
 	public static boolean doubleClick(By locator) {
@@ -847,12 +864,6 @@ public static String getElementInfo(WebElement element) throws Exception{
 	    robot.keyRelease(KeyEvent.VK_ENTER);
 	    pause(25000);
 	}
-	
-//	public static void getWindowhandles()
-//	{
-//		getDriver().switchTo().window(nameOrHandle)
-//	}
-
 }//End class
 
 class TestStepFailedException extends Exception{  

@@ -71,7 +71,7 @@ public class IGP_TC_176 extends KeywordUtil{
 			logStep(stepInfo);
 			
 			logStep("Select product for given day delivery");
-			CartPage.addItemInCartforFlowersnCakes(HomePage.GiftBy.FLOWER_AND_CAKE);
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
 			
 			
 			//Select Second Product

@@ -73,9 +73,15 @@ public class IGP_TC_091 extends KeywordUtil{
 			LoginPage.doLogin(ConfigReader.getValue("loginUser"), ConfigReader.getValue("loginPassword"));
 			verifyStep(LoginPage.isLogin(), stepInfo);
 			
+			stepInfo="Empty Cart";
+			logStep(stepInfo);
+			HomePage.clickOnCartLogo();
+			verifyStep(HomePage.emptyCartItems(), stepInfo);
+			CartPage.closeCartOverlay();
+			
 			stepInfo="Add product into cart.";
 			logStep(stepInfo);
-			CartPage.addItemInCartforFlowersnCakes(HomePage.GiftBy.FLOWER_AND_CAKE);
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
 			verifyStep(CartPage.isItemAdded(), stepInfo);
 			CartPage.closeCartOverlay();
 				

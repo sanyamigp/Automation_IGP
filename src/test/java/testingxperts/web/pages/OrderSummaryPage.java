@@ -1,10 +1,7 @@
 package testingxperts.web.pages;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
 import java.util.Map.Entry;
 
 import org.openqa.selenium.By;
@@ -15,7 +12,7 @@ import utilities.LogUtil;
 
 public class OrderSummaryPage extends HomePage {
 
-	public static By txtOrderAmount = By.xpath("//h5[contains(text(),'Total Amount Payable')]");
+	public static By txtOrderAmount = By.xpath("//h5[contains(.,'Total Amount Payable : Rs')]");
 	public static By txtShippingCharge = By.xpath("//h5[contains(.,'Total Amount Payable : Rs')]/p");
 	public static By linkApplyCoupen = By.linkText("Click here to apply");
 	public static By inputCoupen = By.xpath("//*[@id='coupon']");
@@ -33,8 +30,7 @@ public class OrderSummaryPage extends HomePage {
 	public static By fixedtimeDelivery=By.xpath("//label[contains(text(),'Fixed Time Delivery')]");
 	public static By midnightDeliver=By.xpath("//label[contains(text(),'Midnight Delivery')]");
 
-
-	public static HashMap<String, String> contacts=new HashMap<String, String>();
+	public static HashMap<String, String> contacts=new HashMap<String, String>();	
 
 	public static boolean isOrderSummaryPageLoaded() throws Exception{
 		pause(3000);
@@ -85,7 +81,7 @@ public class OrderSummaryPage extends HomePage {
 	public static void inputCoupenAndApply(String coupen) throws InterruptedException{
 		waitForVisibile(inputCoupen);
 		inputText(inputCoupen, coupen);
-		pause(3000);
+		pause(1000);
 		click(btnApplyCoupen);
 		pause(3000);
 	}
@@ -138,14 +134,7 @@ public class OrderSummaryPage extends HomePage {
 		String qty=	element.findElement(By.xpath("//span[@class='value']/input")).getAttribute("value");
 		return Integer.parseInt(qty.trim());
 	}
-	
-	public static int getQty_FirstItem(int position) throws InterruptedException{
-		WebElement element =getListElements(listTotalItems).get(position);
-		pause(2000);
-		String qty=	element.findElement(By.xpath("//span[@class='value']/input")).getAttribute("value");
-		return Integer.parseInt(qty.trim());
-	}
-	
+
 
 	public static boolean  IsIncreaseAndDecraseUIDisplayed() throws InterruptedException{
 		waitForPresent(listTotalItems);
@@ -187,38 +176,15 @@ public class OrderSummaryPage extends HomePage {
 		return element.findElement(By.xpath("//div[@class='c-item-d-type']")).isDisplayed();
 	}	
 
-	public static boolean increaseQty_FirstItem() throws InterruptedException{
-
-		if(waitForPresent(By.xpath("//span[contains(@id,'inc-quantity')]")).isDisplayed())
-		{
-			int items=Integer.parseInt(waitForPresent(By.xpath("//input[contains(@id,'item-qty')]")).getAttribute("value").toString());
-			clickAndWait(By.xpath("//span[contains(@id,'inc-quantity')]"));
-			if(getQty_FirstItem()==(items + 1))
-				return true;
-		}
-		else
-		{
-			return false;
-		}	
-		return true;
+	public static void increaseQty_FirstItem() throws InterruptedException{
+		logStep("Increase Qty of First Item");
+		WebElement element =getListElements(listTotalItems).get(0);
+		element.findElement(By.xpath("//span[contains(@id,'inc-quantity')]")).click();
+		pause(3000);
 
 	}
 
-	public static boolean IncreaseQty_Positions(int itemposition) throws InterruptedException
-	{
-		if(waitForPresent(By.xpath("(//span[contains(@id,'inc-quantity')])[position()="+itemposition+"]")).isDisplayed())
-		{
-			int items=Integer.parseInt(waitForPresent(By.xpath("(//span[@class='value']/input)[position()="+itemposition+"]")).getAttribute("value").toString());
-			clickAndWait(By.xpath("(//span[contains(@id,'inc-quantity')])[position()="+itemposition+"]"));
-			if(items==getQty_FirstItem(itemposition))
-				return true;
-		}
-		else
-		{
-			return false;
-		}	
-		return true;
-	}
+
 	public static void DecreaseQty_FirstItem() throws InterruptedException{
 		WebElement element =getListElements(listTotalItems).get(0);
 		element.findElement(By.xpath("//*[@class='order-item-row']//span[contains(@id,'des-quantity')]")).click();
@@ -245,9 +211,9 @@ public class OrderSummaryPage extends HomePage {
 	public static String getDeliveryDateForItem(int index){
 		return  getListElements(By.xpath("//div[contains(@class,'c-item-delivery')]//p[@class='c-item-d-type']"))
 				.get(index-1).getText();
-
 	}
 
+	//Saynam
 	public static boolean changecontactDetails(String firstname,String lastname,String country,String contactnumber) throws InterruptedException
 	{
 		contacts.put(firstname,"//input[@placeholder='Enter First Name']");
@@ -270,6 +236,7 @@ public class OrderSummaryPage extends HomePage {
 
 	}
 
+	//Sanyam
 	public static boolean setfuturedeliveryDate(int date,String deliveryMonth) throws Exception
 	{
 
@@ -285,17 +252,71 @@ public class OrderSummaryPage extends HomePage {
 		}
 		else if(deliveryMonth=="Present Month")
 		{
-			getDriver().findElement(By.xpath(part1+date+part2)).click();
-			pause(3000);
+			if(isWebElementVisible(By.xpath("//div[@aria-disabled]")))
+			{
+				return true;
+			}
+			else
+			{
+				getDriver().findElement(By.xpath(part1+date+part2)).click();
+				pause(3000);
+			}
 		}
 		else if(deliveryMonth=="Next Month")
 		{
 			clickAndWait(By.xpath("//child::div[h6[text()='Fix Date Delivery']]//div[@title='Next month']"));
-			getDriver().findElement(By.xpath(part1+date+part2)).click();
-			pause(3000);
+			if(isWebElementVisible(By.xpath("//div[@aria-disabled]")))
+			{
+				return true;
+			}
+			else
+			{
+				getDriver().findElement(By.xpath(part1+date+part2)).click();
+				pause(3000);
+			}
 		}
 		click(By.xpath("//child::div[h6[text()='Fix Date Delivery']]//button[text()='Select']"));
 		return true;
+	}
+
+	//Sanyam
+	public static boolean fixedtimedeliveryoption(int date) throws InterruptedException
+	{
+		click(fixedtimeDelivery);
+		clickAndWait(By.xpath("//input[contains(@id,'fixed-dp')]"));
+		String part1="//table[contains(@aria-controls,'fixed-dp')]//tbody//td/div[contains(text(),'";
+		String part2="')]";
+		if(!getDriver().findElement(By.xpath(part1+date+part2)).isDisplayed())
+		{
+
+			return false; 
+		}
+		else 
+		{
+			getDriver().findElement(By.xpath(part1+date+part2)).click();
+			pause(3000);
+
+
+			click(By.xpath("//child::div[h6[text()='Fixed Time Delivery']]//button[text()='Select']"));
+			selectByValue(By.xpath("//select[contains(@id,'fixed-tp')]"), "16:00 hrs - 18:00 hrs");
+			return true;
+		}
+	}
+	public static boolean verifydeliveryoption(String deliverymethod,int date) throws InterruptedException
+	{
+		if(deliverymethod=="Fixed Time Delivery")
+		{
+			return fixedtimedeliveryoption(date);
+		}
+
+		if(deliverymethod=="Midnight Time Delivery")
+		{
+			return midnightdeliveryoptions(date);
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 	public static Boolean midnightdeliveryoptions(int date) throws InterruptedException
@@ -319,46 +340,6 @@ public class OrderSummaryPage extends HomePage {
 			pause(3000);
 			click(By.xpath("//child::div[h6[text()='Midnight Delivery']]//button[text()='Select']"));
 			return true;
-		}
-	}
-
-	public static boolean fixedtimedeliveryoption(int date) throws InterruptedException
-	{
-		click(fixedtimeDelivery);
-		clickAndWait(By.xpath("//input[contains(@id,'fixed-dp')]"));
-		String part1="//table[contains(@aria-controls,'fixed-dp')]//tbody//td/div[contains(text(),'";
-		String part2="')]";
-		if(!getDriver().findElement(By.xpath(part1+date+part2)).isDisplayed())
-		{
-
-			return false; 
-		}
-		else 
-		{
-			getDriver().findElement(By.xpath(part1+date+part2)).click();
-			pause(3000);
-
-
-			click(By.xpath("//child::div[h6[text()='Fixed Time Delivery']]//button[text()='Select']"));
-			selectByValue(By.xpath("//select[contains(@id,'fixed-tp')]"), "16:00 hrs - 18:00 hrs");
-			return true;
-		}
-	}
-
-	public static boolean verifydeliveryoption(String deliverymethod,int date) throws InterruptedException
-	{
-		if(deliverymethod=="Fixed Time Delivery")
-		{
-			return fixedtimedeliveryoption(date);
-		}
-
-		if(deliverymethod=="Midnight Time Delivery")
-		{
-			return midnightdeliveryoptions(date);
-		}
-		else
-		{
-			return false;
 		}
 	}
 

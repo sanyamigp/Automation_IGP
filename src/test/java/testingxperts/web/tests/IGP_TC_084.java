@@ -113,16 +113,12 @@ public class IGP_TC_084 extends KeywordUtil{
 			
 			stepInfo="Select the future date from the calendar";
 			logStep(stepInfo);
-			verifyStep(OrderSummaryPage.setfuturedeliveryDate(4,"Next Month"),stepInfo);
+			verifyStep(OrderSummaryPage.setfuturedeliveryDate(20,"Next Month"),stepInfo);
 			pause(3000);
-			
 			
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"Order Detail");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
-			 
-			
-			 
-			
+					
 			//.........Script Start...........................
 		}
 		  catch (Exception e){

@@ -64,7 +64,7 @@ public class IGP_TC_090 extends KeywordUtil{
 			
 			stepInfo="Add product into cart.";
 			logStep(stepInfo);
-			CartPage.addItemInCartforFlowersnCakes(HomePage.GiftBy.FLOWER_AND_CAKE);
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
 			verifyStep(CartPage.isItemAdded(), stepInfo);
 			CartPage.closeCartOverlay();
 			

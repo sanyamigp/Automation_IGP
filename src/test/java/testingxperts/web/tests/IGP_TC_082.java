@@ -27,8 +27,7 @@ public class IGP_TC_082 extends KeywordUtil{
 	@Test(
 			testName="IGP_TC_082",
 			groups={"Order Summary"}, 
-			description="Navigating to 'Order Summary' page: Ensure that the user is able to navigate to particularly selected Order Summary page."
-
+			description="Order Summary Page: Ensure that the user is able to navigate to particularly selected Order Summary page."
 			)
 	public void test() throws Throwable {
 		try{

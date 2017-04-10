@@ -1,6 +1,15 @@
 package testingxperts.web.tests;
 
+import java.util.logging.Level;
+
 import org.openqa.selenium.By;
+import org.openqa.selenium.logging.LogEntries;
+import org.openqa.selenium.logging.LogEntry;
+import org.openqa.selenium.logging.LogType;
+import org.openqa.selenium.logging.LoggingPreferences;
+import org.openqa.selenium.logging.Logs;
+import org.openqa.selenium.remote.CapabilityType;
+import org.openqa.selenium.remote.DesiredCapabilities;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -14,6 +23,7 @@ import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderDetailsPage;
 import testingxperts.web.pages.OrderSummaryPage;
 import utilities.ConfigReader;
+import utilities.DriverUtil;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
 import utilities.KeywordUtil;
@@ -27,7 +37,7 @@ public class IGP_TC_083 extends KeywordUtil{
 	@Test(
 			testName="IGP_TC_083",
 			groups={"Order Summary"}, 
-			description="Validate 'Edit your Contact Details' field:Ensure that the user able to edit contact details on Order Summary page."
+			description="Order Summary Page:Ensure that the user able to edit contact details on Order Summary page."
 			)
 	public void test() throws Throwable {
 		try{
@@ -67,6 +77,10 @@ public class IGP_TC_083 extends KeywordUtil{
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
+			
+			System.out.println("Driver logs");
+			
+			
 			
 			stepInfo="Select product from best selling";
 			logStep(stepInfo);
@@ -116,9 +130,8 @@ public class IGP_TC_083 extends KeywordUtil{
 			
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"Order Detail");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
-			 
-			 
-			 
+						
+			System.out.println("Printing Driver logs");
 			
 			//.........Script Start...........................
 		}
@@ -154,8 +167,7 @@ public class IGP_TC_083 extends KeywordUtil{
 		  }
 }//End Test
 	
-	 
-	
+		
 	
 	
 }

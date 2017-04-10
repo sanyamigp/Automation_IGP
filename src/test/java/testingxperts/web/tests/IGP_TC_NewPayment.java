@@ -74,33 +74,12 @@ public class IGP_TC_NewPayment extends KeywordUtil{
 			
 			stepInfo="Click on Add Cart for flowers and cakes.";
 			logStep(stepInfo);
-			CartPage.addItemInCartforFlowersnCakes(HomePage.GiftBy.FLOWER_AND_CAKE);
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
 			verifyStep(CartPage.isItemAdded(), stepInfo);
 			pause(3000);
 			CartPage.closeCartOverlay();
 			
-			stepInfo="The page should navigate back to product description page";
-			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
-			
-			getDriver().navigate().back();
-			getDriver().navigate().back();
-			
-			stepInfo="Click on Gift hampers.";
-			CartPage.addItemInCartforGiftHampers(HomePage.GiftBy.GIFT_HAMPER);
-			verifyStep(CartPage.isItemAdded(), stepInfo);
-			pause(3000);
-			CartPage.closeCartOverlay();
-			
-			getDriver().navigate().back();
-			getDriver().navigate().back();
-			
-			stepInfo="Click on Personalized gifts.";
-			CartPage.addItemInCartforPersonalization(HomePage.GiftBy.PERSONALIZED_GIFTS);
-			verifyStep(CartPage.isItemAdded(), stepInfo);
-			pause(3000);
-			CartPage.closeCartOverlay();
-			pause(3000);
-			
+
 			stepInfo="Buy Now";
 			logStep(stepInfo);
 			executeStep(CartPage.clikBuyNow(), stepInfo);

@@ -63,6 +63,12 @@ public class IGP_TC_095 extends KeywordUtil{
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
 			
+			stepInfo="Empty Cart";
+			logStep(stepInfo);
+			HomePage.clickOnCartLogo();
+			verifyStep(HomePage.emptyCartItems(), stepInfo);
+			CartPage.closeCartOverlay();
+			
 			stepInfo="Add product into cart.";
 			logStep(stepInfo);
 			CartPage.selectItemToBuy(HomePage.GiftBy.FLOWER_AND_CAKE);
@@ -86,6 +92,10 @@ public class IGP_TC_095 extends KeywordUtil{
 			stepInfo="Verify Item is Removed";
 			CartPage.clickRemoveLink();
 			verifyStep(CartPage.verifyItemIsRemoved(),stepInfo);
+			
+			
+			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']")),"Cart page");
+			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
 			
 			//.........Script Start...........................
 		}

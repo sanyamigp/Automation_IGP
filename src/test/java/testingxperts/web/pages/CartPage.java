@@ -1,9 +1,5 @@
 package testingxperts.web.pages;
 
-import java.awt.Robot;
-import java.awt.Toolkit;
-import java.awt.datatransfer.StringSelection;
-import java.awt.event.KeyEvent;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
 
@@ -16,6 +12,8 @@ import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import testingxperts.web.pages.HomePage.GiftBy;
+import utilities.ConfigReader;
 import utilities.KeywordUtil;
 import utilities.LogUtil;
 
@@ -34,13 +32,16 @@ public class CartPage extends HomePage{
 	public static By btnAddToCart = By.xpath("//*[@id='add-cart']");
 	public static By txtPinCode = By.xpath("//*[@id='pincode']");
 	public static By btnCheckPin=By.xpath("//*[@id='pinCheck']");
-	public static By listCartItems = By.xpath("//ul[@class='cart-items-list']/li/span");
+
+	public static By enterPincode=By.id("full-size-pin-code");
+
 	public static By btnCloseCart = By.xpath("//*[@id='close-cart']");
 	public static By btnBuyNow = By.xpath("//button[@id='buy-now']");
-	public static By btnPersonalize=By.xpath("//button[text()='PERSONALIZE NOW']");
 	public static By btnPlaceOrder = By.xpath("//a[text()='Place Order']");
 	public static By btnEditPinCode = By.xpath("//*[@class='fa fa-pencil']");
-	public static By btnApply = By.xpath("(//button[text()='Apply'])[position()=2]");
+	public static By btnenterPinCode=By.xpath("//button[contains(text(),'Enter Pincode')]");
+	public static By btnApply = By.xpath("(//button[contains(@class,'apply-pin')])[position()=1]");
+	public static By UpdateApply=By.xpath("(//button[contains(@class,'apply-pin')])[position()=2]");
 	public static String lastPinNumber ="";
 	public static By btnDeleteSingleItem = By.xpath("//*[@id='site-wrapper']//div[@class='row c-item flex-row']//div[contains(@class,'close-menu-s')]");
 	public static By alertMessageForDelete =By.xpath("//div[@class='c-o-content']/h5[contains(.,'Are you sure you want to remove the item from cart')]");
@@ -53,58 +54,60 @@ public class CartPage extends HomePage{
 	public static By tblDateTimePicker = By.id("datepicker-midnight_table");
 
 	public static By linkSameDayDelivery = By.xpath("//a[contains(.,'Same Day Delivery Gifts')]");
+	public static By btnEditPersonalize = By.xpath("//button[contains(.,'EDIT PERSONALIZATION')]");
+	public static By btnPersonalize=By.xpath("//button[text()='PERSONALIZE NOW']");
 
 
-	public static void addItemInCartforFlowersnCakes(GiftBy giftBy) throws Exception
-	{
-		executeStep(click(linkFlower_and_cake), "Click:"+giftBy.toString());
-		executeStep(selectItemEditorPick(1),
+	public static void addItemInCart(GiftBy giftBy) throws Exception{
+		if(giftBy==GiftBy.FLOWER_AND_CAKE){
+			executeStep(click(linkFlower_and_cake), "Click:"+giftBy.toString());
+		}
+
+		executeStep(selectItem(1),
 				"Select Item");
 		waitForClickable(btnAddToCart);
-		if(!verifyInputText(txtPinCode, Constants.PINCODE))
-		{
-			doubleClick(txtPinCode);
-			executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
-			click(btnCheckPin);
-			pause(3000);
-		}
+
+		doubleClick(txtPinCode);
+		executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
+		click(btnCheckPin);
+		pause(3000);
+
 		executeStep(click(btnAddToCart), 
 				"Click: "+"ADD TO CART");
 	}
 
-	public static void addItemInCartforGiftHampers(GiftBy giftBy) throws Exception
-	{
-		executeStep(click(gifts_hamper), "Click:"+giftBy.toString());
-		executeStep(selectItemEditorPick(1),
-				"Select Item");
-		waitForClickable(btnAddToCart);
-
-		if(!verifyInputText(txtPinCode, Constants.PINCODE))
-		{
-			doubleClick(txtPinCode);
-			executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
-			click(btnCheckPin);
-			pause(3000);
-		}
-		executeStep(click(btnAddToCart), 
-				"Click: "+"ADD TO CART");
-
-	}
-
-	public static void addItemInCartforPersonalization(GiftBy giftBy) throws Exception
+	public static boolean personalizedItem(GiftBy giftBy) throws InterruptedException, Exception
 	{
 		verifyStep(click(personalized_gifts), "Click:"+giftBy.toString());
-		executeStep(selectItemEditorPick(1),
+		executeStep(selectItemEditorPick(4),
 				"Select Item");
 		clickAndWait(btnPersonalize);
-		
 		try
 		{
-			if(isWebElementVisible(By.xpath("//button[text()='SELECT IMAGE']")))
+			if(isWebElementPresent(By.xpath("(//button[text()='SELECT IMAGE'])[position()=1]")))
 			{
-				clickAndWait(By.xpath("//button[text()='SELECT IMAGE']"));
-				pause(2000);
-				fileUpload("Chrysanthemum.jpg");
+				List<WebElement> images=getListElements(By.xpath("//button[text()='SELECT IMAGE']"));
+				for(int i=1;i<images.size();i++)
+				{
+					clickAndWait(By.xpath("(//button[text()='SELECT IMAGE'])[position()="+i+"]"));
+					pause(2000);
+					fileUpload("PersonalizedImage.jpg");
+				}
+			}
+		}
+		catch(Exception e)
+		{
+
+		}
+		try
+		{
+
+			if(isWebElementPresent(By.xpath("(//input[contains(@class,'pers-input-text')])[position()=1]")))
+			{
+				List<WebElement> enterText=getListElements(By.xpath("(//input[contains(@class,'pers-input-text')])"));
+				for(int i=1;i<enterText.size();i++)
+					writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])[position()="+i+"]"), "C-shaped");
+
 			}
 		}
 		catch(Exception e)
@@ -112,34 +115,29 @@ public class CartPage extends HomePage{
 
 		}
 
-		try
-		{
+		return true;
+	}
 
-			if(isWebElementPresent(By.xpath("//child::div[div[contains(text(),'Enter Text 1')]]//input")))
-			{
-				writeInInputCharByChar(By.xpath("//child::div[div[contains(text(),'Enter Text 1')]]//input"), "C-shaped");
-				
-			}
-		}
-		catch(Exception e)
-		{
 
-		}
-		clickAndWait(By.xpath("//button[@id='personalize-done']"));
-		if(!verifyInputText(txtPinCode, Constants.PINCODE))
-		{
-			doubleClick(txtPinCode);
-			executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
-			click(btnCheckPin);
-			pause(3000);
-		}
-		executeStep(clickAndWait(btnAddToCart), 
-				"Click: "+"ADD TO CART");
+	public static boolean isCartPageLoaded()
+	{
+		return getDriver().
+				getCurrentUrl().
+				equalsIgnoreCase(ConfigReader.getValue("CART_URL"));
+
+
 	}
 
 	public static void inputPinCode(String pin) throws Exception{
 		doubleClick(txtPinCode);
 		executeStep(inputText(txtPinCode, pin),"Input pincode:"+pin);
+	}
+
+	public static void enterPincodesuccessfully(String pincode) throws Exception
+	{
+		executeStep(click(btnenterPinCode),"Click on Enter Pincode button");
+		executeStep(writeInInputCharByChar(enterPincode, pincode),"Enter valid pincode");
+		clickAndWait(btnApply);
 	}
 
 
@@ -148,16 +146,30 @@ public class CartPage extends HomePage{
 		pause(2000);
 	}
 
-	public static boolean selectItem(int index){
-		//First index is 5th So adding 4+index
-		String xpathOfItem = String.format("(//*[@class[contains(.,'product-item')]]/div[1]/a)[position()=%d]", 4+index);
-		By item=By.xpath(xpathOfItem);
-		return click(item);
+	public static boolean changeCountry(String countryName) throws InterruptedException
+	{
+		writeInInputCharByChar(By.xpath("//input[contains(@class,'col s11 suggestCountry')]"), countryName);
+		clickAndWait(By.xpath("//li/span[text()='USA']"));
+		return true;
+	}
+
+	public static boolean verifyEnterPincodebutton() throws InterruptedException
+	{
+		return clickAndWait(btnenterPinCode);
+	}
+	public static int get_Qty() throws Exception
+	{
+		String qty=	getWebElement(By.xpath("//input[contains(@id,'c-item-qty')]")).getAttribute("value");
+		return Integer.parseInt(qty);
+	}
+
+	public static boolean incrementOperator() throws InterruptedException
+	{
+		return clickAndWait(By.xpath("//span[contains(@id,'inc-quantity')]"));
 	}
 
 	public static boolean verifyPinCodeMessage() throws Exception{
 		return verifyTextContains(txtMessageWrongPin, Constants.ERROR_MESSAGE_INVALID_PIN);
-
 	}
 
 	public static String getPinCodeErrorMessage(){
@@ -172,7 +184,7 @@ public class CartPage extends HomePage{
 		if(giftBy==GiftBy.FLOWER_AND_CAKE){
 			executeStep(click(linkFlower_and_cake), "Click:"+giftBy.toString());
 		}
-		executeStep(selectItemEditorPick(1),
+		executeStep(selectItem(1),
 				"Select Item");
 		waitForClickable(btnAddToCart);
 		doubleClick(txtPinCode);
@@ -187,16 +199,20 @@ public class CartPage extends HomePage{
 				"Click cart button");
 		pause(1000);
 		waitForClickable(listCartItems);
-		executeStep(verifyIsItemadded(),"Items Added");
 		return isWebElementPresent(listCartItems);
 	} 
 
-
+	public static boolean selectItem(int index){
+		//First index is 5th So adding 4+index
+		String xpathOfItem = String.format("(//*[@class[contains(.,'product-item')]]/div[1]/a)[position()=%d]", 4+index);
+		By item=By.xpath(xpathOfItem);
+		return click(item);
+	}
 
 	public static void closeCartOverlay() throws InterruptedException{
 		//Close cart overlay
-		doubleClick(btnCloseCart);
-
+		click(btnCloseCart);
+		pause(2000);
 	}	
 
 	public static boolean emptyCart() throws Exception{
@@ -255,30 +271,13 @@ public class CartPage extends HomePage{
 		return status;
 	}
 
-	public static boolean verifyIsItemadded()
-	{
-		int j=1;
-		int addeditems=Integer.parseInt(getDriver().findElement(By.xpath("//span[@id='c-total-count']")).getText());
-		try
-		{
-			if(addeditems==j)
-				return true;
-		}
+	public static boolean clikBuyNow(){
 
-		catch(Exception e)
-		{
-			e.printStackTrace();
-		}
-		j++;
-		return true;
-	}
-	public static boolean clikBuyNow() throws InterruptedException{
-
-		return clickAndWait(btnBuyNow);
+		return click(btnBuyNow);
 
 	}
 	public static boolean verifyOrderDetailsPageLoaded(){
-		return isWebElementVisible(btnBuyNow);
+		return isWebElementVisible(btnPlaceOrder);
 	}
 
 	public static void clickPlaceOrder() throws Exception{
@@ -297,11 +296,9 @@ public class CartPage extends HomePage{
 		LogUtil.infoLog("UpdatePin", KeywordUtil.lastAction);
 		inputText(By.xpath("//input[@id='pin-code']"), pinCode);
 		pause(2000);
-		click(btnApply);
-		pause(2000);
+		click(UpdateApply);
+		pause(4000);
 		lastPinNumber=pinCode;
-
-
 	}
 
 	public static void selectMidnightDeliveryWithDate() throws Exception{
@@ -316,7 +313,71 @@ public class CartPage extends HomePage{
 
 	}
 
+	public static void addProductInCart() throws Exception
+	{
 
+		waitForClickable(btnAddToCart);
+
+		doubleClick(txtPinCode);
+		executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
+		click(btnCheckPin);
+		pause(3000);
+
+		executeStep(click(btnAddToCart), 
+				"Click: "+"ADD TO CART");
+	}
+
+	public static boolean verifyDeliveryLocation(String deliveryLocation)
+	{
+		if(getElementText(By.xpath("(//p[@class='c-item-d-pin'])[position()=1]")).contains(deliveryLocation))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public static boolean verifyFlowersErrorMessage()
+	{
+		return isWebElementVisible(By.xpath("(//div[contains(@class,'row c-item flex-row')])[position()=2]//p[text()='This item is not deliverable to the selected pincode.']"));
+	}
+
+	public static boolean verifyErrorforInternational()
+	{
+		if(isWebElementPresent(By.xpath("(//div[contains(@class,'row c-item flex-row')])[position()=1]//p[text()='This item is not deliverable to the selected pincode.']")) && isWebElementPresent(By.xpath("(//div[contains(@class,'row c-item flex-row')])[position()=3]//p[text()='This item is not deliverable to the selected pincode.']")))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public static boolean verifyWorldWideErrorMessage()
+	{
+		if(isWebElementPresent(By.xpath("(//div[contains(@class,'row c-item flex-row')])[position()=2]//p[text()='This item is not deliverable to the selected pincode.']")) && isWebElementPresent(By.xpath("(//div[contains(@class,'row c-item flex-row')])[position()=3]//p[text()='This item is not deliverable to the selected pincode.']")))
+		{
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	public static boolean verifyChatPopUp() throws InterruptedException, Exception
+	{
+		executeStep(click(By.xpath("//p[@class='help-text']/a[@class='chat-me']")), "Click on Chat link");
+		return isWebElementVisible(By.id("lc_chat_layout"));
+	}
+
+	public static boolean verifyRemoveLink() throws Exception
+	{
+		return	click(By.xpath("//div[@class=' v-bottom']/a[text()='Remove']"));
+	}
 
 
 }//End of class

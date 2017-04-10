@@ -85,7 +85,11 @@ public class IGP_TC_087 extends KeywordUtil{
 			stepInfo="Buy Now";
 			logStep(stepInfo);
 			CartPage.clikBuyNow();
-		
+			
+			stepInfo="The page should navigate to cart page";
+			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
+			
+			
 			stepInfo="Place order";
 			logStep(stepInfo);
 			CartPage.clickPlaceOrder();
@@ -110,7 +114,7 @@ public class IGP_TC_087 extends KeywordUtil{
 			
 			stepInfo="Change the delivery option.";
 			logStep(stepInfo);
-			verifyStep(OrderSummaryPage.verifydeliveryoption("Midnight Time Delivery",28),stepInfo);
+			verifyStep(OrderSummaryPage.verifydeliveryoption("Midnight Time Delivery",5),stepInfo);
 					
 			
 			

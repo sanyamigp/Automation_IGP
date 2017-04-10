@@ -95,8 +95,8 @@ public class IGP_TC_204 extends KeywordUtil{
 			
 			stepInfo="Verify User should Navigate to Payment page";
 			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
+			pause(3000);
 			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
-			
 			
 			stepInfo="Click on Debit card ";
 			logStep(stepInfo);
@@ -105,7 +105,7 @@ public class IGP_TC_204 extends KeywordUtil{
 			
 			stepInfo="Check whether Make Payment button is displaying pay amount.";
 			logStep(stepInfo);
-			verifyStep(PaymentPage.verifyMakePaymentbutton("debit"), stepInfo);
+			verifyStep(PaymentPage.verifyMakePaymentbuttonforDebit(), stepInfo);
 			
 			
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.cssSelector(".payment-block")),"PaymentMethods");
