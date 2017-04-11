@@ -11,9 +11,9 @@ public class ProductList extends HomePage{
 	
 	public static boolean selectItem(int item)
 	{
-		if(isWebElementPresent(By.xpath("(//div[@class='slick-track']/li)[position()=5]")))
+		if(isWebElementPresent(By.xpath("(//div[@class='slick-track']/div)[position()=5]")))
 		{
-			click(By.xpath("(//div[@class='slick-track']/li)[position()='"+(item+4)+"']"));
+			click(By.xpath("(//div[@class='slick-track']/div)[position()='"+(item+4)+"']"));
 			return true;
 		}
 

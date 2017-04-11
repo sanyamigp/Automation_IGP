@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-# Automation_IGP
-=======
 # Test automation framework with java and selenium
 
 ### Main features 
@@ -16,4 +13,3 @@
 * Basic setup and teardown is written in listner
 * Just start writing tests 
 * Common functions are already backed in
->>>>>>> GeckoDriver added
