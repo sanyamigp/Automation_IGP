@@ -18,14 +18,14 @@ public class CountriesPage extends HomePage {
 
 	public static boolean selectItemFromList(int index)
 	{
-		String xpathOfItem = String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/div[position()=%d]", 4+index);
+		String xpathOfItem = String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/li[position()=%d]", 4+index);
 		By item=By.xpath(xpathOfItem);
 		return click(item);
 	}
 	
 	public static boolean freeShippingProducts(int index)
 	{
-		String xpathOfItem = String.format("//div[contains(@class,'edp-group-wrapper')][position()=1]//div[@class='slick-track']/div[position()=%d]", 4+index);
+		String xpathOfItem = String.format("//div[contains(@class,'edp-group-wrapper')][position()=1]//div[@class='slick-track']/li[position()=%d]", 4+index);
 		By itemName=By.xpath(xpathOfItem);
 		return click(itemName);
 	}
