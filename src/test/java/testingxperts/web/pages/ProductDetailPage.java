@@ -185,9 +185,9 @@ public class ProductDetailPage extends HomePage {
 	public static boolean verifyNamendPrice(int index)
 	{
 
-		String xpathOfItem = String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/div[position()=%d]", 4+index);
-		String Name=String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/div[position()=%d]//p[@class='product-name']/a",4+index);
-		String price=String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/div[position()=%d]//p[@class='product-price']/span",4+index);
+		String xpathOfItem = String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/li[position()=%d]", 4+index);
+		String Name=String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/li[position()=%d]//p[@class='product-name']/a",4+index);
+		String price=String.format("//div[contains(@class,'edp-group-wrapper')][position()=3]//div[@class='slick-track']/li[position()=%d]//p[@class='product-price']/span",4+index);
 		By item=By.xpath(xpathOfItem);
 		String productName= getElementText(By.xpath(Name));
 		String productprice=getElementText(By.xpath(price));
