@@ -3837,3 +3837,20 @@ Session ID: aac56fa578ad8c75655858f3450aae00
 2017-04-14 19:50:52 INFO  - Closing Browsers
 2017-04-14 19:50:54 INFO  - Test is started with browser: Chrome
 2017-04-14 19:51:02 INFO  - Cart page suite finished at Fri Apr 14 19:51:02 IST 2017
+2017-04-14 20:06:37 INFO  - 
+
++============================================================================================================================+
+2017-04-14 20:06:37 INFO  - Default suite suite started at Fri Apr 14 20:06:37 IST 2017
+2017-04-14 20:06:37 INFO  - Suite Browser: Chrome
+2017-04-14 20:06:41 INFO  - +=============Database started=============+
+2017-04-14 20:06:41 INFO  - Database driver name: SQLiteJDBC
+2017-04-14 20:06:41 INFO  - Product name SQLite, Version 3.8.11
+2017-04-14 20:06:41 INFO  - +==========================================+
+
+2017-04-14 20:06:41 INFO  - Test is started with browser: Chrome
+2017-04-14 20:06:52 INFO  - 
++----------------------------------------------------------------------------------------------------------------------------+
+2017-04-14 20:06:52 INFO  - Test Started: IGP_TC_088
+2017-04-14 20:06:52 INFO  - Test description: Apply Coupon Code-: Ensure that the user able to apply coupon code.
+2017-04-14 20:06:52 INFO  - Open home page
+2017-04-14 20:06:52 INFO  - Navigate to: https://www.igp.com/
