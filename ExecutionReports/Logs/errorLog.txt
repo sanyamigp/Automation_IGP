@@ -1,0 +1,274 @@
+2017-04-13 15:09:51 ERROR - 
+========ERROR IN TEST : IGP_TC_178 =====================================
+2017-04-13 15:09:51 ERROR - -----------------------------------------------------------------------
+2017-04-13 15:09:51 ERROR - Expected condition failed: waiting for visibility of element located by By.className: col s12 (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir1236_22489}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: b6e77c9256bd7d1513129eb96354bf18
+2017-04-13 15:09:51 ERROR - -----------------------------------------------------------------------
+2017-04-13 18:44:30 ERROR - 
+========ERROR IN TEST : IGP_TC_179 =====================================
+2017-04-13 18:44:30 ERROR - -----------------------------------------------------------------------
+2017-04-13 18:44:30 ERROR - Expected condition failed: waiting for visibility of element located by By.id: user-e-m (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir6388_12580}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: ee4c85a326378fde4061b6fe36c6c97e
+2017-04-13 18:44:30 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:15:46 ERROR - 
+========ERROR IN TEST : IGP_TC_179 =====================================
+2017-04-13 19:15:46 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:15:46 ERROR - Expected condition failed: waiting for visibility of element located by By.xpath: .//*[@id='address-container']/div (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir7980_2931}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: bc9b4f3e0d09a8aae9a96f207be2f38e
+2017-04-13 19:15:46 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:54:02 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-13 19:54:02 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:54:02 ERROR - Varification failed-->Click on 'Continue with Facebook' button.
+2017-04-13 19:54:02 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:55:11 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-13 19:55:11 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:55:11 ERROR - Varification failed-->Click on 'Continue with Facebook' button.
+2017-04-13 19:55:11 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:56:49 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-13 19:56:49 ERROR - -----------------------------------------------------------------------
+2017-04-13 19:56:49 ERROR - Varification failed-->Click on 'Continue with Facebook' button.
+2017-04-13 19:56:49 ERROR - -----------------------------------------------------------------------
+2017-04-13 20:10:43 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-13 20:10:43 ERROR - -----------------------------------------------------------------------
+2017-04-13 20:10:43 ERROR - timeout
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 90.07 seconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir7192_16526}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: c009a93f3c2f9a8a02380fa0c44c59ae
+2017-04-13 20:10:43 ERROR - -----------------------------------------------------------------------
+2017-04-13 20:14:02 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-13 20:14:02 ERROR - -----------------------------------------------------------------------
+2017-04-13 20:14:02 ERROR - Varification failed-->Click on 'Continue with Facebook' button.
+2017-04-13 20:14:02 ERROR - -----------------------------------------------------------------------
+2017-04-14 12:00:59 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-14 12:00:59 ERROR - -----------------------------------------------------------------------
+2017-04-14 12:00:59 ERROR - Expected condition failed: waiting for visibility of element located by By.xpath: .//*[@id='address-container']/div (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir4656_22432}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 0f3bf1ef4c0824ae4c4b36d4aa79fd7c
+2017-04-14 12:00:59 ERROR - -----------------------------------------------------------------------
+2017-04-14 12:04:14 ERROR - 
+========ERROR IN TEST : IGP_TC_180 =====================================
+2017-04-14 12:04:14 ERROR - -----------------------------------------------------------------------
+2017-04-14 12:04:14 ERROR - chrome not reachable
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 4.29 seconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir1904_366}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 686aba91def47b8cee55b2ebb893a716
+2017-04-14 12:04:14 ERROR - -----------------------------------------------------------------------
+2017-04-14 15:55:12 ERROR - 
+========ERROR IN TEST : IGP_TC_175 =====================================
+2017-04-14 15:55:12 ERROR - -----------------------------------------------------------------------
+2017-04-14 15:55:12 ERROR - Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id='datepicker-midnight_table']//td[div[contains(@class,'today')]]/following-sibling::td[2] (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir4560_32315}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: cc077f1ba9789fb421a55cc6a55e229b
+2017-04-14 15:55:12 ERROR - -----------------------------------------------------------------------
+2017-04-14 15:58:54 ERROR - 
+========ERROR IN TEST : IGP_TC_175 =====================================
+2017-04-14 15:58:54 ERROR - -----------------------------------------------------------------------
+2017-04-14 15:58:54 ERROR - Expected condition failed: waiting for element to be clickable: By.xpath: //*[@id='datepicker-midnight_table']//td[div[contains(@class,'today')]]/following-sibling::td[2] (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir6936_1811}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: b4265b0a0a68469a74df8b1e3122299d
+2017-04-14 15:58:54 ERROR - -----------------------------------------------------------------------
+2017-04-14 16:05:48 ERROR - 
+========ERROR IN TEST : IGP_TC_175 =====================================
+2017-04-14 16:05:48 ERROR - -----------------------------------------------------------------------
+2017-04-14 16:05:48 ERROR - Expected condition failed: waiting for visibility of element located by By.id: midnight-help-text (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir716_26145}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: a1e8feacd9293023ef47157e17dbe8ae
+2017-04-14 16:05:48 ERROR - -----------------------------------------------------------------------
+2017-04-14 16:59:53 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 16:59:53 ERROR - -----------------------------------------------------------------------
+2017-04-14 16:59:53 ERROR - Varification failed-->The user should be navigated to checkout page.
+2017-04-14 16:59:53 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:30:10 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:30:10 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:30:10 ERROR - Varification failed-->The user should be navigated to checkout page.
+2017-04-14 17:30:10 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:34:33 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:34:33 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:34:33 ERROR - Varification failed-->The user should be navigated to checkout page.
+2017-04-14 17:34:33 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:38:17 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:38:17 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:38:17 ERROR - Varification failed-->The user should be navigated to checkout page.
+2017-04-14 17:38:17 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:48:33 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:48:33 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:48:33 ERROR - unknown error: Element <button type="button" id="buy-now" class="waves-effect btn-submit-pdp bg-red">...</button> is not clickable at point (1100, 594). Other element would receive the click: <a class="checkout-btn u-case" href="/cart">...</a>
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 73 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir7936_21696}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: f5d552eaaf7e67d446a5ce2a605882a7
+2017-04-14 17:48:33 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:52:38 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:52:38 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:52:38 ERROR - Expected condition failed: waiting for visibility of element located by By.xpath: (//input[@name='email'][@placeholder='enter email address'])[position()=1] (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir7840_14489}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: ca7fdf8ebf7b3784daa7629edb23b4ca
+2017-04-14 17:52:38 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:55:19 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:55:19 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:55:19 ERROR - Varification failed-->Select delivery location as USA.
+2017-04-14 17:55:19 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:58:03 ERROR - 
+========ERROR IN TEST : IGP_TC_184 =====================================
+2017-04-14 17:58:03 ERROR - -----------------------------------------------------------------------
+2017-04-14 17:58:03 ERROR - element not visible
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 27 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir1316_9372}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: cec10a27ee3b835c092faee27453b34a
+2017-04-14 17:58:03 ERROR - -----------------------------------------------------------------------
+2017-04-14 18:31:15 ERROR - 
+========ERROR IN TEST : IGP_TC_162 =====================================
+2017-04-14 18:31:15 ERROR - -----------------------------------------------------------------------
+2017-04-14 18:31:15 ERROR - Timeout reached when searching for element! Time: 60 seconds 
+Expected condition failed: waiting for utilities.KeywordUtil$1@790174f2 (tried for 60 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: driver.version: unknown
+2017-04-14 18:31:15 ERROR - -----------------------------------------------------------------------
+2017-04-14 18:54:03 ERROR - 
+========ERROR IN TEST : IGP_TC_185 =====================================
+2017-04-14 18:54:03 ERROR - -----------------------------------------------------------------------
+2017-04-14 18:54:03 ERROR - invalid element state: Element must be user-editable in order to clear it.
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 28 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir6624_8489}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: acc9ad2b9204674b0469bb164697285e
+2017-04-14 18:54:03 ERROR - -----------------------------------------------------------------------
+2017-04-14 18:58:36 ERROR - 
+========ERROR IN TEST : IGP_TC_185 =====================================
+2017-04-14 18:58:36 ERROR - -----------------------------------------------------------------------
+2017-04-14 18:58:36 ERROR - invalid element state: Element must be user-editable in order to clear it.
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 44 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir6392_3625}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: e8e2f7c9ec7e9f82dc81b2b7795fe6f1
+2017-04-14 18:58:36 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:00:49 ERROR - 
+========ERROR IN TEST : IGP_TC_185 =====================================
+2017-04-14 19:00:49 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:00:49 ERROR - invalid element state: Element must be user-editable in order to clear it.
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 32 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir8160_15679}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 00cf5ed1d341ed65034252cd3d61660d
+2017-04-14 19:00:49 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:10:56 ERROR - 
+========ERROR IN TEST : IGP_TC_185 =====================================
+2017-04-14 19:10:56 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:10:56 ERROR - invalid element state: Element must be user-editable in order to clear it.
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 47 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir1720_6649}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: ea90856ad6e4e07e860589ddbd1bcbbe
+2017-04-14 19:10:56 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:12:35 ERROR - 
+========ERROR IN TEST : IGP_TC_185 =====================================
+2017-04-14 19:12:35 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:12:35 ERROR - invalid element state: Element must be user-editable in order to clear it.
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 28 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir7216_22074}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: 1812befabf09ed2f429ed673d5f5ca0e
+2017-04-14 19:12:35 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:47:27 ERROR - 
+========ERROR IN TEST : IGP_TC_183 =====================================
+2017-04-14 19:47:27 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:47:27 ERROR - Expected condition failed: waiting for element to be clickable: By.xpath: //ul[@class='cart-items-list']/li/span (tried for 50 second(s) with 500 MILLISECONDS interval)
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir8088_19746}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: b1ee7f6155c977d3d9f439c5df75acef
+2017-04-14 19:47:27 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:50:50 ERROR - 
+========ERROR IN TEST : IGP_TC_090 =====================================
+2017-04-14 19:50:50 ERROR - -----------------------------------------------------------------------
+2017-04-14 19:50:50 ERROR - unknown error: Element <button type="button" id="buy-now" class="waves-effect btn-submit-pdp bg-red">...</button> is not clickable at point (1100, 594). Other element would receive the click: <a class="checkout-btn u-case" href="/cart">...</a>
+  (Session info: chrome=57.0.2987.133)
+  (Driver info: chromedriver=2.29.461591 (62ebf098771772160f391d75e589dc567915b233),platform=Windows NT 6.1.7601 SP1 x86_64) (WARNING: The server did not provide any stacktrace information)
+Command duration or timeout: 70 milliseconds
+Build info: version: '2.53.0', revision: '35ae25b1534ae328c771e0856c93e187490ca824', time: '2016-03-15 10:43:46'
+System info: host: 'admin-PC', ip: '192.168.0.113', os.name: 'Windows 7', os.arch: 'amd64', os.version: '6.1', java.version: '1.8.0_121'
+Driver info: org.openqa.selenium.chrome.ChromeDriver
+Capabilities [{applicationCacheEnabled=false, rotatable=false, mobileEmulationEnabled=false, networkConnectionEnabled=false, chrome={chromedriverVersion=2.29.461591 (62ebf098771772160f391d75e589dc567915b233), userDataDir=C:\Users\admin\AppData\Local\Temp\scoped_dir7764_19786}, takesHeapSnapshot=true, pageLoadStrategy=normal, databaseEnabled=false, handlesAlerts=true, hasTouchScreen=false, version=57.0.2987.133, platform=XP, browserConnectionEnabled=false, nativeEvents=true, acceptSslCerts=true, locationContextEnabled=true, webStorageEnabled=true, browserName=chrome, takesScreenshot=true, javascriptEnabled=true, cssSelectorsEnabled=true, unexpectedAlertBehaviour=}]
+Session ID: aac56fa578ad8c75655858f3450aae00
+2017-04-14 19:50:50 ERROR - -----------------------------------------------------------------------
