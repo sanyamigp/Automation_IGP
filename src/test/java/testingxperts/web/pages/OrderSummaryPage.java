@@ -100,6 +100,11 @@ public class OrderSummaryPage extends HomePage {
 		return verifyTextContains(txtCoupenInvalidMessage, expectedMessage);	
 
 	}
+	
+	public static boolean verifyRemoveLink()
+	{
+		return click(By.xpath("//div[@class=' v-bottom']//a[text()='Remove']"));
+	}
 
 	public static void clickRemoveItem_First() throws InterruptedException{
 		logStep("Click Remove item X button");
@@ -382,6 +387,8 @@ public class OrderSummaryPage extends HomePage {
 
 
 	}
+	
+	
 
 
 
