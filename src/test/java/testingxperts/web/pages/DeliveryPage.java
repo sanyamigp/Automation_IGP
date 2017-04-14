@@ -35,6 +35,9 @@ public class DeliveryPage extends HomePage{
 	public static By inputAddress_NewAddress = By.xpath(".//form[@id='create-s-address']//textarea[@name='saddr']");
 	public static By inputCountry_NewAddress = By.xpath(".//form[@id='create-s-address']//input[@name='cname']");
 	public static By inputPin_NewAddress = By.xpath(".//form[@id='create-s-address']//input[@name='pcode']");
+	public static By inputState_NewAddress=By.id("new-state");
+	public static By inputCity_NewAddress=By.id("new-city");
+	public static By countryCode_NewAddress=By.id("s-mprefix");
 	public static By inputMobile_NewAddress = By.xpath(".//form[@id='create-s-address']//input[@name='mob']");
 	public static By btnSaveAddress_NewAddress = By.xpath("//button[text()='Save Address']");
 	
@@ -81,6 +84,7 @@ public class DeliveryPage extends HomePage{
 		inputText(inputPin_NewAddress, pin);
 		pressTabKey(inputPin_NewAddress);
 		pause(1000);
+		
 		
 		inputText(inputMobile_NewAddress, mobile);
 		pressTabKey(inputMobile_NewAddress);

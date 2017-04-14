@@ -1,5 +1,6 @@
 package testingxperts.web.tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -7,24 +8,26 @@ import listeners.CustomListeners;
 import listeners.ExecutionStartEndListner;
 import testingxperts.web.pages.CartPage;
 import testingxperts.web.pages.CheckOutPage;
+import testingxperts.web.pages.Constants;
 import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderSummaryPage;
+import testingxperts.web.pages.PaymentPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
 import utilities.KeywordUtil;
 
 @Listeners({CustomListeners.class,ExecutionStartEndListner.class})
-public class IGP_TC_162 extends KeywordUtil{
+public class IGP_TC_181 extends KeywordUtil{
 	String stepInfo="";
 	int retryCount=getIntValue("retryCount");
 	static int retryingNumber=1;
 	
 	@Test(
-			testName="IGP_TC_162",
+			testName="IGP_TC_181",
 			groups={"Checkout Page"}, 
-			description="Delivery Information: Ensure that 'Delivery Information' has to open after logged in the user. If there is no address there should be a option to add address."
+			description="Login through Google+: Ensure that a new user is able to login through Google+"
 			)
 	public void test() throws Throwable {
 		try{
@@ -71,6 +74,7 @@ public class IGP_TC_162 extends KeywordUtil{
 			verifyStep(CartPage.isItemAdded(), stepInfo);
 			CartPage.closeCartOverlay();
 			
+			
 			stepInfo="Buy Now";
 			logStep(stepInfo);
 			executeStep(CartPage.clikBuyNow(), stepInfo);
@@ -87,39 +91,19 @@ public class IGP_TC_162 extends KeywordUtil{
 			verifyStep(CheckOutPage.isCheckOutPageLoaded(),
 					stepInfo);
 			
-			stepInfo="Login at checkout page";
+			stepInfo="Click on 'Continue With Google+' button.";
 			logStep(stepInfo);
-			CheckOutPage.doLogin(ConfigReader.getValue("loginUser"), ConfigReader.getValue("loginPassword"));
-			verifyStep(DeliveryPage.verifyDeliveryPageLoaded(),
-					stepInfo);
+			verifyStep(CheckOutPage.verifyGoogleLogin(), stepInfo);
 			
 			
-			stepInfo="Verify is delivery address present";
-			logStep(stepInfo);
 			
-			if(isWebElementPresent(DeliveryPage.btnDeliverHere)){
-				logStepPass(stepInfo);
-				executeStep(click(DeliveryPage.btnDeliverHere), "Click Deliver here");	
-				stepInfo="Verify user navigated to Order Summary page";
-				logStep(stepInfo);
-				verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
 				
-			}else{
-				logStepFail("Verified delivery address is not present");
-				stepInfo="Add new adderess for delivery";
-				logStep(stepInfo);
-				DeliveryPage.addNewAddress("Sanyam Arora", "Street23", "usa", "10001", "5184575181");
-				verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(), stepInfo);
-				
-			}
+			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"CheckOut Page");
+			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
 			
 			
 			
-			
-			 getDriver().navigate().back();
-			 getDriver().navigate().back();
 			 
-		
 			//.........Script Start...........................
 		}
 		  catch (Exception e){

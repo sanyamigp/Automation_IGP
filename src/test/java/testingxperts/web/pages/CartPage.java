@@ -149,7 +149,7 @@ public class CartPage extends HomePage{
 	public static boolean changeCountry(String countryName) throws InterruptedException
 	{
 		writeInInputCharByChar(By.xpath("//input[contains(@class,'col s11 suggestCountry')]"), countryName);
-		clickAndWait(By.xpath("//li/span[text()='USA']"));
+		clickAndWait(By.xpath("//li/span[text()='"+countryName+"']"));
 		return true;
 	}
 
@@ -377,6 +377,12 @@ public class CartPage extends HomePage{
 	public static boolean verifyRemoveLink() throws Exception
 	{
 		return	click(By.xpath("//div[@class=' v-bottom']/a[text()='Remove']"));
+	}
+	
+	public static void selectCountrybtn()
+	{
+		click(By.xpath("//button[contains(text(),'Select Country')]"));
+		
 	}
 
 

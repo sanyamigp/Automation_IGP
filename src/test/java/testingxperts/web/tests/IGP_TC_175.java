@@ -11,6 +11,7 @@ import testingxperts.web.pages.Constants;
 import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderSummaryPage;
+import testingxperts.web.pages.ProductDetailPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
@@ -69,7 +70,7 @@ public class IGP_TC_175 extends KeywordUtil{
 			stepInfo="Add product into cart.";
 			logStep(stepInfo);
 			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
-			CartPage.selectMidnightDeliveryWithDate();
+			ProductDetailPage.enterMidNightDelivery(23, "Next Month");
 			
 			verifyStep(CartPage.isItemAdded(), stepInfo);
 			CartPage.closeCartOverlay();

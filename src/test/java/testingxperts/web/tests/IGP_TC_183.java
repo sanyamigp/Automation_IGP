@@ -1,5 +1,6 @@
 package testingxperts.web.tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -7,6 +8,7 @@ import listeners.CustomListeners;
 import listeners.ExecutionStartEndListner;
 import testingxperts.web.pages.CartPage;
 import testingxperts.web.pages.CheckOutPage;
+import testingxperts.web.pages.Constants;
 import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderSummaryPage;
@@ -16,15 +18,15 @@ import utilities.HtmlReportUtil;
 import utilities.KeywordUtil;
 
 @Listeners({CustomListeners.class,ExecutionStartEndListner.class})
-public class IGP_TC_162 extends KeywordUtil{
+public class IGP_TC_183 extends KeywordUtil{
 	String stepInfo="";
 	int retryCount=getIntValue("retryCount");
 	static int retryingNumber=1;
 	
 	@Test(
-			testName="IGP_TC_162",
+			testName="IGP_TC_183",
 			groups={"Checkout Page"}, 
-			description="Delivery Information: Ensure that 'Delivery Information' has to open after logged in the user. If there is no address there should be a option to add address."
+			description="Remove Product from link:Ensure that user able to remove the  product from Link."
 			)
 	public void test() throws Throwable {
 		try{
@@ -94,30 +96,34 @@ public class IGP_TC_162 extends KeywordUtil{
 					stepInfo);
 			
 			
-			stepInfo="Verify is delivery address present";
+			stepInfo="Click Deliver here";
+			executeStep(click(DeliveryPage.btnDeliverHere), stepInfo);
+			
+			stepInfo="Verify user navigated to Order Summary page";
 			logStep(stepInfo);
+			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
+					
+			stepInfo="Click on Remove link.";
+			logStep(stepInfo);
+			verifyStep(OrderSummaryPage.verifyRemoveLink(), stepInfo);
+			verifyStep(OrderSummaryPage.verifyRemoveItemPopUpIsDisplayed_WithCancelAndRemoveOptions(), stepInfo);
 			
-			if(isWebElementPresent(DeliveryPage.btnDeliverHere)){
-				logStepPass(stepInfo);
-				executeStep(click(DeliveryPage.btnDeliverHere), "Click Deliver here");	
-				stepInfo="Verify user navigated to Order Summary page";
-				logStep(stepInfo);
-				verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
-				
-			}else{
-				logStepFail("Verified delivery address is not present");
-				stepInfo="Add new adderess for delivery";
-				logStep(stepInfo);
-				DeliveryPage.addNewAddress("Sanyam Arora", "Street23", "usa", "10001", "5184575181");
-				verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(), stepInfo);
-				
-			}
+			stepInfo="Click on 'Remove/cancel' links.";
+			logStep(stepInfo);
+			OrderSummaryPage.clickCancel_PopUpLink();
 			
 			
+			stepInfo="Verify Remove item should delete item";
+			logStep(stepInfo);
+			OrderSummaryPage.clickRemoveItem_First();
+			verifyStep(OrderSummaryPage.clickRemove_PopUpLink(),stepInfo);
 			
 			
-			 getDriver().navigate().back();
-			 getDriver().navigate().back();
+			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"CheckOut Page");
+			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
+			
+			
+			
 			 
 		
 			//.........Script Start...........................
