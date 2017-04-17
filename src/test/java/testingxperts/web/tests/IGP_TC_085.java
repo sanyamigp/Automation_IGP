@@ -11,6 +11,7 @@ import testingxperts.web.pages.CheckOutPage;
 import testingxperts.web.pages.Constants;
 import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
+import testingxperts.web.pages.OrderDetailsPage;
 import testingxperts.web.pages.OrderSummaryPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
@@ -110,19 +111,9 @@ public class IGP_TC_085 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
 			
-			
 			stepInfo="Increase the quantity of the product using increment/decrement option.";
 			logStep(stepInfo);
-			int oldQty =OrderSummaryPage.getQty_FirstItem();
-			logStep("Itme qty Before increase: " +oldQty);
 			OrderSummaryPage.increaseQty_FirstItem();
-			int newQty =OrderSummaryPage.getQty_FirstItem();
-			logStep("Itme qty After increase: " +newQty);
-			
-			verifyStep(newQty>oldQty, stepInfo);
-			
-			
-			//verifyStep(OrderSummaryPage.increaseQty_FirstItem(), stepInfo);
 					
 			
 			

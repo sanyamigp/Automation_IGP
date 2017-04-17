@@ -46,7 +46,8 @@ public class CustomSuiteRunner {
 		 *    			4.3. XLS Report (Y/N)
 		 *    			4.4. Test Logs (Y/N)
 		 *    
-		 * 		 
+		 * 		5. Defect management integration
+		 * 		6. Test management integration
 		 * 
 		 *  2.	Go to Control Sheet Read Suite Name and Information Information required to run suite -:
 		 *			1. Suite Name (Only If it is Yes to run)
@@ -76,8 +77,7 @@ public class CustomSuiteRunner {
 			//Create a suite with name from Excel
 			XmlSuite suite = new XmlSuite();
 			suite.setName(tc.getSuiteName());
-			System.out.println("\nSuite name: " + tc.getSuiteName());	
-			
+			System.out.println("\nSuite name: " + tc.getSuiteName());		
 
 			//Set Suite parameters
 			Map<String,String> parameters = new HashMap<>();

@@ -86,10 +86,6 @@ public class IGP_TC_089 extends KeywordUtil{
 			logStep(stepInfo);
 			CartPage.clikBuyNow();
 			
-			stepInfo="The page should navigate to cart page";
-			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
-			
-			
 			stepInfo="Place order";
 			logStep(stepInfo);
 			CartPage.clickPlaceOrder();
