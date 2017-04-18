@@ -8,6 +8,7 @@ import java.util.concurrent.TimeUnit;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.remote.DesiredCapabilities;
@@ -19,7 +20,7 @@ import org.openqa.selenium.remote.DesiredCapabilities;
  */
 
 public class DriverUtil {
-	
+
 	public static final String IE = "IE";
 	public static final String CHROME = "Chrome";
 	private static Map<String, WebDriver> drivers = new HashMap<>();
@@ -31,7 +32,7 @@ public class DriverUtil {
 	 * @return
 	 */
 	private DriverUtil(){
-		
+
 	}
 	/**
 	 * @param browserName
@@ -43,9 +44,13 @@ public class DriverUtil {
 			// Write code for chrome
 			browser = drivers.get(browserName);
 			if (browser == null) {
+				ChromeOptions options = new ChromeOptions();
 				File chromeExecutable = new File(ConfigReader.getValue("ChromeDriverPath"));
+				options.addArguments("disable-infobars");
+				DesiredCapabilities cap = DesiredCapabilities.chrome();
+				cap.setCapability(ChromeOptions.CAPABILITY, options);
 				System.setProperty("webdriver.chrome.driver", chromeExecutable.getAbsolutePath());
-				browser = new ChromeDriver();
+				browser = new ChromeDriver(cap);
 				drivers.put("Chrome", browser);
 			} // End if
 		} else if (browserName.equalsIgnoreCase(IE)) {
@@ -69,8 +74,8 @@ public class DriverUtil {
 				DesiredCapabilities cap = DesiredCapabilities.firefox();
 				File geckoExecutable = new File(ConfigReader.getValue("GeckoDriverPath"));
 				System.out.println(geckoExecutable.getAbsolutePath());
-				  System.setProperty("webdriver.gecko.driver",geckoExecutable.getAbsolutePath());
-				  cap.setCapability("marionette", true);
+				System.setProperty("webdriver.gecko.driver",geckoExecutable.getAbsolutePath());
+				cap.setCapability("marionette", true);
 				browser = new FirefoxDriver(cap);
 				drivers.put("Firefox", browser);
 			}
@@ -114,22 +119,22 @@ public class DriverUtil {
 	 * will get operating system information 
 	 * @return
 	 */
-	
+
 	/**
 	 * close all browsersw
 	 * @return
 	 */
 	public static void closeAllDriver() {
 		LogUtil.infoLog(DriverUtil.class, "Closing Browsers");
-		
+
 		drivers.entrySet().forEach(key->
-			{
-				key.getValue().quit();
+		{
+			key.getValue().quit();
 			key.setValue(null);
-			}
-		
-		
-	);
-		
+		}
+
+
+				);
+
 	}
 }// End class
