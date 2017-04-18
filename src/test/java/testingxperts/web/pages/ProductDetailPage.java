@@ -400,7 +400,7 @@ public class ProductDetailPage extends HomePage {
 	{
 		if(isWebElementVisible(By.xpath("//h3[text()='Similar Gift Recommendations']")))
 		{
-			 isWebElementVisible(By.xpath("(//div[@class='slick-track'])/div[position()=5]"));
+			 isWebElementVisible(By.xpath("(//div[@class='slick-track'])/li[position()=5]"));
 			 return true;
 		}
 		else
@@ -447,6 +447,8 @@ public class ProductDetailPage extends HomePage {
 	
 	public static boolean chooseBaseType() throws InterruptedException
 	{
+		try
+		{
 		if(isWebElementVisible(By.xpath("//div[contains(@class,'sel-peripheral')]")))
 		{
 			List<WebElement> baseTypes=getListElements(By.xpath("//div[@class='col s3 ppl-check']"));
@@ -456,15 +458,17 @@ public class ProductDetailPage extends HomePage {
 			}
 			return true;
 		}
-		
-		else if(!isWebElementVisible(By.xpath("//div[contains(@class,'sel-peripheral')]")))
-		{
-			return true;
-		}
 		else
 		{
 			return false;
 		}
+		}
+		
+		catch(Exception e)
+		{
+			return true;
+		}
+		
 	}
 	
 

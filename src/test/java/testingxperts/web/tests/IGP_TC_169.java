@@ -1,5 +1,6 @@
 package testingxperts.web.tests;
 
+import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -114,8 +115,8 @@ public class IGP_TC_169 extends KeywordUtil{
 			OrderSummaryPage.inputCoupenAndApply(Constants.VALID_COUPEN);
 			verifyStep(OrderSummaryPage.verifyCoupenIsSuccess(Constants.VALID_COUPEN), stepInfo);
 			
-			getDriver().navigate().back();
-		    getDriver().navigate().back();
+			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"CheckOut Page");
+			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
 			 
 		
 			//.........Script Start...........................

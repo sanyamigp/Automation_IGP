@@ -99,7 +99,7 @@ public class ProductList extends HomePage{
 		if(isWebElementVisible(stickyheader))
 		{
 			executeStep(isWebElementVisible(By.xpath("//input[contains(@class,'search-bar')]")), "SearchBox is present");
-			executeStep(isWebElementVisible(By.xpath("//ul[@class='action-links']/li[contains(@class,'chat')]")),"Chat Element is visible");
+			executeStep(isWebElementVisible(By.xpath("//ul[@class='action-links']/li[contains(@class,'slist-wrapper')]")),"Chat Element is visible");
 			executeStep(clickAndWait(By.xpath("//ul[@class='action-links']//div[contains(@class,'dial-pad')]")), "Click on Customer Support menu");
 			pause(10000);
 			for(int item=1;item<5;item++)
