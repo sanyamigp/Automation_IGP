@@ -108,7 +108,7 @@ public class IGP_TC_162 extends KeywordUtil{
 				logStepFail("Verified delivery address is not present");
 				stepInfo="Add new adderess for delivery";
 				logStep(stepInfo);
-				DeliveryPage.addNewAddress("Sukhjinder Singh", "Gt Road", "India", "143505", "9855171155");
+				DeliveryPage.addNewAddress("Sukhjinder Singh", "Gt Road", "India",null,null, "143505", "9855171155");
 				verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(), stepInfo);
 				
 			}

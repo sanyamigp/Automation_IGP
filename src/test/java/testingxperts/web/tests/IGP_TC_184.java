@@ -89,12 +89,12 @@ public class IGP_TC_184 extends KeywordUtil{
 			
 			
 			
-			stepInfo="Click Deliver here";
-			executeStep(click(DeliveryPage.btnDeliverHere), stepInfo);
-			pause(2000);
+			
 			
 			stepInfo="Select delivery location as USA.";
 			logStep(stepInfo);
+			verifyStep(DeliveryPage.selectCountryAddress("USA"), stepInfo);
+			pause(2000);
 			verifyStep(CheckOutPage.errorWarningMessage(), stepInfo);
 
 
