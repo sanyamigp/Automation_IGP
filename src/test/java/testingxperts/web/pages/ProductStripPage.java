@@ -61,12 +61,10 @@ public class ProductStripPage extends HomePage {
 	{
 		if(isWebElementPresent(By.xpath("//child::div[div[(h2[@class='gateway-c-title'])]][position()=1]/following-sibling::div[position()=1]")))
 		{
-			List<WebElement> productStrips=getDriver().findElements(By.xpath("//h2[@class='gateway-c-title']"));
-			for(int i=1;i<=productStrips.size();i++)
-			{
-				isWebElementVisible(By.xpath("//child::div[div[(h2[@class='gateway-c-title'])]][position()=1]/following-sibling::div[position()="+i+"]//div[contains(@class,'slick-track')]/div[position()=5]"));
-				i++;
-			}
+			
+				isWebElementVisible(By.xpath("//child::div[div[(h2[@class='gateway-c-title'])]][position()=1]/following-sibling::div[position()=1]//div[contains(@class,'slick-track')]/li[position()=5]"));
+				
+			
 			return true;
 		}
 		else
