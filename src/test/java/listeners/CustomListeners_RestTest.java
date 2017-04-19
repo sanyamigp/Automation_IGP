@@ -33,6 +33,7 @@ import utilities.HtmlReportUtil;
 import utilities.LogUtil;
 import utilities.ReportFactoryDB;
 import utilities.SendMail;
+import utilities.SendingMail;
 import utilities.TestData;
 import utilities.TestResults;
 import utilities.Utility;
@@ -134,7 +135,8 @@ public class CustomListeners_RestTest extends Utility implements ISuiteListener,
 			}
 
 			if (GlobalUtil.getCommonSettings().getEmailOutput().equalsIgnoreCase("Y"))
-				SendMail.sendEmailToClient();
+				//SendMail.sendEmailToClient();
+				SendingMail.execute("HTML");
 
 		} catch (Exception e) {
 			e.printStackTrace();

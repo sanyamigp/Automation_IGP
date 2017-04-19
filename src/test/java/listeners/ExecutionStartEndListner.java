@@ -11,6 +11,7 @@ import utilities.GlobalUtil;
 import utilities.LogUtil;
 import utilities.ReportFactoryDB;
 import utilities.SendMail;
+import utilities.SendingMail;
 import utilities.Utility;
 
 public class ExecutionStartEndListner extends Utility implements IExecutionListener {
@@ -29,7 +30,8 @@ public class ExecutionStartEndListner extends Utility implements IExecutionListe
 		//1. Send Mail functionality
 		if (GlobalUtil.getCommonSettings().getEmailOutput().equalsIgnoreCase("Y"))
 			try {
-				SendMail.sendEmailToClient();
+				//SendMail.sendEmailToClient();
+				SendingMail.execute("TestReport.html");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -38,6 +40,10 @@ public class ExecutionStartEndListner extends Utility implements IExecutionListe
 				e1.printStackTrace();
 			}
 		//2. Extenet Report Finish
+ catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
 		
 		//3. Report open for view
