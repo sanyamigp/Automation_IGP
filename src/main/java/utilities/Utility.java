@@ -21,6 +21,7 @@ import javax.swing.JOptionPane;
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.testng.Reporter;
 
 import ru.yandex.qatools.ashot.AShot;
 import ru.yandex.qatools.ashot.Screenshot;
@@ -298,6 +299,7 @@ public class Utility {
 		File src = new File(path);
 		LogUtil.infoLog(Utility.class, "Screenshot image path: " + src.getPath());
 		ImageIO.write(screenshot.getImage(), "PNG", src);
+		Reporter.log("<a href='"+ src.getAbsolutePath() + "'> <img src='"+ src.getAbsolutePath() + "' height='100' width='100'/> </a>");
 		return ConfigReader.getValue("screenshotPath") + "\\" +timeStamp+ testCaseID + ".jpg";
 	}
 
