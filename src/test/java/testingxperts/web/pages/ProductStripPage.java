@@ -23,12 +23,12 @@ public class ProductStripPage extends HomePage {
 
 	public static boolean selectionBarforFestival()
 	{
-		if(isWebElementVisible(By.xpath("//div[@class='col t9 fest-sel-column']")))
+		if(isWebElementVisible(By.xpath("//div[contains(@class,'selection-bar')]")))
 		{
-			List<WebElement> barItems=getDriver().findElements(By.xpath("//div[@class='col t9 fest-sel-column']//li[@class='refine-list-item']"));
+			List<WebElement> barItems=getDriver().findElements(By.xpath("//div[contains(@class,'selection-bar')]//li[@class='refine-list-item']"));
 			for(int i=1;i<=barItems.size();i++)
 			{
-				isWebElementPresent(By.xpath("(//div[@class='col t9 fest-sel-column']//li[@class='refine-list-item'])[position()="+i+"]"));
+				isWebElementPresent(By.xpath("//div[contains(@class,'selection-bar')]//li[@class='refine-list-item'][position()="+i+"]"));
 			}
 			return true;
 		}

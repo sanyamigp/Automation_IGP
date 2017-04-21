@@ -84,13 +84,13 @@ public class LoginPage extends HomePage {
 	public static void logOut() throws Exception{
 		try {
 			LogUtil.infoLog("KeywordActions", "Logout from application" );
-			click(By.xpath("//li[@id='user-menu-short']"));
+			click(By.id("user-menu"));
 			LogUtil.infoLog("KeywordActions", KeywordUtil.lastAction );
 			Utility.pause(1000);
 			click(linkLogout);
 			LogUtil.infoLog("KeywordActions", KeywordUtil.lastAction );
 			Utility.pause(1500);
-			loginStatus =!isWebElementPresent(By.xpath("//li[@id='user-menu-short']//div[@class='hidden'][contains(.,'Login')]"));
+			loginStatus =!isWebElementPresent(By.id("user-menu"));
 						
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block

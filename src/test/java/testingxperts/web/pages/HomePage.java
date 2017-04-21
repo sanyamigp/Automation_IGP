@@ -118,12 +118,12 @@ public class HomePage extends KeywordUtil {
 
 	public static  boolean selectHomeProduct()
 	{
-		return click(By.xpath("//p[text()='Home and Living']"));
+		return click(By.xpath("//div[contains(@class,'category-name')]/p[text()='Home and Living']"));
 	}
 
 	public static boolean selectFashionNLifestyle()
 	{
-		return click(By.xpath("//p[text()='Fashion and Lifestyle']"));
+		return click(By.xpath("//div[contains(@class,'category-name')]/p[text()='Fashion and Lifestyle']"));
 	}
 
 	public static boolean clickOnCartLogo() throws InterruptedException

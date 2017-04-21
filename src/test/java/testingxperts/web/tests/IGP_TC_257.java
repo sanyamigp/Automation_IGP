@@ -123,14 +123,6 @@ public class IGP_TC_257 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(CartPage.verifyWorldWideErrorMessage(), stepInfo);
 			
-			stepInfo="Verify user navigated to Order Summary page";
-			logStep(stepInfo);
-			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
-			
-			stepInfo="Verify User should Navigate to Payment page";
-			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
-			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
-
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']")),"Cart page");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
 
