@@ -16,7 +16,7 @@ public class HomePage extends KeywordUtil {
 	public static By linkFlower_and_cake= By.xpath("//p[text()='Flowers & Cakes']");
 	public static By logo = By.xpath("//*[@id='absolute-header']/div[1]/div/a/img");
 	public static By personalized_gifts=By.xpath("//div[contains(@class,'icon')]/p[text()='Personalized Gifts']");
-	public static By cartIcon=By.id("s-cart");
+	public static By cartIcon=By.xpath("//div[contains(@class,'top-actions')]/div[contains(@class,'s-cart')]");
 	public static By listCartItems = By.xpath("//ul[@class='cart-items-list']/li/span");
 
 	public static String getPageTitle(WebDriver driver) {

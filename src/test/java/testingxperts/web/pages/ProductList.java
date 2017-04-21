@@ -7,7 +7,7 @@ import utilities.ConfigReader;
 public class ProductList extends HomePage{
 
 	public static By flowersdisplayed=By.xpath("//span[text()='Flowers']");
-	public static By stickyheader=By.id("sticky-header");
+	public static By stickyheader=By.id("header");
 	
 	public static boolean selectItem(int item)
 	{
@@ -99,17 +99,17 @@ public class ProductList extends HomePage{
 		if(isWebElementVisible(stickyheader))
 		{
 			executeStep(isWebElementVisible(By.xpath("//input[contains(@class,'search-bar')]")), "SearchBox is present");
-			executeStep(isWebElementVisible(By.xpath("//ul[@class='action-links']/li[contains(@class,'slist-wrapper')]")),"Chat Element is visible");
-			executeStep(clickAndWait(By.xpath("//ul[@class='action-links']//div[contains(@class,'dial-pad')]")), "Click on Customer Support menu");
+			executeStep(isWebElementVisible(By.xpath("//div[contains(@class,'slist-wrapper')]")),"Chat Element is visible");
+			executeStep(clickAndWait(By.xpath("//div[contains(@class,'dial-pad')]")), "Click on Customer Support menu");
 			pause(10000);
 			for(int item=1;item<5;item++)
 			{
 				isWebElementPresent(By.xpath("(//header[@id='sticky-header']//div[contains(@class,'col t2 text-center')])[position()="+item+"]"));
 			}
-			clickAndWait(By.xpath("//ul[@class='action-links']//div[contains(@class,'dial-pad')]"));
-			executeStep(isWebElementVisible(By.xpath("//ul[@class='action-links']//li[contains(@class,'cart')]")), "Cart button is visible");
-			executeStep(isWebElementVisible(By.xpath("//ul[@class='action-links']//li[contains(@class,'user-menu')]")), "User button is visible");
-			executeStep(clickAndWait(By.xpath("//ul[@class='action-links']//li[contains(@class,'ham-menu-wrapper')]")), "Click on Sliding window");
+			clickAndWait(By.xpath("//div[contains(@class,'dial-pad')]"));
+			executeStep(isWebElementVisible(By.xpath("//div[contains(@class,'top-actions')]/div[contains(@class,'s-cart')]")), "Cart button is visible");
+			executeStep(isWebElementVisible(By.id("user-menu")), "User button is visible");
+			executeStep(clickAndWait(By.id("ham-icon")), "Click on Sliding window");
 			executeStep(isWebElementVisible(By.id("ham-menu")), "Sliding window is visble");
 			executeStep(click(By.id("close-ham-menu")), "Click on close icon");
 			return true;

@@ -21,7 +21,7 @@ public class LoginPage extends HomePage {
 	public static final By txtPassword = By.xpath("//*[@id='passwd']");
 	public static final By btnLogin = By.xpath("//*[@id='e-login-btn']");
 	public static final By btnSubmit = By.xpath("//button[contains(.,'Login')]"); 
-	public static final By linkUser = By.xpath("//a[@id='user-menu']");
+	public static final By linkUser = By.xpath("//*[@id='user-menu']");
 	public static final By loginOverlayActive=By.xpath("//div[@ class='login-overlay active']");
 	
 	public static final By linkLogout = By.xpath("//a[@href='/logout']");

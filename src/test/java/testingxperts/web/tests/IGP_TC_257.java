@@ -12,6 +12,8 @@ import testingxperts.web.pages.CountriesPage;
 import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.LoginPage;
+import testingxperts.web.pages.OrderSummaryPage;
+import testingxperts.web.pages.PaymentPage;
 import testingxperts.web.pages.ProductList;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
@@ -120,6 +122,14 @@ public class IGP_TC_257 extends KeywordUtil{
 			stepInfo="Check the warning messages.";
 			logStep(stepInfo);
 			verifyStep(CartPage.verifyWorldWideErrorMessage(), stepInfo);
+			
+			stepInfo="Verify user navigated to Order Summary page";
+			logStep(stepInfo);
+			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
+			
+			stepInfo="Verify User should Navigate to Payment page";
+			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
+			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
 
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']")),"Cart page");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
