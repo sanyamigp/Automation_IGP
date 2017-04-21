@@ -69,8 +69,9 @@ public class PersonalizedGiftsPage extends HomePage{
 
 			if(isWebElementPresent(By.xpath("(//input[contains(@class,'pers-input-text')])[position()=1]")))
 			{
-				
-					writeInInputCharByChar(By.xpath("//input[contains(@class,'pers-input-text')]"), "C-shaped");
+				String textSize=getWebElement(By.xpath("//input[contains(@class,'pers-input-text')]")).toString();
+				for(int i=1;i<textSize.length();i++)
+				writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])[position()="+i+"]"), "Round-shaped");
 
 			}
 		}
@@ -91,12 +92,14 @@ public class PersonalizedGiftsPage extends HomePage{
 		{
 			if(isWebElementPresent(By.xpath("//button[text()='SELECT IMAGE']")))
 			{
-				
-				
-					clickAndWait(By.xpath("//button[text()='SELECT IMAGE']"));
-					pause(2000);
-					fileUpload("PersonalizedImage.jpg");
-				
+				String imageSize=getWebElement(By.xpath("//button[text()='SELECT IMAGE']")).toString();
+				for(int i=1;i<=imageSize.length();i++)
+				{
+					clickAndWait(By.xpath("(//button[text()='SELECT IMAGE'])[position()="+i+"]"));
+						pause(2000);
+						fileUpload("Personalized.jpg");
+				}
+
 			}
 		}
 		catch(Exception e)
