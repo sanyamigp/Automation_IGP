@@ -93,16 +93,13 @@ public class HomePage extends KeywordUtil {
 
 	}
 
-	public static boolean selectOptionFromBirthday(String recipient) throws Exception
+	public static void selectOptionFromBirthday(int card) throws Exception
 	{
 		pause(3000);
-		WebElement element=getDriver().findElement(By.xpath("(//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()=1]"));
+		WebElement image=getDriver().findElement(By.xpath("(//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()="+card+"]"));
 		Actions clicker = new Actions(getDriver());
-		clicker.moveToElement(element);
-		clicker.click(getDriver().findElement(By.xpath("//div[@class='card-name-w']/p[text()='Birthday Gifts']//p[contains(text(),'"+recipient+"')]"))).click().perform();
-		//hoverElement(By.xpath("(//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()=1]"));
+		clicker.moveToElement(image).moveToElement(getDriver().findElement(By.xpath("((//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()="+card+"]//div[@class='col s4'])/a[position()=2]"))).click().perform();
 		pause(3000);
-		return click(By.xpath("//div[@class='card-name-w']/p[text()='Birthday Gifts']//p[contains(text(),'"+recipient+"')]"));
 	}
 
 	public static boolean selectitemFromCard() throws InterruptedException

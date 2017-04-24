@@ -76,7 +76,7 @@ public class ProductList extends HomePage{
 	
 	public static boolean isAnniversaryPageLoaded()
 	{
-		return isWebElementPresent(By.xpath("//h1[text()='Anniversary Gifts for Women']"));
+		return isWebElementPresent(By.xpath("//h1[contains(text(),'Anniversary Gifts for')]"));
 	}
 	
 	public static boolean isUSAPageLoaded()
@@ -86,7 +86,7 @@ public class ProductList extends HomePage{
 	
 	public static boolean isWomenPageLoaded()
 	{
-		return isWebElementVisible(By.xpath("//h1[contains(text(),'Gifts for Wife')]"));
+		return isWebElementVisible(By.xpath("//h1[contains(text(),'Gifts for')]"));
 	}
 
 	public static boolean isFlowersnCakesPageloaded()

@@ -71,7 +71,7 @@ public class PersonalizedGiftsPage extends HomePage{
 			{
 				String textSize=getWebElement(By.xpath("//input[contains(@class,'pers-input-text')]")).toString();
 				for(int i=1;i<textSize.length();i++)
-				writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])[position()="+i+"]"), "Round-shaped");
+					writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])[position()="+i+"]"), "Round-shaped");
 
 			}
 		}
@@ -88,24 +88,14 @@ public class PersonalizedGiftsPage extends HomePage{
 	public static boolean attachPersonalizedImage() throws AWTException, InterruptedException
 	{
 
-		try
-		{
-			if(isWebElementPresent(By.xpath("//button[text()='SELECT IMAGE']")))
-			{
-				String imageSize=getWebElement(By.xpath("//button[text()='SELECT IMAGE']")).toString();
-				for(int i=1;i<=imageSize.length();i++)
-				{
-					clickAndWait(By.xpath("(//button[text()='SELECT IMAGE'])[position()="+i+"]"));
-						pause(2000);
-						fileUpload("Personalized.jpg");
-				}
+		
 
-			}
-		}
-		catch(Exception e)
-		{
+			clickAndWait(By.xpath("//input[@placeholder='Select Image']"));
 
-		}
+			pause(5000);
+			fileUpload("Personalized.jpg");
+		
+
 		return true;
 	}
 

@@ -32,6 +32,14 @@ public class ProductDetailPage extends HomePage {
 	{
 		return click(By.linkText("Shipping within India"));
 	}
+	
+	public static boolean isPincodeCorrect() throws Exception
+	{
+		doubleClick(txtPinCode);
+		executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
+		return click(CartPage.btnCheckPin);
+		
+	}
 
 	public static boolean verifypincode(String pincode) throws Exception
 	{
