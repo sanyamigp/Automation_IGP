@@ -60,7 +60,7 @@ public class ProductList extends HomePage{
 	
 	public static boolean isBirthdayPageLoaded()
 	{
-		return isWebElementVisible(By.xpath("//h1[text()='Birthday Gifts for Women']"));
+		return isWebElementVisible(By.xpath("//h1[contains(text(),'Birthday Gifts')]"));
 	}
 	
 	public static void openGiftsForWomenPage()

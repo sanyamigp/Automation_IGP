@@ -79,9 +79,6 @@ public class IGP_TC_233 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(ProductList.showProductsButton(), stepInfo);
 			
-			stepInfo="Verify the breadcrumbs at the bootom of the page.";
-			logStep(stepInfo);
-			verifyStep(ProductList.verifyBreadCrumb(), stepInfo);
 			
 			stepInfo="Check that the following elements are present  as per the requirements:Footer visible";
 			logStep(stepInfo);

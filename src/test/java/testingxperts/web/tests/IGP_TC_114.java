@@ -67,7 +67,7 @@ public class IGP_TC_114 extends KeywordUtil{
 			verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsPageOpened(),"Verify Personalized Gifts Page is loaded");
 			stepInfo="Select Item from personalize items for Woman";
 			logStep(stepInfo);
-			PersonalizedGiftsPage.selectItmeByRecipient(Recipient.WOMEN, 1);
+			PersonalizedGiftsPage.selectItem(1);
 			
 			stepInfo="Verify PERSONALIZE NOW button is present";
 			logStep(stepInfo);

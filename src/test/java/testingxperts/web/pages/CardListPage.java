@@ -63,6 +63,10 @@ public class CardListPage extends HomePage {
 		}
 	}
 	
+	public static boolean selectCardItems()
+	{
+		return click(By.xpath("(//ul[@id='product-grid']//li)[position()=1]//div[@class='image-holder']"));
+	}
 	
 	
 }

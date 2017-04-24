@@ -37,7 +37,7 @@ public class PersonalizedGiftsPage extends HomePage{
 
 	public static boolean selectItem(int index){
 		//First index is 5th So adding 4+index
-		String xpathOfItem = String.format("(//*[@class[contains(.,'product-item')]]/div[1]/a)[position()=%d]", index);
+		String xpathOfItem = String.format("(//*[@class[contains(.,'product-item')]]/div[1]/a)[position()=%d]", 4 + index);
 		By item=By.xpath(xpathOfItem);
 		return click(item);
 	}
