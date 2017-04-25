@@ -1,11 +1,14 @@
 package testingxperts.web.tests;
 
+import javax.enterprise.event.Reception;
+
 import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
 import listeners.CustomListeners;
 import listeners.ExecutionStartEndListner;
+import testingxperts.web.pages.CardListPage;
 import testingxperts.web.pages.CartPage;
 import testingxperts.web.pages.CheckOutPage;
 import testingxperts.web.pages.Constants;
@@ -16,23 +19,26 @@ import testingxperts.web.pages.LoginPage;
 import testingxperts.web.pages.OrderSummaryPage;
 import testingxperts.web.pages.PageMenu;
 import testingxperts.web.pages.PaymentPage;
+import testingxperts.web.pages.PersonalizedGiftsPage;
+import testingxperts.web.pages.PersonalizedGiftsPage.Recipient;
 import testingxperts.web.pages.ProductDetailPage;
 import testingxperts.web.pages.ProductList;
+import testingxperts.web.pages.ProductStripPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
 import utilities.KeywordUtil;
 
 @Listeners({CustomListeners.class,ExecutionStartEndListner.class})
-public class IGP_TC_111 extends KeywordUtil{
+public class IGP_TC_010 extends KeywordUtil{
 	String stepInfo="";
 	int retryCount=getIntValue("retryCount");
 	static int retryingNumber=1;
 	
 	@Test(
-			testName="IGP_TC_111",
-			groups={"Product Description page."}, 
-			description="Colour selection option-:Ensure that Colour selection option is static in case of only one colour and select colour with many pieces options in case colour variants exist."
+			testName="IGP_TC_010",
+			groups={"Sanity"}, 
+			description="Check whether a new user is able to Sign Up."
 			)
 	public void test() throws Throwable {
 		try{
@@ -51,34 +57,60 @@ public class IGP_TC_111 extends KeywordUtil{
 		
 			//.........Script Start...........................
 			
+
+			
 			stepInfo="Open home page";
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
 			
-			stepInfo="Click on 'Send Gifts Worldwide' from Homepage.";
+			
+			stepInfo="Check whether Gifts For Women Page is opened.";
 			logStep(stepInfo);
-			verifyStep(HomePage.sendgiftsWorldwide(),stepInfo);
-			CountriesPage.isCountriesPageLoaded();
+			HomePage.selectOptionFromBirthday(3);
+			verifyStep(ProductList.isAnniversaryPageLoaded(), stepInfo);
+			
+			stepInfo="Click on any Item";
+			logStep(stepInfo);
+			verifyStep(CardListPage.selectCardItems(),stepInfo);
+			
+			stepInfo="Enter valid pincode.";
+			logStep(stepInfo);
+			verifyStep(ProductDetailPage.isPincodeCorrect(), stepInfo);
 			pause(3000);
 			
-			stepInfo="Click on any name of the City/Country gifts";
+			stepInfo="Buy Now";
 			logStep(stepInfo);
-			verifyStep(CountriesPage.verifyCountryentered(),stepInfo);
+			CartPage.clikBuyNow();
 			pause(3000);
 			
-			stepInfo="Select the item.";
+			stepInfo="The page should navigate to cart page";
+			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
+			
+			
+			
+			stepInfo="Place order";
 			logStep(stepInfo);
-			verifyStep(CountriesPage.selectItemFromList(4), stepInfo);
-						
-			stepInfo="Verify color selection is displayed";
-			verifyStep(ProductDetailPage.verifyColorOption(), stepInfo);
-			pause(3000);
-						
-			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']/section[1]/div[2]/div")),"Product Desc. page");
+			CartPage.clickPlaceOrder();
+			pause(2000);
+			
+			stepInfo="The user should be navigated to checkout page.";
+			logStep(stepInfo);
+			verifyStep(CheckOutPage.isCheckOutPageLoaded(),
+					stepInfo);
+			
+			stepInfo="Click on New User? Sign Up link.";
+			logStep(stepInfo);
+			verifyStep(CheckOutPage.verifySignInLink(), stepInfo);
+			
+			stepInfo="Enter the valid user details.";
+			logStep(stepInfo);
+			verifyStep(CheckOutPage.signUpDetails("austria@gmail.com", "ashish", "Mr.", "IGP", "Automation", "Austria", "12121"),stepInfo);
+			
+		
+			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"Card Listing page");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
-			
-			 
+						 
 			//.........Script Start...........................
 		}
 		  catch (Exception e){

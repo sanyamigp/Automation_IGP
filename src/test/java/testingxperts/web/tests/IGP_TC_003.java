@@ -1,5 +1,7 @@
 package testingxperts.web.tests;
 
+import javax.enterprise.event.Reception;
+
 import org.openqa.selenium.By;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
@@ -16,23 +18,26 @@ import testingxperts.web.pages.LoginPage;
 import testingxperts.web.pages.OrderSummaryPage;
 import testingxperts.web.pages.PageMenu;
 import testingxperts.web.pages.PaymentPage;
+import testingxperts.web.pages.PersonalizedGiftsPage;
+import testingxperts.web.pages.PersonalizedGiftsPage.Recipient;
 import testingxperts.web.pages.ProductDetailPage;
 import testingxperts.web.pages.ProductList;
+import testingxperts.web.pages.ProductStripPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
 import utilities.KeywordUtil;
 
 @Listeners({CustomListeners.class,ExecutionStartEndListner.class})
-public class IGP_TC_111 extends KeywordUtil{
+public class IGP_TC_003 extends KeywordUtil{
 	String stepInfo="";
 	int retryCount=getIntValue("retryCount");
 	static int retryingNumber=1;
 	
 	@Test(
-			testName="IGP_TC_111",
-			groups={"Product Description page."}, 
-			description="Colour selection option-:Ensure that Colour selection option is static in case of only one colour and select colour with many pieces options in case colour variants exist."
+			testName="IGP_TC_003",
+			groups={"Sanity"}, 
+			description="Check whether logged in user is able to make payment for international products."
 			)
 	public void test() throws Throwable {
 		try{
@@ -51,34 +56,87 @@ public class IGP_TC_111 extends KeywordUtil{
 		
 			//.........Script Start...........................
 			
+
+			
 			stepInfo="Open home page";
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
 			
-			stepInfo="Click on 'Send Gifts Worldwide' from Homepage.";
+			stepInfo="Login to application";
 			logStep(stepInfo);
-			verifyStep(HomePage.sendgiftsWorldwide(),stepInfo);
-			CountriesPage.isCountriesPageLoaded();
-			pause(3000);
+			LoginPage.doLogin(ConfigReader.getValue("loginUser"), ConfigReader.getValue("loginPassword"));
+			verifyStep(LoginPage.isLogin(), stepInfo);
+
+			stepInfo="Empty Cart";
+			logStep(stepInfo);
+			HomePage.clickOnCartLogo();
+			verifyStep(HomePage.emptyCartItems(), stepInfo);
+			CartPage.closeCartOverlay();
 			
-			stepInfo="Click on any name of the City/Country gifts";
+			stepInfo="Select any product other than Flowers and Cakes under Best Selling Category .";
 			logStep(stepInfo);
-			verifyStep(CountriesPage.verifyCountryentered(),stepInfo);
-			pause(3000);
+			HomePage.selectHomeProduct();
+			verifyStep(HomePage.selectItemEditorPick(3),stepInfo);
 			
-			stepInfo="Select the item.";
+			stepInfo="Select International Shipping option";
 			logStep(stepInfo);
-			verifyStep(CountriesPage.selectItemFromList(4), stepInfo);
-						
-			stepInfo="Verify color selection is displayed";
-			verifyStep(ProductDetailPage.verifyColorOption(), stepInfo);
-			pause(3000);
-						
-			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']/section[1]/div[2]/div")),"Product Desc. page");
+			verifyStep(ProductDetailPage.clickinternationalshipping(), stepInfo);
+			
+			stepInfo="Enter country name in the textbox and then click on Check button.";
+			logStep(stepInfo);
+			verifyStep(ProductDetailPage.deliverychargePresent("Australia"), stepInfo);
+			
+			stepInfo="Buy Now";
+			logStep(stepInfo);
+			CartPage.clikBuyNow();
+
+			stepInfo="The page should navigate to cart page";
+			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
+			
+			stepInfo="Place order";
+			logStep(stepInfo);
+			CartPage.clickPlaceOrder();
+			pause(2000);
+			
+			stepInfo="The user should be navigated to checkout page.";
+			logStep(stepInfo);
+			verifyStep(CheckOutPage.isCheckOutPageLoaded(),
+					stepInfo);
+			
+			stepInfo="Click Deliver here";
+			logStep(stepInfo);
+			verifyStep(DeliveryPage.selectCountryAddress("Australia"), stepInfo);
+			
+			stepInfo="Verify user navigated to Order Summary page";
+			logStep(stepInfo);
+			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
+			
+			stepInfo="Verify click on apply coupen ";
+			logStep(stepInfo);
+			OrderSummaryPage.clickApplyCoupen();
+			verifyStep(OrderSummaryPage.verifyCoupenInputFieldIsDisplayed(), stepInfo);
+			
+			stepInfo="Enter new coupen and verify: "+Constants.VALID_COUPEN;
+			logStep(stepInfo);
+			OrderSummaryPage.inputCoupenAndApply(Constants.VALID_COUPEN);
+			verifyStep(OrderSummaryPage.verifyCoupenIsSuccess(Constants.VALID_COUPEN), stepInfo);
+			
+			stepInfo="Verify User should Navigate to Payment page";
+			logStep(stepInfo);
+			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
+			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
+			
+			
+		
+			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.cssSelector(".payment-block")),"Sanity");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
 			
+			 getDriver().navigate().back();
+			 OrderSummaryPage.removeCoupon();
+			
 			 
+						 
 			//.........Script Start...........................
 		}
 		  catch (Exception e){

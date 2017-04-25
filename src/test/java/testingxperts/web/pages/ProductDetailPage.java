@@ -32,13 +32,13 @@ public class ProductDetailPage extends HomePage {
 	{
 		return click(By.linkText("Shipping within India"));
 	}
-	
+
 	public static boolean isPincodeCorrect() throws Exception
 	{
 		doubleClick(txtPinCode);
 		executeStep(inputText(txtPinCode, Constants.PINCODE),"Input pincode");
 		return click(CartPage.btnCheckPin);
-		
+
 	}
 
 	public static boolean verifypincode(String pincode) throws Exception
@@ -91,7 +91,7 @@ public class ProductDetailPage extends HomePage {
 		pause(10000);
 		clickAndWait(By.id("countryCheck"));
 		pause(3000);
-		
+
 		if(isWebElementVisible(By.xpath("//input[contains(@class,'error')]")))
 		{
 			return true;	
@@ -100,7 +100,7 @@ public class ProductDetailPage extends HomePage {
 			return false;
 
 	}
-	
+
 	public static boolean notDeliverableProducts(String country) throws InterruptedException, Exception
 	{
 		doubleClick(By.id("country"));
@@ -108,12 +108,12 @@ public class ProductDetailPage extends HomePage {
 		pause(10000);
 		clickAndWait(By.id("countryCheck"));
 		pause(3000);
-		
+
 		if(isWebElementPresent(By.xpath("//div[contains(text(),'This product is not shippable to ')]")))
 		{
 			return true;
 		}
-		
+
 		else
 		{
 			return false;
@@ -219,6 +219,18 @@ public class ProductDetailPage extends HomePage {
 
 	}
 
+	public static boolean verifyColorOption()
+	{
+		try
+		{
+			isWebElementVisible(btnColorSelection);
+		}
+		catch(Exception e)
+		{
+
+		}
+		return true;
+	}
 	public static boolean needHelpOption(String reason,String query) throws Exception
 	{
 		if(isWebElementVisible(By.linkText("Need Help ?")))
@@ -280,7 +292,7 @@ public class ProductDetailPage extends HomePage {
 		clickAndWait(By.id("datepicker-fixed-date"));
 		String part1="//table[contains(@aria-controls,'fixed-date')]//tbody//td/div[text()='";
 		String part2="']";
-		
+
 		List<WebElement> calendarDates=getDriver().findElements(By.xpath("//div[@aria-disabled='true'][text()='"+date+"']"));
 		if(!getDriver().findElement(By.xpath(part1+date+part2)).isDisplayed())
 		{
@@ -294,11 +306,11 @@ public class ProductDetailPage extends HomePage {
 				if(calendarDates.get(i).isDisplayed())
 					return true;
 			}
-			
-			
-				getDriver().findElement(By.xpath(part1+date+part2)).click();
-				pause(3000);
-			
+
+
+			getDriver().findElement(By.xpath(part1+date+part2)).click();
+			pause(3000);
+
 		}
 		else if(deliveryMonth=="Next Month")
 		{
@@ -313,9 +325,9 @@ public class ProductDetailPage extends HomePage {
 			pause(3000);
 		}
 		return isWebElementVisible(By.id("fixed-date-help-text"));
-		
+
 	}
-	
+
 	public static boolean enterFixedTimeDelivery(int date,String deliveryMonth) throws InterruptedException
 	{
 		clickAndWait(By.xpath("//label[contains(text(),'Fixed time delivery')]"));
@@ -335,11 +347,11 @@ public class ProductDetailPage extends HomePage {
 				if(calendarDates.get(i).isDisplayed())
 					return true;
 			}
-			
-			
-				getDriver().findElement(By.xpath(part1+date+part2)).click();
-				pause(3000);
-			
+
+
+			getDriver().findElement(By.xpath(part1+date+part2)).click();
+			pause(3000);
+
 		}
 		else if(deliveryMonth=="Next Month")
 		{
@@ -353,12 +365,12 @@ public class ProductDetailPage extends HomePage {
 			getDriver().findElement(By.xpath(part1+date+part2)).click();
 			pause(3000);
 		}
-		
+
 		selectByIndex(By.xpath("//select[@class='number time-picker']"), 1);
 		return isWebElementVisible(By.id("fixed-help-text"));
-		
+
 	}
-	
+
 	public static boolean enterMidNightDelivery(int date,String deliveryMonth) throws InterruptedException
 	{
 		clickAndWait(By.xpath("//label[contains(text(),'Midnight delivery')]"));
@@ -378,11 +390,11 @@ public class ProductDetailPage extends HomePage {
 				if(calendarDates.get(i).isDisplayed())
 					return true;
 			}
-			
-			
-				getDriver().findElement(By.xpath(part1+date+part2)).click();
-				pause(3000);
-			
+
+
+			getDriver().findElement(By.xpath(part1+date+part2)).click();
+			pause(3000);
+
 		}
 		else if(deliveryMonth=="Next Month")
 		{
@@ -398,25 +410,25 @@ public class ProductDetailPage extends HomePage {
 		}
 		return isWebElementVisible(By.id("midnight-help-text"));
 	}
-	
+
 	public static boolean verifyProductDescriptionTab()
 	{
 		return isWebElementVisible(By.id("prod-desc"));
 	}
-	
+
 	public static boolean headerVisible()
 	{
 		if(isWebElementVisible(By.xpath("//h3[text()='Similar Gift Recommendations']")))
 		{
-			 isWebElementVisible(By.xpath("(//div[@class='slick-track'])/li[position()=5]"));
-			 return true;
+			isWebElementVisible(By.xpath("(//div[@class='slick-track'])/li[position()=5]"));
+			return true;
 		}
 		else
 		{
 			return false;
 		}
 	}
-	
+
 	public static boolean footerContent() throws Exception
 	{
 		executeStep(isWebElementVisible(By.xpath("//div[contains(@class,'stats-row')]")),"Check stats content");
@@ -424,17 +436,17 @@ public class ProductDetailPage extends HomePage {
 		return true;
 	}
 	public static boolean verifyclikBuyNowbutton(){
-		
+
 		return click(CartPage.btnBuyNow);
-		
+
 	}
-	
+
 	public static boolean verifyProductVariety() throws InterruptedException
 	{
 		if(isWebElementPresent(By.xpath("//div[contains(@class,'upsell-container')]")))
 		{
 			List<WebElement> varities=getListElements(By.xpath("//div[contains(@class,'upsell-container')]/a"));
-			
+
 			for(int i=1;i<=varities.size();i++)
 			{
 				click(By.xpath("(//div[contains(@class,'upsell-container')]/a)[position()="+i+"]"));
@@ -446,38 +458,38 @@ public class ProductDetailPage extends HomePage {
 		{
 			return true;
 		}
-		
+
 		else
 		{
 			return false;
 		}
 	}
-	
+
 	public static boolean chooseBaseType() throws InterruptedException
 	{
 		try
 		{
-		if(isWebElementVisible(By.xpath("//div[contains(@class,'sel-peripheral')]")))
-		{
-			List<WebElement> baseTypes=getListElements(By.xpath("//div[@class='col s3 ppl-check']"));
-			for(int i=1;i<=baseTypes.size();i++)
+			if(isWebElementVisible(By.xpath("//div[contains(@class,'sel-peripheral')]")))
 			{
-				clickAndWait(By.xpath("(//div[@class='col s3 ppl-check'])[position()="+i+"]"));
+				List<WebElement> baseTypes=getListElements(By.xpath("//div[@class='col s3 ppl-check']"));
+				for(int i=1;i<=baseTypes.size();i++)
+				{
+					clickAndWait(By.xpath("(//div[@class='col s3 ppl-check'])[position()="+i+"]"));
+				}
+				return true;
 			}
-			return true;
+			else
+			{
+				return false;
+			}
 		}
-		else
-		{
-			return false;
-		}
-		}
-		
+
 		catch(Exception e)
 		{
 			return true;
 		}
-		
+
 	}
-	
+
 
 }

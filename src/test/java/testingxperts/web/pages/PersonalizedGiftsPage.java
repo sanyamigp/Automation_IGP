@@ -66,35 +66,31 @@ public class PersonalizedGiftsPage extends HomePage{
 	{
 		try
 		{
+			writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])"), "Round-shaped");
 
-			if(isWebElementPresent(By.xpath("(//input[contains(@class,'pers-input-text')])[position()=1]")))
-			{
-				String textSize=getWebElement(By.xpath("//input[contains(@class,'pers-input-text')]")).toString();
-				for(int i=1;i<textSize.length();i++)
-					writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])[position()="+i+"]"), "Round-shaped");
-
-			}
 		}
 		catch(Exception e)
 		{
-			return true;
+
 		}
 		return true;
 
 	}
-
-
-
 	public static boolean attachPersonalizedImage() throws AWTException, InterruptedException
 	{
-
-		
+		try
+		{
 
 			clickAndWait(By.xpath("//input[@placeholder='Select Image']"));
 
 			pause(5000);
 			fileUpload("Personalized.jpg");
-		
+		}
+		catch(Exception e)
+		{
+
+		}
+
 
 		return true;
 	}

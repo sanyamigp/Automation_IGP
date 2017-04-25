@@ -19,6 +19,7 @@ public class OrderSummaryPage extends HomePage {
 	public static By txtCoupenSuccessMessage =By.xpath("//p[@class='coupon-band-text']");
 	public static By txtCoupenInvalidMessage =By.xpath("//*[@id='coupon-message']");
 	public static By btnApplyCoupen = By.xpath("//button[text()='APPLY']");
+	public static By btnRemoveCoupon=By.id("remove-coupon");
 	public static By txtAddressLine = By.xpath("//p[@class='address-line']");
 	public static By linkEnterMessage = By.xpath("//*[text()='enter message']");
 	public static By inputTo = By.xpath("//*[@id='to-field']");
@@ -76,6 +77,12 @@ public class OrderSummaryPage extends HomePage {
 
 	public static boolean verifyCoupenInputFieldIsDisplayed(){
 		return waitForVisibile(inputCoupen).isDisplayed();
+	}
+	
+	public static boolean removeCoupon() throws Exception
+	{
+		executeStep(click(btnRemoveCoupon),"Click on Remove Coupon");
+		return true;
 	}
 
 	public static void inputCoupenAndApply(String coupen) throws InterruptedException{

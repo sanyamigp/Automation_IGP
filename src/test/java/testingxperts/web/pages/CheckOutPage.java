@@ -83,103 +83,112 @@ public class CheckOutPage extends HomePage{
 
 	public static boolean signUpDetails(String emailId,String password,String salutation,String firstName,String lastName,String country,String mobileNumber) throws Exception
 	{
-		if(isWebElementVisible(By.id("c-signup-form-2")))
+		int i=1;
+		try
 		{
-			executeStep(inputText(By.id("c-s-user"),emailId),"Emaild id");
-			executeStep(inputText(By.id("c-s-password"),password),"Password");
-			executeStep(selectByValue(By.id("c-title"), salutation),"Select Salutation Type");
-			executeStep(inputText(By.id("c-fname"), firstName),"Select first name");
-			executeStep(inputText(By.id("c-lname"), lastName), "Select last name");
-			executeStep(inputText(By.id("c-s-cname"), country), "Select country");
-			click(By.xpath("//li[contains(@class,'Hover')]"));
-			executeStep(inputText(By.id("user-e-m-2"), mobileNumber), "Mobile Number:");
-			click(By.id("c-l-submit"));
-			return true;
-		}
-		
-		
-		 else
+			if(isWebElementVisible(By.id("c-signup-form-2")))
 			{
-				return false;
+				executeStep(inputText(By.id("c-s-user"),"austria"+i+"@gmail.com"),"Emaild id");
+				executeStep(inputText(By.id("c-s-password"),password),"Password");
+				executeStep(selectByValue(By.id("c-title"), salutation),"Select Salutation Type");
+				executeStep(inputText(By.id("c-fname"), firstName),"Select first name");
+				executeStep(inputText(By.id("c-lname"), lastName), "Select last name");
+				executeStep(inputText(By.id("c-s-cname"), country), "Select country");
+				click(By.xpath("//li[contains(@class,'Hover')]"));
+				executeStep(inputText(By.id("user-e-m-2"), mobileNumber+i), "Mobile Number:");
+				click(By.id("c-l-submit"));
+				isWebElementVisible(By.id("address-list"));
+				return true;
+
 			}
-	}
-	
-	public static boolean verifyfacebookLogin() throws InterruptedException
-	{
-		String mainWindow=getDriver().getWindowHandle();
-		String facebookWindow=null;
-		click(By.xpath("//button[contains(@class,'btn-fb')]"));
-		pause(5000);
-		
-		Set<String> handles = getDriver().getWindowHandles(); // get all window handles
-		Iterator<String> iterator = handles.iterator();
-		while (iterator.hasNext()){
-			facebookWindow = iterator.next();
 		}
-		getDriver().switchTo().window(facebookWindow);
-		String facebookUrl=getCurrentUrl();
-		if(facebookUrl.contains("https://www.facebook.com/"))
+
+		catch(Exception e)
 		{
-			getDriver().switchTo().window(mainWindow);
+
+			isWebElementPresent(By.xpath("//div[@id='c-out-login-block']//p[text()='Email/Number already registered']"));
 			return true;
 		}
-		else
-		{
-			return false;
-		}
-		
-	}
 	
-	public static boolean verifyGoogleLogin() throws InterruptedException
-	{
-		String mainWindow=getDriver().getWindowHandle();
-		String facebookWindow=null;
-		click(By.xpath("//button[contains(@class,'btn-gplus')]"));
-		pause(5000);
-		
-		Set<String> handles = getDriver().getWindowHandles(); // get all window handles
-		Iterator<String> iterator = handles.iterator();
-		while (iterator.hasNext()){
-			facebookWindow = iterator.next();
-		}
-		getDriver().switchTo().window(facebookWindow);
-		String facebookUrl=getCurrentUrl();
-		if(facebookUrl.contains("https://accounts.google.com/"))
-		{
-			getDriver().switchTo().window(mainWindow);
-			return true;
-		}
-		else
-		{
-			return false;
-		}
+	return true;
+}
+
+public static boolean verifyfacebookLogin() throws InterruptedException
+{
+	String mainWindow=getDriver().getWindowHandle();
+	String facebookWindow=null;
+	click(By.xpath("//button[contains(@class,'btn-fb')]"));
+	pause(5000);
+
+	Set<String> handles = getDriver().getWindowHandles(); // get all window handles
+	Iterator<String> iterator = handles.iterator();
+	while (iterator.hasNext()){
+		facebookWindow = iterator.next();
 	}
-	
-	public static boolean verifyForgotPassword(String email) throws Exception
+	getDriver().switchTo().window(facebookWindow);
+	String facebookUrl=getCurrentUrl();
+	if(facebookUrl.contains("https://www.facebook.com/"))
 	{
-		if(isWebElementVisible(By.linkText("Forgot Password?")))
-		{
-			executeStep(click(By.linkText("Forgot Password?")), "Click on Forgot Password");
-			executeStep(inputText(By.id("f-u-field"),email), "Enter emailId or mobile number");
-			executeStep(click(By.xpath("//div[@id='c-out-fpass-block']//button[text()='Send OTP']")), "Click on Send OTP button");
-			return true;
-			
-		}
-		else
-		{
-			return false;
-		}
+		getDriver().switchTo().window(mainWindow);
+		return true;
 	}
-	
-	public static boolean verifySuccessfulOTP()
+	else
 	{
-		return isWebElementVisible(By.xpath("//div[@id='c-out-fpass-block']//p[text()='OTP sent successfully']"));
+		return false;
 	}
-	
-	public static boolean errorWarningMessage()
+
+}
+
+public static boolean verifyGoogleLogin() throws InterruptedException
+{
+	String mainWindow=getDriver().getWindowHandle();
+	String facebookWindow=null;
+	click(By.xpath("//button[contains(@class,'btn-gplus')]"));
+	pause(5000);
+
+	Set<String> handles = getDriver().getWindowHandles(); // get all window handles
+	Iterator<String> iterator = handles.iterator();
+	while (iterator.hasNext()){
+		facebookWindow = iterator.next();
+	}
+	getDriver().switchTo().window(facebookWindow);
+	String facebookUrl=getCurrentUrl();
+	if(facebookUrl.contains("https://accounts.google.com/"))
 	{
-		return isWebElementPresent(By.xpath("//p[contains(text(),'not applicable')]"));
+		getDriver().switchTo().window(mainWindow);
+		return true;
 	}
+	else
+	{
+		return false;
+	}
+}
+
+public static boolean verifyForgotPassword(String email) throws Exception
+{
+	if(isWebElementVisible(By.linkText("Forgot Password?")))
+	{
+		executeStep(click(By.linkText("Forgot Password?")), "Click on Forgot Password");
+		executeStep(inputText(By.id("f-u-field"),email), "Enter emailId or mobile number");
+		executeStep(click(By.xpath("//div[@id='c-out-fpass-block']//button[text()='Send OTP']")), "Click on Send OTP button");
+		return true;
+
+	}
+	else
+	{
+		return false;
+	}
+}
+
+public static boolean verifySuccessfulOTP()
+{
+	return isWebElementVisible(By.xpath("//div[@id='c-out-fpass-block']//p[text()='OTP sent successfully']"));
+}
+
+public static boolean errorWarningMessage()
+{
+	return isWebElementPresent(By.xpath("//p[contains(text(),'not applicable')]"));
+}
 
 
 }
