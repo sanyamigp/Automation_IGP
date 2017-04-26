@@ -66,15 +66,38 @@ public class PersonalizedGiftsPage extends HomePage{
 	{
 		try
 		{
-			writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])"), "Round-shaped");
+			if(isWebElementVisible(By.xpath("(//input[contains(@class,'pers-input-text')])")))
+			{
+				try
+				{
+					writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])"), "Round-shaped");
 
+				}
+				catch(Exception e)
+				{
+
+				}
+
+			}
+
+			else if(isWebElementVisible(By.xpath("//div[@class='user-input-container']//input[contains(@class,'pers-input-text')]")))
+			{
+				try
+				{
+					writeInInputCharByChar(By.xpath("//div[@class='user-input-container']//input[contains(@class,'pers-input-text')]"), "Round-shaped");
+				}
+				catch(Exception e)
+				{
+
+				}
+			}
 		}
 		catch(Exception e)
 		{
 
 		}
-		return true;
 
+		return true;
 	}
 	public static boolean attachPersonalizedImage() throws AWTException, InterruptedException
 	{
@@ -92,6 +115,46 @@ public class PersonalizedGiftsPage extends HomePage{
 		}
 
 
+		return true;
+	}
+	
+	public static boolean personalizedMethod()
+	{
+		try
+		{
+			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
+			{
+
+				executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
+				verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),"Personalized Page opened");
+				pause(2000);
+				try
+				{
+					
+						List<WebElement> tabs=getListElements(By.xpath("//div[@class='step-details flex-disp']/div"));
+						for(int i=1;i<=(tabs.size()-1);i++)
+						{
+
+							executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
+							executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Text");
+							executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+
+						}
+					
+				}
+				catch(Exception e)
+				{
+					executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
+					executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Attach Image");
+					executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+				}
+			}
+		}
+		catch(Exception e)
+		{
+
+		}
+		
 		return true;
 	}
 

@@ -212,7 +212,7 @@ public class CartPage extends HomePage{
 	public static void closeCartOverlay() throws InterruptedException{
 		//Close cart overlay
 		click(btnCloseCart);
-		pause(2000);
+		pause(5000);
 	}	
 
 	public static boolean emptyCart() throws Exception{
@@ -226,7 +226,7 @@ public class CartPage extends HomePage{
 			getWebElement(CartPage.listCartItems).click();
 			pause(2000);
 			getWebElement(By.xpath("//ul[@class='cart-items-list']/li//a[contains(.,'Remove')]")).click();
-			pause(2000);
+			pause(5000);
 		}
 
 		pause(2000);

@@ -43,6 +43,12 @@ public class IGP_TC_098 extends KeywordUtil{
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
+			
+			stepInfo="Empty Cart";
+			logStep(stepInfo);
+			HomePage.clickOnCartLogo();
+			verifyStep(HomePage.emptyCartItems(), stepInfo);
+			CartPage.closeCartOverlay();
 					
 			stepInfo="Add product into cart.";
 			logStep(stepInfo);
