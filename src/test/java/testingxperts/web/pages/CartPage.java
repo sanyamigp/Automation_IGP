@@ -212,7 +212,7 @@ public class CartPage extends HomePage{
 	public static void closeCartOverlay() throws InterruptedException{
 		//Close cart overlay
 		click(btnCloseCart);
-		pause(5000);
+		pause(3000);
 	}	
 
 	public static boolean emptyCart() throws Exception{
