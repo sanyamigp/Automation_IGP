@@ -117,8 +117,8 @@ public class PersonalizedGiftsPage extends HomePage{
 
 		return true;
 	}
-	
-	public static boolean personalizedMethod()
+
+	public static boolean personalizedMethod() throws AWTException, InterruptedException, Exception
 	{
 		try
 		{
@@ -128,33 +128,39 @@ public class PersonalizedGiftsPage extends HomePage{
 				executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
 				verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),"Personalized Page opened");
 				pause(2000);
-				try
-				{
-					
-						List<WebElement> tabs=getListElements(By.xpath("//div[@class='step-details flex-disp']/div"));
-						for(int i=1;i<=(tabs.size()-1);i++)
-						{
 
-							executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
-							executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Text");
-							executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
-
-						}
-					
-				}
-				catch(Exception e)
+				if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/div")))
 				{
-					executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
-					executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Attach Image");
-					executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+					List<WebElement> tabs=getListElements(By.xpath("//div[@class='step-details flex-disp']/div"));
+					for(int i=1;i<=(tabs.size()-1);i++)
+					{
+
+						executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
+						executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Text");
+						executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+
+					}
 				}
+
 			}
 		}
 		catch(Exception e)
 		{
+			try
+			{
+				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
+				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Attach Image");
+				executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+			}
+			catch(Exception e1)
+			{
 
+			}
 		}
-		
+
+
+
+		pause(3000);
 		return true;
 	}
 

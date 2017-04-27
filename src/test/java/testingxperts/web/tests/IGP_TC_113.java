@@ -85,7 +85,11 @@ public class IGP_TC_113 extends KeywordUtil{
 			
 			stepInfo="Input message";
 			logStep(stepInfo);
-
+			if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/following-sibling::hr")))
+			{
+				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
+				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
+			}
 			executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
 			executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
 			executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");

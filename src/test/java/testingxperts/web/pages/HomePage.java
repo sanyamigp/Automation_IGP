@@ -144,15 +144,15 @@ public class HomePage extends KeywordUtil {
 			for(int i=0;i<=size-1;i++)
 			{
 				getWebElement(CartPage.listCartItems).click();
-				pause(2000);
+				pause(1000);
 				getWebElement(By.xpath("//ul[@class='cart-items-list']/li//a[contains(.,'Remove')]")).click();
 				pause(5000);
 			}
-			//pause(5000);
+			
 		}
 		
 
-		pause(2000);
+		pause(1000);
 		return true;
 
 
