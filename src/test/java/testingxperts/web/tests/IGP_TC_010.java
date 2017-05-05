@@ -105,7 +105,7 @@ public class IGP_TC_010 extends KeywordUtil{
 			
 			stepInfo="Enter the valid user details.";
 			logStep(stepInfo);
-			//verifyStep(CheckOutPage.signUpDetails("austria@gmail.com", "ashish", "Mr.", "IGP", "Automation", "Austria", "12121"),stepInfo);
+			
 			
 		
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"Card Listing page");
