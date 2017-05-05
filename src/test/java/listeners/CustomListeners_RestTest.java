@@ -17,6 +17,7 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.util.Date;
 
+import org.apache.commons.io.FileUtils;
 import org.testng.IInvokedMethod;
 import org.testng.IInvokedMethodListener2;
 import org.testng.ISuite;
@@ -55,12 +56,14 @@ public class CustomListeners_RestTest extends Utility implements ISuiteListener,
 	/* (non-Javadoc)
 	 * @see org.testng.ISuiteListener#onStart(org.testng.ISuite)
 	 */
+	public String file=System.getProperty("user.dir")+"//ExecutionReports//HtmlReport//FailedScreenshots";
 	public void onStart(ISuite suite) {
 		// Get Driver
 		// Start base URL
 		try {
 			// Get all the common setting from excel file that are required for
 			// reports.
+			FileUtils.cleanDirectory(new File(file));
 			GlobalUtil.setCommonSettings(ExcelDataUtil.getCommonSettings());
 
 			// Current suite name extracted from the xml file.

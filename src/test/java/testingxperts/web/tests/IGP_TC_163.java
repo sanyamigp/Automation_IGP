@@ -104,7 +104,7 @@ public class IGP_TC_163 extends KeywordUtil{
 						
 			logStep("Current Address data(name|address|pin): "+name+"|"+address+"|"+pin);
 			
-			DeliveryPage.updateAddress(Constants.NAME, Constants.ADDRESS, Constants.COUNTRY, Constants.PINCODE);
+			DeliveryPage.updateAddress(Constants.NAME, Constants.ADDRESS, Constants.COUNTRY, Constants.PINCODE,Constants.MOBILE);
 			//Verify Address is updated
 			name=DeliveryPage.getName();
 			verifyStep(name.contains(Constants.NAME), "Verify name");

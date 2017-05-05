@@ -38,7 +38,7 @@ public class CartPage extends HomePage{
 	public static By btnCloseCart = By.xpath("//*[@id='close-cart']");
 	public static By btnBuyNow = By.xpath("//button[@id='buy-now']");
 	public static By btnPlaceOrder = By.xpath("//a[text()='Place Order']");
-	public static By btnEditPinCode = By.xpath("//*[@class='fa fa-pencil']");
+	public static By btnEditPinCode = By.xpath("//div[@class='icon-wrapper edit-pin']");
 	public static By btnenterPinCode=By.xpath("//button[contains(text(),'Enter Pincode')]");
 	public static By btnApply = By.xpath("(//button[contains(@class,'apply-pin')])[position()=1]");
 	public static By UpdateApply=By.xpath("(//button[contains(@class,'apply-pin')])[position()=2]");

@@ -22,6 +22,7 @@ public class DeliveryPage extends HomePage{
 	public static By inputCountry = By.xpath("//input[@placeholder='Country']");
 	public static By inputName = By.xpath("//input[@placeholder='full name']");
 	public static By inputAddress = By.xpath("//textarea [@placeholder='address']");
+	public static By inputMobile=By.xpath("//input[@placeholder='mobile']");
 	public static By btnSave = By.xpath("//button[text()='Save']");
 
 	public static By btnEditAddress = By.xpath("//div//span[@data-tooltip='Edit Address']");
@@ -56,7 +57,8 @@ public class DeliveryPage extends HomePage{
 	public static String getCityAndPin(){
 		return getDriver().findElement(txtCityAndPin).getText();
 	}
-
+	
+	
 
 	public static boolean verifyDeliveryPageLoaded () throws Exception{
 		findWithFluintWait(btnAddNewAddress);
@@ -180,7 +182,7 @@ public class DeliveryPage extends HomePage{
 
 	}
 
-	public static void updateAddress(String name, String address, String country, String pin) throws Exception{
+	public static void updateAddress(String name, String address, String country, String pin,String mobile) throws Exception{
 
 		logStep("Update address");
 
@@ -190,6 +192,12 @@ public class DeliveryPage extends HomePage{
 		pause(1000);
 		getDriver().findElement(inputName).sendKeys(Keys.TAB);
 		pause(1000);
+		
+		inputText(inputPin, pin);
+		pause(1000);
+		getDriver().findElement(inputPin).sendKeys(Keys.TAB);
+		pause(1000);
+
 
 		inputText(inputAddress, address);
 		pause(1000);
@@ -201,10 +209,11 @@ public class DeliveryPage extends HomePage{
 		getDriver().findElement(inputCountry).sendKeys(Keys.TAB);
 		pause(1000);
 
-		inputText(inputPin, pin);
+				
+		inputText(inputMobile, mobile);
+		pressTabKey(inputMobile);
 		pause(1000);
-		getDriver().findElement(inputPin).sendKeys(Keys.TAB);
-		pause(1000);
+
 
 		click(btnSave);
 		pause(3000);

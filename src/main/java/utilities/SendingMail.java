@@ -6,18 +6,34 @@ import javax.activation.DataSource;
 import javax.activation.FileDataSource;
 import javax.mail.*;
 import javax.mail.internet.*;
+
+import java.io.File;
 import java.util.*;
 
 public class SendingMail
 
 {
-	
+	public static String reportFolder=System.getProperty("user.dir") +"//ExecutionReports//HtmlReport";
+	public static String destFolder=System.getProperty("user.dir")+"//Reports.zip";
 	//reportFileName = TestExecutionResultFileName
 	public static void execute(String reportFileName) throws Exception
 
 	{
 		
-		String path=System.getProperty("user.dir") +"/ExecutionReports/HtmlReport/TestReport.html";
+		
+		Zip1.zipFolder(reportFolder, destFolder);
+		//File folder =  new File(reportFolder);
+		//FileFilterDateIntervalUtils filter =new FileFilterDateIntervalUtils("2017-01-04", "2050-01-20");
+		
+		
+        //File files[] = folder.listFiles(filter);
+       //date
+        
+        //String fileName=files[files.length-1].getName();
+        //String extentFilePath=reportFolder+fileName;
+       
+        
+
 
 		String[] to={"sanyam.arora@indiangiftsportal.com"};
 		String[] cc={};
@@ -35,9 +51,9 @@ public class SendingMail
 				to,
 				cc,
 				bcc,
-				"<Test",
-				"Body",
-				path,
+				"Automation Report",
+				"Hi, A new test suite has been executed. ",
+				destFolder,
 				reportFileName);
 	}
 
@@ -95,7 +111,7 @@ public class SendingMail
 		}
 
 		try{
-
+			
 			Session session = Session.getDefaultInstance(props, null);
 
 			session.setDebug(debug);
@@ -108,6 +124,8 @@ public class SendingMail
 
 			Multipart multipart = new MimeMultipart();
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
+			String html = "Test\n" + text + "\n<a href='http://test.com'>Test.com</a>";
+            messageBodyPart.setText(html, "UTF-8", "html");
 			DataSource source = new FileDataSource(attachmentPath);
 			messageBodyPart.setDataHandler(new DataHandler(source));
 			messageBodyPart.setFileName(attachmentName);

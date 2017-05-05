@@ -40,12 +40,12 @@ public class ProductStripPage extends HomePage {
 
 	public static boolean verifyProductStrips()
 	{
-		if(isWebElementVisible(By.xpath("//h2[@class='gateway-c-title vvv']")))
+		if(isWebElementVisible(By.xpath("//h2[contains(@class,'gateway-c-title')]")))
 		{
-			List<WebElement> productStrips=getDriver().findElements(By.xpath("//h2[@class='gateway-c-title vvv']"));
+			List<WebElement> productStrips=getDriver().findElements(By.xpath("//h2[contains(@class,'gateway-c-title')]"));
 			for(int i=1;i<=productStrips.size();i++)
 			{
-				isWebElementVisible(By.xpath("(//h2[@class='gateway-c-title vvv'])[position()="+i+"]"));
+				isWebElementVisible(By.xpath("(//h2[contains(@class,'gateway-c-title')])[position()="+i+"]"));
 
 			}
 			return true;
@@ -59,10 +59,10 @@ public class ProductStripPage extends HomePage {
 
 	public static boolean productsInProductStrips()
 	{
-		if(isWebElementPresent(By.xpath("//child::div[div[(h2[@class='gateway-c-title vvv'])]][position()=1]/following-sibling::div[position()=1]")))
+		if(isWebElementPresent(By.xpath("//child::div[div[(//h2[contains(@class,'gateway-c-title')])]][position()=1]/following-sibling::div[position()=1]")))
 		{
 			
-				isWebElementVisible(By.xpath("//child::div[div[(h2[@class='gateway-c-title vvv'])]][position()=1]/following-sibling::div[position()=1]//div[contains(@class,'slick-track')]/li[position()=5]"));
+				isWebElementVisible(By.xpath("//child::div[div[(//h2[contains(@class,'gateway-c-title')])]][position()=1]/following-sibling::div[position()=1]//div[contains(@class,'slick-track')]/li[position()=5]"));
 				
 			
 			return true;

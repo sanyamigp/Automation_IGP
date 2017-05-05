@@ -97,7 +97,7 @@ public class IGP_TC_179 extends KeywordUtil{
 			
 			stepInfo="Enter the valid user details.";
 			logStep(stepInfo);
-			verifyStep(CheckOutPage.signUpDetails("sanyam.arora@indiangiftsportal.com", "sanyam123", "Mr.", "IGP", "Automation", "USA", "987654321"),stepInfo);
+			verifyStep(CheckOutPage.signUpDetails("sanyam123", "Mr.", "IGP", "Automation", "USA"),stepInfo);
 			
 				
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='address-container']/div")),"CheckOut Page");

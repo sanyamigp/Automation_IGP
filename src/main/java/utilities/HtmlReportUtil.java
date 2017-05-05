@@ -53,7 +53,7 @@ public class HtmlReportUtil {
 			extentNoHistory.loadConfig(new File(ConfigReader.getValue("HtmlReportConfigFile")));
 		}
 		if (extentPreserverHistory == null) {
-			extentPreserverHistory = new ExtentReports(ConfigReader.getValue("HtmlReport") + "\\TestReportHistory.html",
+			extentPreserverHistory = new ExtentReports(System.getProperty("usere.dir")+"\\TestReportHistory.html",
 					false, DisplayOrder.NEWEST_FIRST);
 			extentPreserverHistory.loadConfig(new File(ConfigReader.getValue("HtmlReportConfigFile")));
 		}

@@ -1,5 +1,6 @@
 package testingxperts.web.pages;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -10,10 +11,16 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 
+import utilities.ConfigReader;
+import utilities.ExcelDataUtil;
 import utilities.KeywordUtil;
 import utilities.LogUtil;
 
 public class CheckOutPage extends HomePage{
+	
+		 public static Object[][] str;
+		public static ExcelDataUtil excel=new ExcelDataUtil();
+	
 	public static By inputUserId = By.xpath("(//input[@name='email'][@placeholder='enter email address'])[position()=1]");
 	public static By inputPassword = By.xpath("(//input[@name='passwd'][@placeholder='enter password'])[position()=2]");
 	public static By btnLogin = By.xpath("(//button[@type='submit'][contains(.,'Login')])[position()=2]");
@@ -81,21 +88,26 @@ public class CheckOutPage extends HomePage{
 		}
 	}
 
-	public static boolean signUpDetails(String emailId,String password,String salutation,String firstName,String lastName,String country,String mobileNumber) throws Exception
+	public static boolean signUpDetails(String password,String salutation,String firstName,String lastName,String country) throws Exception
 	{
-		int i=1;
+		
+		//str=ExcelDataUtil.readSheet("Email.xls", "Sheet1");
+		 
 		try
 		{
 			if(isWebElementVisible(By.id("c-signup-form-2")))
 			{
-				executeStep(inputText(By.id("c-s-user"),"austria"+i+"@gmail.com"),"Emaild id");
+				Object i=1;
+				executeStep(inputText(By.id("c-s-user"),"austria"+str[1][0]+"@gmail.com"),"Emaild id");
+				//excel.writeSheet("Email.xls", "Sheet1", (str[1][0]+i));
 				executeStep(inputText(By.id("c-s-password"),password),"Password");
 				executeStep(selectByValue(By.id("c-title"), salutation),"Select Salutation Type");
 				executeStep(inputText(By.id("c-fname"), firstName),"Select first name");
 				executeStep(inputText(By.id("c-lname"), lastName), "Select last name");
 				executeStep(inputText(By.id("c-s-cname"), country), "Select country");
 				click(By.xpath("//li[contains(@class,'Hover')]"));
-				executeStep(inputText(By.id("user-e-m-2"), mobileNumber+i), "Mobile Number:");
+				//executeStep(inputText(By.id("user-e-m-2"), str[1][1]), "Mobile Number:");
+				//excel.writeSheet("Email.xls", "Sheet1", str[1][1]+);
 				click(By.id("c-l-submit"));
 				isWebElementVisible(By.id("address-list"));
 				return true;
