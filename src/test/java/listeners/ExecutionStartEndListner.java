@@ -10,8 +10,8 @@ import org.testng.IExecutionListener;
 import utilities.GlobalUtil;
 import utilities.LogUtil;
 import utilities.ReportFactoryDB;
-import utilities.SendMail;
-import utilities.SendMail1;
+
+
 import utilities.SendingMail;
 import utilities.Utility;
 
