@@ -80,6 +80,10 @@ public class IGP_TC_001 extends KeywordUtil{
 			verifyStep(CartPage.isItemAdded(), stepInfo);
 			CartPage.closeCartOverlay();
 			
+			stepInfo="Select Midnight Delivery option.";
+			logStep(stepInfo);
+			verifyStep(ProductDetailPage.enterMidNightDelivery(5, "Next Month"), stepInfo);
+			
 			stepInfo="Click Buy now";
 			logStep(stepInfo);
 			executeStep(CartPage.clikBuyNow(), stepInfo);
@@ -102,15 +106,21 @@ public class IGP_TC_001 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(DeliveryPage.selectCountryAddress("India"), stepInfo);
 			
-			stepInfo="Verify user navigated to Order Summary page";
+			stepInfo="Verify click on apply coupen ";
 			logStep(stepInfo);
-			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
-			
+			OrderSummaryPage.clickApplyCoupen();
+			verifyStep(OrderSummaryPage.verifyCoupenInputFieldIsDisplayed(), stepInfo);
+
+			stepInfo="Enter new coupen and verify: ";
+			logStep(stepInfo);
+			OrderSummaryPage.inputCoupenAndApply("ICMDNT");
+			verifyStep(OrderSummaryPage.verifyCoupenIsSuccess("ICMDNT"), stepInfo);
+
 			stepInfo="Verify User should Navigate to Payment page";
 			logStep(stepInfo);
 			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
 			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
-			
+
 		
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.cssSelector(".payment-block")),"Sanity");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);

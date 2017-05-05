@@ -1,8 +1,11 @@
 package testingxperts.web.tests;
 
+import java.util.List;
+
 import javax.enterprise.event.Reception;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 
@@ -33,7 +36,7 @@ public class IGP_TC_003 extends KeywordUtil{
 	String stepInfo="";
 	int retryCount=getIntValue("retryCount");
 	static int retryingNumber=1;
-	
+
 	@Test(
 			testName="IGP_TC_003",
 			groups={"Sanity"}, 
@@ -52,17 +55,17 @@ public class IGP_TC_003 extends KeywordUtil{
 			 		2. Log to report and Logger
 			 		3. Perform Action
 			 		4. Verify Action
-			*/
-		
-			//.........Script Start...........................
-			
+			 */
 
-			
+			//.........Script Start...........................
+
+
+
 			stepInfo="Open home page";
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
-			
+
 			stepInfo="Login to application";
 			logStep(stepInfo);
 			LoginPage.doLogin(ConfigReader.getValue("loginUser"), ConfigReader.getValue("loginPassword"));
@@ -73,106 +76,109 @@ public class IGP_TC_003 extends KeywordUtil{
 			HomePage.clickOnCartLogo();
 			verifyStep(HomePage.emptyCartItems(), stepInfo);
 			CartPage.closeCartOverlay();
-			
+
 			stepInfo="Select any product other than Flowers and Cakes under Best Selling Category .";
 			logStep(stepInfo);
 			HomePage.selectHomeProduct();
-			verifyStep(HomePage.selectItemEditorPick(3),stepInfo);
-			
+			verifyStep(HomePage.selectItemEditorPick(1),stepInfo);
+
 			stepInfo="Select International Shipping option";
 			logStep(stepInfo);
 			verifyStep(ProductDetailPage.clickinternationalshipping(), stepInfo);
-			
+
 			stepInfo="Enter country name in the textbox and then click on Check button.";
 			logStep(stepInfo);
 			verifyStep(ProductDetailPage.deliverychargePresent("Australia"), stepInfo);
+			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
+
+
 			stepInfo="Buy Now";
 			logStep(stepInfo);
 			CartPage.clikBuyNow();
 
 			stepInfo="The page should navigate to cart page";
 			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
-			
+
 			stepInfo="Place order";
 			logStep(stepInfo);
 			CartPage.clickPlaceOrder();
 			pause(2000);
-			
+
 			stepInfo="The user should be navigated to checkout page.";
 			logStep(stepInfo);
 			verifyStep(CheckOutPage.isCheckOutPageLoaded(),
 					stepInfo);
-			
+
 			stepInfo="Click Deliver here";
 			logStep(stepInfo);
 			verifyStep(DeliveryPage.selectCountryAddress("Australia"), stepInfo);
-			
+
 			stepInfo="Verify user navigated to Order Summary page";
 			logStep(stepInfo);
 			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
-			
+
 			stepInfo="Verify click on apply coupen ";
 			logStep(stepInfo);
 			OrderSummaryPage.clickApplyCoupen();
 			verifyStep(OrderSummaryPage.verifyCoupenInputFieldIsDisplayed(), stepInfo);
-			
+
 			stepInfo="Enter new coupen and verify: "+Constants.VALID_COUPEN;
 			logStep(stepInfo);
 			OrderSummaryPage.inputCoupenAndApply(Constants.VALID_COUPEN);
 			verifyStep(OrderSummaryPage.verifyCoupenIsSuccess(Constants.VALID_COUPEN), stepInfo);
-			
+
 			stepInfo="Verify User should Navigate to Payment page";
 			logStep(stepInfo);
 			executeStep(click(OrderSummaryPage.btnPlaceOrder), "Click place order");
 			verifyStep(PaymentPage.isPaymentPageLoaded(),stepInfo);
-			
-			
-		
+
+
+
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.cssSelector(".payment-block")),"Sanity");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
-			
-			 getDriver().navigate().back();
-			 OrderSummaryPage.removeCoupon();
-			
-			 
-						 
+
+			getDriver().navigate().back();
+			OrderSummaryPage.removeCoupon();
+
+
+
 			//.........Script Start...........................
 		}
-		  catch (Exception e){
-			   if(retryCount>0)
-			   {
-				   String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
+		catch (Exception e){
+			if(retryCount>0)
+			{
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
 
-				   logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
-				   logStepError(e.getMessage());
-				   HtmlReportUtil.attachScreenshot(imagePath,false);
-			    
-				   GlobalUtil.getTestResult().setScreenshotref(imagePath);
-			    
-				   HtmlReportUtil.stepInfo("Trying to Rerun" + " "+getTestCaseID() +" for " + retryingNumber + " time");
-				   retryCount--;
-				   retryingNumber++;
-				   utilities.LogUtil.infoLog(getClass(), "****************Waiting for " + getIntValue("retryDelayTime") +" Secs before retrying.***********");
-				   delay(getIntValue("retryDelayTime"));
-			    //Rerun same test
-				   test();
-			   }
-			   else{
-				   String imagePath = takeScreenshot(getDriver(), getTestCaseID());
-				   logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
-				   logStepError(e.getMessage());
-				   HtmlReportUtil.attachScreenshot(imagePath,false);
-			    
-				   GlobalUtil.getTestResult().setScreenshotref(imagePath);
-				   GlobalUtil.setTestException(e);
-				   throw e;
-			   }
-		  }
-}//End Test
-	
-	 
-	
-	
-	
+				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
+				logStepError(e.getMessage());
+				HtmlReportUtil.attachScreenshot(imagePath,false);
+
+				GlobalUtil.getTestResult().setScreenshotref(imagePath);
+
+				HtmlReportUtil.stepInfo("Trying to Rerun" + " "+getTestCaseID() +" for " + retryingNumber + " time");
+				retryCount--;
+				retryingNumber++;
+				utilities.LogUtil.infoLog(getClass(), "****************Waiting for " + getIntValue("retryDelayTime") +" Secs before retrying.***********");
+				delay(getIntValue("retryDelayTime"));
+				//Rerun same test
+				test();
+			}
+			else{
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID());
+				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
+				logStepError(e.getMessage());
+				HtmlReportUtil.attachScreenshot(imagePath,false);
+
+				GlobalUtil.getTestResult().setScreenshotref(imagePath);
+				GlobalUtil.setTestException(e);
+				throw e;
+			}
+		}
+	}//End Test
+
+
+
+
 }
+
