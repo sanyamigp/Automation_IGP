@@ -14,6 +14,8 @@ import java.util.List;
 import org.apache.commons.io.FileUtils;
 import org.apache.commons.io.FilenameUtils;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
@@ -118,7 +120,76 @@ public class ExcelDataUtil {
 
 	}// End of getSheetData
 	
+	
+	public static List<IGP_Url> getUrlList() {
+		List<IGP_Url> list = new ArrayList<>();
+		
+		try(Workbook wb = WorkbookFactory.create(new File(testDatafilePath))){
+			Sheet sheet = wb.getSheet("URL_List");
+			
+			Iterator<Row> rowIterator = sheet.iterator();
+			//Go to next row
+			rowIterator.next();
+			
+			while(rowIterator.hasNext()){
+				Row r=rowIterator.next();
+				if(r.getCell(0).getStringCellValue().isEmpty()){
+					break;
+				}
+				IGP_Url igpurl = new IGP_Url();
+				igpurl.setUrlDesc(r.getCell(0).getStringCellValue());
+				igpurl.setUrl(r.getCell(1).getStringCellValue());
+				String val=Double.toString(r.getCell(2).getNumericCellValue());
+				val= val.substring(0, val.indexOf("."));
+				igpurl.setRequiredStatus(Integer.parseInt(val));
+				igpurl.setExecutionFlag(r.getCell(3).getStringCellValue());
+				list.add(igpurl);
+			}
+			
+			
+		}catch(Exception ex){
+			ex.getStackTrace();
+			
+		}
+		
+		return list;
+		
+		/*
+		Iterator<Row> rowIterator = sheet.iterator();
+		try {
+			while (rowIterator.hasNext()) {
+				Row row =  rowIterator.next();
+				if (row.getCell(columnToLookTestCaseID).getStringCellValue().equalsIgnoreCase(testCaseID)) {
+					ArrayList<String> currentRowData = new ArrayList<>();
+					found = true;
+					row.forEach(cell->
+							currentRowData.add(""+cell)
+					);
+					
+					testdata.setSuiteName(currentRowData.get(0));
+					testdata.setTestId(currentRowData.get(1));
+					testdata.setTestDesc(currentRowData.get(2));
+					testdata.setComplexity(currentRowData.get(3));
+					testdata.setExpectedTime(Double.parseDouble(currentRowData.get(4)));
 
+					break;
+				} // End if Found an row
+
+			} //// Row Iterator
+
+			fs.close();
+
+		} catch (Exception e) {
+			LogUtil.errorLog(ExcelDataUtil.class, "caught exception", e);
+			
+		}
+
+		if (!found)
+			LogUtil.infoLog(ExcelDataUtil.class, "No data found with given key-> " + testCaseID);
+
+		return testdata;*/
+
+	}// End of getTestUrls
 	/**
 	 * <H1>Get copy of template file</H1>
 	 * 
