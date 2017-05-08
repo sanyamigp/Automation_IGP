@@ -33,9 +33,9 @@ public class SendMail {
 	public static final String PASSWORD = PROP.getProperty("PASSWORD");
 	public static final String EMAILTO = GlobalUtil.getCommonSettings().getEmailIds();
 	public static final String EMAILTOCC = PROP.getProperty("EMAILTOCC");
-	public static final String STARTTLS = null;
+	public static  String STARTTLS;
 	public static final String HOST = PROP.getProperty("HOST");
-	public static final String PORT =PROP.getProperty("port");
+	public static final String PORT ="465";
 	
 	public static final String SOCKETFACTORYCLASS = PROP.getProperty("socketFactoryClass");
 	public static final String FALLBACK = PROP.getProperty("fallback");
@@ -47,7 +47,7 @@ public class SendMail {
 	public static final String REPORT_PATH="/ExecutionReports/ExecutionReports";
 	public static final String DIR_PATH="user.dir";
 	public static final String BLANK_VARIABLE="";
-	protected static final Properties PROPS=System.getProperties();
+	//protected static final Properties PROP=System.getProperties();
 	
 	private SendMail()
 	{
@@ -66,33 +66,33 @@ public class SendMail {
 		String mailPropertiesFile = System.getProperty(DIR_PATH) + "/src/main/resources/ConfigFiles/mail.properties";
 		PROP.load(new FileInputStream(mailPropertiesFile));
 
-		final String subject = PROP.getProperty("subject");
+		//final String subject = PROP.getProperty("subject");
 
-		PROPS.put("mail.smtp.user", USERNAME);
-		PROPS.put("mail.smtp.HOST", HOST);
-		PROPS.put("mail.smtp.auth", "true");
+		PROP.put("mail.smtp.user", "abc");
+		PROP.put("mail.smtp.HOST", "smtp.gmail.com");
+		PROP.put("mail.smtp.auth", "true");
 
 		if (!"".equals(PORT)) {
-			PROPS.put("mail.smtp.port", PORT);
-			PROPS.put("mail.smtp.socketFactory.port", PORT);
+			PROP.put("mail.smtp.port", PORT);
+			PROP.put("mail.smtp.socketFactory.port", PORT);
 		}
 
 		if (!"".equals(STARTTLS))
-			PROPS.put("mail.smtp.starttls.enable", STARTTLS);
+			PROP.put("mail.smtp.starttls.enable", STARTTLS);
 
-		if (!"".equals(SOCKETFACTORYCLASS))
-			PROPS.put("mail.smtp.socketFactory.class", SOCKETFACTORYCLASS);
+		if (!"".equals("javax.net.ssl.SSLSocketFactory"))
+			PROP.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
 
-		if (!"".equals(FALLBACK))
-			PROPS.put("mail.smtp.socketFactory.fallback", FALLBACK);
+		if (!"".equals(false))
+			PROP.put("mail.smtp.socketFactory.fallback", false);
 
-		Session session = Session.getDefaultInstance(PROPS, null);
+		Session session = Session.getDefaultInstance(PROP, null);
 		session.setDebug(false);
 
 
 			Message msg = new MimeMessage(session);
 			msg.setFrom(new InternetAddress(USERNAME, PROP.getProperty("userFullName")));
-			msg.setSubject(subject);
+			//msg.setSubject(subject);
 
 			if (!"".equals(EMAILTOCC)) {
 
