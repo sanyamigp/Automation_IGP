@@ -36,6 +36,7 @@ import utilities.HtmlReportUtil;
 import utilities.LogUtil;
 import utilities.ReportFactoryDB;
 import utilities.SendMail;
+import utilities.SendingMail;
 import utilities.TestData;
 import utilities.TestResults;
 import utilities.Utility;
@@ -57,14 +58,14 @@ public class CustomListeners extends Utility implements ISuiteListener, IInvoked
 	/* (non-Javadoc)
 	 * @see org.testng.ISuiteListener#onStart(org.testng.ISuite)
 	 */
-	public String file=System.getProperty("user.dir")+"//ExecutionReports//HtmlReport//FailedScreenshots";
+	
 	public void onStart(ISuite suite) {
 		// Get Driver
 		// Start base URL
 		try {
 			// Get all the common setting from excel file[AutomationControlSheet] that are required for
 			// reports.
-			FileUtils.cleanDirectory(new File(file));
+		
 			GlobalUtil.setCommonSettings(ExcelDataUtil.getCommonSettings());
 
 			// Current suite name extracted from the xml file.
@@ -139,7 +140,19 @@ public class CustomListeners extends Utility implements ISuiteListener, IInvoked
 				DropBoxUtil.switchOn();
 				DropBoxUtil.init(Utility.getValue("dropBox_AccessToken"));
 				DropBoxUtil.uploadFile("\\PathOfFile.zip");
+				
+				
 			}
+			
+//			if (GlobalUtil.getCommonSettings().getEmailOutput().equalsIgnoreCase("Y"))
+//				try {
+//					
+//					
+//					SendingMail.execute("TestReport.zip");
+//				} catch (IOException e1) {
+//					// TODO Auto-generated catch block
+//					e1.printStackTrace();
+//				} 
 
 			
 
@@ -215,6 +228,7 @@ public class CustomListeners extends Utility implements ISuiteListener, IInvoked
 	/* (non-Javadoc)
 	 * @see org.testng.ITestListener#onTestStart(org.testng.ITestResult)
 	 */
+	
 	public void onTestStart(ITestResult result) {
 
 	}
@@ -338,6 +352,9 @@ public class CustomListeners extends Utility implements ISuiteListener, IInvoked
 	public void beforeInvocation(IInvokedMethod arg0, ITestResult arg1) {
 
 	}
+	
+	
+	
 
 
 	

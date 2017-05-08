@@ -5,21 +5,34 @@ import java.io.IOException;
 
 import javax.mail.MessagingException;
 
+import org.apache.commons.io.FileUtils;
 import org.testng.IExecutionListener;
+import org.testng.annotations.AfterSuite;
 
 import utilities.GlobalUtil;
 import utilities.LogUtil;
 import utilities.ReportFactoryDB;
-
-
+import utilities.SendMail;
+import utilities.SendMail1;
 import utilities.SendingMail;
 import utilities.Utility;
+import utilities.Zip1;
 
 public class ExecutionStartEndListner extends Utility implements IExecutionListener {
-
+	public String file=System.getProperty("user.dir")+"//ExecutionReports//HtmlReport//FailedScreenshots";
+	public static String reportFolder=System.getProperty("user.dir") +"//ExecutionReports//HtmlReport";
+	public static String destFolder=System.getProperty("user.dir")+"//Reports.zip";
 	//This method will be the Starting point for whole test process with TestNg
 	@Override
-	public void onExecutionStart() {}
+	public void onExecutionStart()
+	{
+		try {
+			FileUtils.cleanDirectory(new File(file));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	
 	/*This method will be the run at last when for whole test process with TestNg is finished*/
 	@Override
@@ -30,11 +43,12 @@ public class ExecutionStartEndListner extends Utility implements IExecutionListe
 		
 		//1. Send Mail functionality
 		
-		if (GlobalUtil.getCommonSettings().getEmailOutput().equalsIgnoreCase("Y"))
+//		if (GlobalUtil.getCommonSettings().getEmailOutput().equalsIgnoreCase("Y"))
 			try {
 				
-				
-				SendingMail.execute("TestReport.zip");
+				//SendMail1.execute();
+				Zip1.zipDir(reportFolder, destFolder);
+				//SendingMail.execute("TestReport.zip");
 			} catch (IOException e1) {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
@@ -71,6 +85,11 @@ public class ExecutionStartEndListner extends Utility implements IExecutionListe
 		
 	}
 
+	@AfterSuite
+	public void sendEmail()
+	{
+		
+	}
 	
 
 }
