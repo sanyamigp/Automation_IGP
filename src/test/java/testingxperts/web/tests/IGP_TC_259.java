@@ -81,6 +81,7 @@ public class IGP_TC_259 extends KeywordUtil{
 			verifyStep(CartPage.verifyIsRemoveItemAlertDisplayed(),stepInfo);
 			
 			stepInfo="Verify Item is Removed";
+			logStep(stepInfo);
 			CartPage.clickRemoveLink();
 			verifyStep(CartPage.verifyItemIsRemoved(),stepInfo);
 			

@@ -2,6 +2,7 @@ package listeners;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.zip.ZipFile;
 
 import javax.mail.MessagingException;
 
@@ -17,6 +18,7 @@ import utilities.SendMail1;
 import utilities.SendingMail;
 import utilities.Utility;
 import utilities.Zip1;
+
 
 public class ExecutionStartEndListner extends Utility implements IExecutionListener {
 	public String file=System.getProperty("user.dir")+"//ExecutionReports//HtmlReport//FailedScreenshots";
@@ -48,15 +50,10 @@ public class ExecutionStartEndListner extends Utility implements IExecutionListe
 				
 				//SendMail1.execute();
 				Zip1.zipDir(reportFolder, destFolder);
+				
 				//SendingMail.execute("TestReport.zip");
-			} catch (IOException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			} catch (MessagingException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
-		//2. Extenet Report Finish
+				
+			} //2. Extenet Report Finish
  catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

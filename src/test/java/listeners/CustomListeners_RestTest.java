@@ -34,7 +34,7 @@ import utilities.HtmlReportUtil;
 import utilities.LogUtil;
 import utilities.ReportFactoryDB;
 import utilities.SendMail;
-import utilities.SendingMail;
+
 import utilities.TestData;
 import utilities.TestResults;
 import utilities.Utility;
@@ -56,14 +56,14 @@ public class CustomListeners_RestTest extends Utility implements ISuiteListener,
 	/* (non-Javadoc)
 	 * @see org.testng.ISuiteListener#onStart(org.testng.ISuite)
 	 */
-	public String file=System.getProperty("user.dir")+"//ExecutionReports//HtmlReport//FailedScreenshots";
+	
 	public void onStart(ISuite suite) {
 		// Get Driver
 		// Start base URL
 		try {
 			// Get all the common setting from excel file that are required for
 			// reports.
-			FileUtils.cleanDirectory(new File(file));
+		
 			GlobalUtil.setCommonSettings(ExcelDataUtil.getCommonSettings());
 
 			// Current suite name extracted from the xml file.
@@ -138,8 +138,11 @@ public class CustomListeners_RestTest extends Utility implements ISuiteListener,
 			}
 
 			if (GlobalUtil.getCommonSettings().getEmailOutput().equalsIgnoreCase("Y"))
+			{
+				System.out.println();
 				//SendMail.sendEmailToClient();
-				SendingMail.execute("HTML");
+			}
+				
 
 		} catch (Exception e) {
 			e.printStackTrace();
