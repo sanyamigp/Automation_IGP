@@ -14,6 +14,8 @@ import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderDetailsPage;
 import testingxperts.web.pages.OrderSummaryPage;
 import testingxperts.web.pages.PaymentPage;
+import testingxperts.web.pages.PersonalizedGiftsPage;
+import testingxperts.web.pages.ProductDetailPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
@@ -73,14 +75,39 @@ public class IGP_TC_087 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(HomePage.selectItemEditorPick(2),stepInfo);
 			
-			stepInfo="Enter valid Pin code and validate";
-			logStep(stepInfo);
-			CartPage.inputPinCode(Constants.PINCODE);
-			CartPage.checkPinCode();
-			logStep("Valid Pin code message: " + CartPage.getPinCodeValidMessage());
-			verifyStep(isWebElementVisible(CartPage.txtValidPinMessage),
-					stepInfo);
-			pause(3000);
+			try
+			{
+			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
+			{
+				stepInfo="Personalization options should display by clicking on PERSONALIZE NOW";
+				logStep(stepInfo);
+				
+				executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
+				verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),stepInfo);
+				pause(2000);
+				
+				
+				
+				stepInfo="Input message";
+				logStep(stepInfo);
+
+				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
+				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
+				executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+			}
+			}
+			catch(Exception e)
+			{
+				stepInfo="Enter valid Pin code and validate";
+				logStep(stepInfo);
+				CartPage.inputPinCode(Constants.PINCODE);
+				CartPage.checkPinCode();
+				logStep("Valid Pin code message: " + CartPage.getPinCodeValidMessage());
+				verifyStep(isWebElementVisible(CartPage.txtValidPinMessage),
+						stepInfo);
+				pause(3000);
+				
+			}
 			
 			stepInfo="Buy Now";
 			logStep(stepInfo);

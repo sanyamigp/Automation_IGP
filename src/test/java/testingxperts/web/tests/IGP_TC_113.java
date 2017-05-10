@@ -33,7 +33,7 @@ public class IGP_TC_113 extends KeywordUtil{
 	String stepInfo="";
 	int retryCount=getIntValue("retryCount");
 	static int retryingNumber=1;
-	
+
 	@Test(
 			testName="IGP_TC_113",
 			groups={"Product Description page."}, 
@@ -52,91 +52,96 @@ public class IGP_TC_113 extends KeywordUtil{
 			 		2. Log to report and Logger
 			 		3. Perform Action
 			 		4. Verify Action
-			*/
-		
+			 */
+
 			//.........Script Start...........................
-			
+
 			stepInfo="Open home page";
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
-			
+
 			stepInfo="Select personalized gift category from Homepage.";
 			logStep(stepInfo);
 			verifyStep(HomePage.personalisedGifts(),stepInfo);
-			
+
 			verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsPageOpened(),"Verify Personalized Gifts Page is loaded");
 			stepInfo="Select Item from personalize items for Woman";
 			logStep(stepInfo);
 			PersonalizedGiftsPage.selectItem(1);
-			
+
 			stepInfo="Verify PERSONALIZE NOW button is present";
 			logStep(stepInfo);
 			verifyStep(isWebElementVisible(ProductDetailPage.btnPersonalizeNow),stepInfo);
 			pause(2000);
-			
+
 			stepInfo="Personalization options should display by clicking on PERSONALIZE NOW";
 			logStep(stepInfo);
-			
+
 			executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
 			verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),stepInfo);
 			pause(2000);
-			
-			
+
+
 			stepInfo="Input message";
 			logStep(stepInfo);
-			if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/following-sibling::hr")))
+			try
 			{
-				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
-				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
+				if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/following-sibling::hr")))
+				{
+					executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
+					executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
+				}
 			}
+			catch(Exception e){}
+
 			executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
 			executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
 			executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
-			
+
 			stepInfo="Personalized tab should be changed to 'Edit personalization'";
 			logStep(stepInfo);
 			verifyStep(isWebElementVisible(PersonalizedGiftsPage.btnEditPersonalize),stepInfo);
-						
+
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='site-wrapper']/section[1]/div[2]/div")),"Product Desc. page");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
-						 
+
 			//.........Script Start...........................
 		}
-		  catch (Exception e){
-			   if(retryCount>0)
-			   {
-				   String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
+		catch (Exception e){
+			if(retryCount>0)
+			{
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
 
-				   logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
-				   logStepError(e.getMessage());
-				   HtmlReportUtil.attachScreenshot(imagePath,false);
-			    
-				   GlobalUtil.getTestResult().setScreenshotref(imagePath);
-			    
-				   HtmlReportUtil.stepInfo("Trying to Rerun" + " "+getTestCaseID() +" for " + retryingNumber + " time");
-				   retryCount--;
-				   retryingNumber++;
-				   utilities.LogUtil.infoLog(getClass(), "****************Waiting for " + getIntValue("retryDelayTime") +" Secs before retrying.***********");
-				   delay(getIntValue("retryDelayTime"));
-			    //Rerun same test
-				   test();
-			   }
-			   else{
-				   String imagePath = takeScreenshot(getDriver(), getTestCaseID());
-				   logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
-				   logStepError(e.getMessage());
-				   HtmlReportUtil.attachScreenshot(imagePath,false);
-			    
-				   GlobalUtil.getTestResult().setScreenshotref(imagePath);
-				   GlobalUtil.setTestException(e);
-				   throw e;
-			   }
-		  }
-}//End Test
-	
-	 
-	
-	
-	
+				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
+				logStepError(e.getMessage());
+				HtmlReportUtil.attachScreenshot(imagePath,false);
+
+				GlobalUtil.getTestResult().setScreenshotref(imagePath);
+
+				HtmlReportUtil.stepInfo("Trying to Rerun" + " "+getTestCaseID() +" for " + retryingNumber + " time");
+				retryCount--;
+				retryingNumber++;
+				utilities.LogUtil.infoLog(getClass(), "****************Waiting for " + getIntValue("retryDelayTime") +" Secs before retrying.***********");
+				delay(getIntValue("retryDelayTime"));
+				//Rerun same test
+				test();
+			}
+			else{
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID());
+				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
+				logStepError(e.getMessage());
+				HtmlReportUtil.attachScreenshot(imagePath,false);
+
+				GlobalUtil.getTestResult().setScreenshotref(imagePath);
+				GlobalUtil.setTestException(e);
+				throw e;
+			}
+		}
+	}//End Test
+
+
+
+
+
 }

@@ -8,7 +8,7 @@ public class Constants {
 	public static String INVALID_CVV="13";
 	public static String MOBILE="9855171135";
 	public static String INVALID_PINCODE="001122";
-	public static String ERROR_MESSAGE_INVALID_PIN="We currently do not support delivery in this area.";
+	public static String ERROR_MESSAGE_INVALID_PIN="Currently we do not support delivery of this product to selected location.";
 	public static final String NAME="Rajesh Sharma";
 	public static final String ADDRESS="GH 26";
 	public static final String COUNTRY="India";

@@ -115,6 +115,8 @@ public class IGP_TC_001 extends KeywordUtil{
 			logStep(stepInfo);
 			OrderSummaryPage.inputCoupenAndApply("ICMDNT");
 			verifyStep(OrderSummaryPage.verifyCoupenIsSuccess("ICMDNT"), stepInfo);
+			
+			pause(3000);
 
 			stepInfo="Verify User should Navigate to Payment page";
 			logStep(stepInfo);

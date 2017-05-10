@@ -98,7 +98,7 @@ public class HomePage extends KeywordUtil {
 		pause(3000);
 		WebElement image=getDriver().findElement(By.xpath("(//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()="+card+"]"));
 		Actions clicker = new Actions(getDriver());
-		clicker.moveToElement(image).moveToElement(getDriver().findElement(By.xpath("((//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()="+card+"]//div[@class='col s4'])/a[position()=2]"))).click().perform();
+		clicker.moveToElement(image).moveToElement(getDriver().findElement(By.xpath("((//ul[@id='cards-default']//div[@class='card z-depth-1 hoverable'])[position()="+card+"]//div[@class='col s4']/a)[position()=2]"))).click().perform();
 		pause(3000);
 	}
 

@@ -98,7 +98,7 @@ public class CheckOutPage extends HomePage{
 			if(isWebElementVisible(By.id("c-signup-form-2")))
 			{
 				Object i=1;
-				executeStep(inputText(By.id("c-s-user"),"austria"+str[1][0]+"@gmail.com"),"Emaild id");
+				executeStep(inputText(By.id("c-s-user"),"austria@gmail.com"),"Emaild id");
 				//excel.writeSheet("Email.xls", "Sheet1", (str[1][0]+i));
 				executeStep(inputText(By.id("c-s-password"),password),"Password");
 				executeStep(selectByValue(By.id("c-title"), salutation),"Select Salutation Type");
@@ -106,7 +106,7 @@ public class CheckOutPage extends HomePage{
 				executeStep(inputText(By.id("c-lname"), lastName), "Select last name");
 				executeStep(inputText(By.id("c-s-cname"), country), "Select country");
 				click(By.xpath("//li[contains(@class,'Hover')]"));
-				//executeStep(inputText(By.id("user-e-m-2"), str[1][1]), "Mobile Number:");
+				executeStep(inputText(By.id("user-e-m-2"),"9988471167"), "Mobile Number:");
 				//excel.writeSheet("Email.xls", "Sheet1", str[1][1]+);
 				click(By.id("c-l-submit"));
 				isWebElementVisible(By.id("address-list"));

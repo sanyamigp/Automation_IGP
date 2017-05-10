@@ -100,8 +100,7 @@ public class IGP_TC_179 extends KeywordUtil{
 			verifyStep(CheckOutPage.signUpDetails("sanyam123", "Mr.", "IGP", "Automation", "USA"),stepInfo);
 			
 				
-			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath(".//*[@id='address-container']/div")),"CheckOut Page");
-			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
+			
 			
 			
 			
