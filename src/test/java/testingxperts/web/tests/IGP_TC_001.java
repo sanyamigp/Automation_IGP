@@ -126,6 +126,9 @@ public class IGP_TC_001 extends KeywordUtil{
 		
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.cssSelector(".payment-block")),"Sanity");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
+			
+			getDriver().navigate().back();
+			OrderSummaryPage.removeCoupon();
 						 
 			//.........Script Start...........................
 		}

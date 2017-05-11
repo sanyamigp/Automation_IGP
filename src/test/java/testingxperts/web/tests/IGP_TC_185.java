@@ -97,7 +97,7 @@ public class IGP_TC_185 extends KeywordUtil{
 
 			stepInfo="Click on Add New Address button.";
 			logStep(stepInfo);
-			DeliveryPage.addNewAddress("Roy", "Street23", "Australia","Sydney","Tasmania", "10001", "232323");
+			DeliveryPage.addNewAddress("John", "Street23", "India",null,null, "134116", "99988771192");
 			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(), stepInfo);
 
 

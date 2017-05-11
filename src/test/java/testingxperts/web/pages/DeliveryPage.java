@@ -66,16 +66,6 @@ public class DeliveryPage extends HomePage{
 	}
 
 	public static boolean addNewAddress(String fullName, String address, String country,String state,String city, String pin,String mobile) throws InterruptedException{
-		try
-		{
-			if(isWebElementVisible(By.xpath("//div[contains(@id,'address-card')]//p[text()='"+country+"']")))
-			{
-				click(btnDeliverHere);
-
-			}
-			return true;
-		}
-		catch(Exception e)
 		{
 
 			LogUtil.infoLog("DeliveryPage", "Add new Address");
