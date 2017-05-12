@@ -68,6 +68,7 @@ public class IGP_TC_005 extends KeywordUtil{
 			logStep(stepInfo);
 			HomePage.selectHomeProduct();
 			verifyStep(HomePage.selectItemEditorPick(3),stepInfo);
+			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
 			stepInfo="Click Buy now";
 			logStep(stepInfo);

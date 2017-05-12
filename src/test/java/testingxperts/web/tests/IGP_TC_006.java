@@ -72,6 +72,7 @@ public class IGP_TC_006 extends KeywordUtil{
 			stepInfo="Select International Shipping option";
 			logStep(stepInfo);
 			verifyStep(ProductDetailPage.clickinternationalshipping(), stepInfo);
+			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
 			stepInfo="Enter country name in the textbox and then click on Check button.";
 			logStep(stepInfo);

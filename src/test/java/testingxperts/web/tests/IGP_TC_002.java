@@ -78,31 +78,7 @@ public class IGP_TC_002 extends KeywordUtil{
 			logStep(stepInfo);
 			HomePage.selectHomeProduct();
 			verifyStep(HomePage.selectItemEditorPick(3),stepInfo);
-			try
-			{
-			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
-			{
-				stepInfo="Personalization options should display by clicking on PERSONALIZE NOW";
-				logStep(stepInfo);
-				
-				executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
-				verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),stepInfo);
-				pause(2000);
-				
-				
-				
-				stepInfo="Input message";
-				logStep(stepInfo);
-
-				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
-				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
-				executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
-			}
-			}
-			catch(Exception e)
-			{
-				
-			}
+			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
 			stepInfo="Click Buy now";
 			logStep(stepInfo);
