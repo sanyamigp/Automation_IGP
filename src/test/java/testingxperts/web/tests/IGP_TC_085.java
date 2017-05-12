@@ -13,6 +13,8 @@ import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderDetailsPage;
 import testingxperts.web.pages.OrderSummaryPage;
+import testingxperts.web.pages.PersonalizedGiftsPage;
+import testingxperts.web.pages.ProductDetailPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
@@ -42,7 +44,7 @@ public class IGP_TC_085 extends KeywordUtil{
 			 		2. Log to report and Logger
 			 		3. Perform Action
 			 		4. Verify Action
-			 		
+
 			 		==================================
 			 		Login Steps
 			 		==================================
@@ -57,108 +59,117 @@ public class IGP_TC_085 extends KeywordUtil{
 		 				logStep(stepInfo);
 		 				LoginPage.logOut();
 		 				verifyStep(LoginPage.isLogout(), stepInfo);
-		 	
-			*/
-			
-		
+
+			 */
+
+
 			//.........Script Start...........................
-			
+
 			stepInfo="Open home page";
 			logStep(stepInfo);
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
-			
-			stepInfo="Select product from best selling";
+
+			stepInfo="Add product into cart.";
 			logStep(stepInfo);
-			verifyStep(HomePage.selectItemEditorPick(2),stepInfo);
-			
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
+			verifyStep(CartPage.isItemAdded(), stepInfo);
+			CartPage.closeCartOverlay();
+
 			stepInfo="Enter valid Pin code and validate";
 			logStep(stepInfo);
 			CartPage.inputPinCode(Constants.PINCODE);
 			CartPage.checkPinCode();
-			logStep("Valid Pin code message: " + CartPage.getPinCodeValidMessage());
-			verifyStep(isWebElementVisible(CartPage.txtValidPinMessage),
-					stepInfo);
-			pause(3000);
-			
+			try
+			{
+			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
+			{
+				verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
+			}
+			}
+			catch(Exception e)
+			{
+				
+			}
+
 			stepInfo="Buy Now";
 			logStep(stepInfo);
 			CartPage.clikBuyNow();
-			
+
 			stepInfo="The page should navigate to cart page";
 			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
-			
-			
+
+
 			stepInfo="Place order";
 			logStep(stepInfo);
 			CartPage.clickPlaceOrder();
-			
-			
+
+
 			stepInfo="The user should be navigated to checkout page.";
 			verifyStep(CheckOutPage.isCheckOutPageLoaded(),
 					stepInfo);
-			
+
 			stepInfo="Login at checkout page";
 			logStep(stepInfo);
 			CheckOutPage.doLogin(ConfigReader.getValue("loginUser"), ConfigReader.getValue("loginPassword"));
 			verifyStep(DeliveryPage.verifyDeliveryPageLoaded(),
 					stepInfo);
-			
+
 			stepInfo="Click Deliver here";
 			executeStep(click(DeliveryPage.btnDeliverHere), stepInfo);
-			
+
 			stepInfo="Verify user navigated to Order Summary page";
 			logStep(stepInfo);
 			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
-			
+
 			stepInfo="Increase the quantity of the product using increment/decrement option.";
 			logStep(stepInfo);
 			OrderSummaryPage.increaseQty_FirstItem();
-					
-			
-			
+
+
+
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"Order Detail");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
-			 
-			
-			 
-			
+
+
+
+
 			//.........Script Start...........................
 		}
-		  catch (Exception e){
-			   if(retryCount>0)
-			   {
-				   String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
+		catch (Exception e){
+			if(retryCount>0)
+			{
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
 
-				   logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
-				   logStepError(e.getMessage());
-				   HtmlReportUtil.attachScreenshot(imagePath,false);
-			    
-				   GlobalUtil.getTestResult().setScreenshotref(imagePath);
-			    
-				   HtmlReportUtil.stepInfo("Trying to Rerun" + " "+getTestCaseID() +" for " + retryingNumber + " time");
-				   retryCount--;
-				   retryingNumber++;
-				   utilities.LogUtil.infoLog(getClass(), "****************Waiting for " + getIntValue("retryDelayTime") +" Secs before retrying.***********");
-				   delay(getIntValue("retryDelayTime"));
-			    //Rerun same test
-				   test();
-			   }
-			   else{
-				   String imagePath = takeScreenshot(getDriver(), getTestCaseID());
-				   logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
-				   logStepError(e.getMessage());
-				   HtmlReportUtil.attachScreenshot(imagePath,false);
-			    
-				   GlobalUtil.getTestResult().setScreenshotref(imagePath);
-				   GlobalUtil.setTestException(e);
-				   throw e;
-			   }
-		  }
-}//End Test
-	
-	 
-	
-	
-	
+				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
+				logStepError(e.getMessage());
+				HtmlReportUtil.attachScreenshot(imagePath,false);
+
+				GlobalUtil.getTestResult().setScreenshotref(imagePath);
+
+				HtmlReportUtil.stepInfo("Trying to Rerun" + " "+getTestCaseID() +" for " + retryingNumber + " time");
+				retryCount--;
+				retryingNumber++;
+				utilities.LogUtil.infoLog(getClass(), "****************Waiting for " + getIntValue("retryDelayTime") +" Secs before retrying.***********");
+				delay(getIntValue("retryDelayTime"));
+				//Rerun same test
+				test();
+			}
+			else{
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID());
+				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
+				logStepError(e.getMessage());
+				HtmlReportUtil.attachScreenshot(imagePath,false);
+
+				GlobalUtil.getTestResult().setScreenshotref(imagePath);
+				GlobalUtil.setTestException(e);
+				throw e;
+			}
+		}
+	}//End Test
+
+
+
+
+
 }

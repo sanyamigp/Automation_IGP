@@ -277,11 +277,14 @@ public class OrderSummaryPage extends HomePage {
 		else if(deliveryMonth=="Next Month")
 		{
 			clickAndWait(By.xpath("//child::div[h6[text()='Fix Date Delivery']]//div[@title='Next month']"));
+			try
+			{
 			if(isWebElementVisible(By.xpath("//div[@aria-disabled]")))
 			{
 				return true;
 			}
-			else
+			}
+			catch(Exception e)
 			{
 				getDriver().findElement(By.xpath(part1+date+part2)).click();
 				pause(3000);

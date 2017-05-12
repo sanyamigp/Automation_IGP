@@ -71,43 +71,28 @@ public class IGP_TC_087 extends KeywordUtil{
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
 			
-			stepInfo="Select product from best selling";
+			stepInfo="Add product into cart.";
 			logStep(stepInfo);
-			verifyStep(HomePage.selectItemEditorPick(2),stepInfo);
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
+			verifyStep(CartPage.isItemAdded(), stepInfo);
+			CartPage.closeCartOverlay();
 			
+			stepInfo="Enter valid Pin code and validate";
+			logStep(stepInfo);
+			CartPage.inputPinCode(Constants.PINCODE);
+			CartPage.checkPinCode();
 			try
 			{
 			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
 			{
-				stepInfo="Personalization options should display by clicking on PERSONALIZE NOW";
-				logStep(stepInfo);
-				
-				executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
-				verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),stepInfo);
-				pause(2000);
-				
-				
-				
-				stepInfo="Input message";
-				logStep(stepInfo);
-
-				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
-				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
-				executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+				verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			}
 			}
 			catch(Exception e)
 			{
-				stepInfo="Enter valid Pin code and validate";
-				logStep(stepInfo);
-				CartPage.inputPinCode(Constants.PINCODE);
-				CartPage.checkPinCode();
-				logStep("Valid Pin code message: " + CartPage.getPinCodeValidMessage());
-				verifyStep(isWebElementVisible(CartPage.txtValidPinMessage),
-						stepInfo);
-				pause(3000);
 				
 			}
+			
 			
 			stepInfo="Buy Now";
 			logStep(stepInfo);

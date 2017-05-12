@@ -13,6 +13,8 @@ import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderDetailsPage;
 import testingxperts.web.pages.OrderSummaryPage;
+import testingxperts.web.pages.PersonalizedGiftsPage;
+import testingxperts.web.pages.ProductDetailPage;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
@@ -69,17 +71,27 @@ public class IGP_TC_082 extends KeywordUtil{
 			HomePage.openHomePage();
 			verifyStep(HomePage.isHomePageOpened(), stepInfo);
 			
-			stepInfo="Select product from best selling";
+			stepInfo="Add product into cart.";
 			logStep(stepInfo);
-			verifyStep(HomePage.selectItemEditorPick(2),stepInfo);
+			CartPage.addItemInCart(HomePage.GiftBy.FLOWER_AND_CAKE);
+			verifyStep(CartPage.isItemAdded(), stepInfo);
+			CartPage.closeCartOverlay();
 			
 			stepInfo="Enter valid Pin code and validate";
 			logStep(stepInfo);
 			CartPage.inputPinCode(Constants.PINCODE);
 			CartPage.checkPinCode();
-			logStep("Valid Pin code message: " + CartPage.getPinCodeValidMessage());
-			verifyStep(isWebElementVisible(CartPage.txtValidPinMessage),
-					stepInfo);
+			try
+			{
+			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
+			{
+				verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
+			}
+			}
+			catch(Exception e)
+			{
+				
+			}
 			
 			stepInfo="Buy Now";
 			logStep(stepInfo);
