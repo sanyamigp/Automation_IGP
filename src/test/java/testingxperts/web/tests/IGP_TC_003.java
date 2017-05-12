@@ -91,31 +91,6 @@ public class IGP_TC_003 extends KeywordUtil{
 			verifyStep(ProductDetailPage.deliverychargePresent("Australia"), stepInfo);
 			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
-			try
-			{
-			if(isWebElementVisible(ProductDetailPage.btnPersonalizeNow))
-			{
-				stepInfo="Personalization options should display by clicking on PERSONALIZE NOW";
-				logStep(stepInfo);
-				
-				executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
-				verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),stepInfo);
-				pause(2000);
-				
-				
-				
-				stepInfo="Input message";
-				logStep(stepInfo);
-
-				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
-				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
-				executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
-			}
-			}
-			catch(Exception e)
-			{
-				
-			}
 			
 
 			stepInfo="Buy Now";
@@ -143,15 +118,7 @@ public class IGP_TC_003 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(OrderSummaryPage.isOrderSummaryPageLoaded(),stepInfo);
 
-			stepInfo="Verify click on apply coupen ";
-			logStep(stepInfo);
-			OrderSummaryPage.clickApplyCoupen();
-			verifyStep(OrderSummaryPage.verifyCoupenInputFieldIsDisplayed(), stepInfo);
 
-			stepInfo="Enter new coupen and verify: "+Constants.VALID_COUPEN;
-			logStep(stepInfo);
-			OrderSummaryPage.inputCoupenAndApply(Constants.VALID_COUPEN);
-			verifyStep(OrderSummaryPage.verifyCoupenIsSuccess(Constants.VALID_COUPEN), stepInfo);
 
 			stepInfo="Verify User should Navigate to Payment page";
 			logStep(stepInfo);
@@ -164,7 +131,7 @@ public class IGP_TC_003 extends KeywordUtil{
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
 
 			getDriver().navigate().back();
-			OrderSummaryPage.removeCoupon();
+			
 
 
 

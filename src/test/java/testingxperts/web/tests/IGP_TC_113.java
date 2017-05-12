@@ -83,21 +83,7 @@ public class IGP_TC_113 extends KeywordUtil{
 			pause(2000);
 
 
-			stepInfo="Input message";
-			logStep(stepInfo);
-			try
-			{
-				if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/following-sibling::hr")))
-				{
-					executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
-					executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
-				}
-			}
-			catch(Exception e){}
-
-			executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), stepInfo);
-			executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), stepInfo);
-			executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 
 			stepInfo="Personalized tab should be changed to 'Edit personalization'";
 			logStep(stepInfo);

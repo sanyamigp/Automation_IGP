@@ -106,6 +106,17 @@ public class IGP_TC_001 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(DeliveryPage.selectCountryAddress("India"), stepInfo);
 			
+			try
+			{
+				if(isWebElementVisible(OrderSummaryPage.btnRemoveCoupon))
+				{
+					clickAndWait(OrderSummaryPage.btnRemoveCoupon);
+				}
+			}
+			catch(Exception e)
+			{
+				
+			}
 			stepInfo="Verify click on apply coupen ";
 			logStep(stepInfo);
 			OrderSummaryPage.clickApplyCoupen();
