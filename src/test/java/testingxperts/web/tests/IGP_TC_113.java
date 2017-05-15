@@ -77,12 +77,6 @@ public class IGP_TC_113 extends KeywordUtil{
 
 			stepInfo="Personalization options should display by clicking on PERSONALIZE NOW";
 			logStep(stepInfo);
-
-			executeStep(click(ProductDetailPage.btnPersonalizeNow),"Click PERSONALIZE NOW");
-			verifyStep(PersonalizedGiftsPage.isPersonalizedGiftsOptionsOpened(),stepInfo);
-			pause(2000);
-
-
 			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 
 			stepInfo="Personalized tab should be changed to 'Edit personalization'";

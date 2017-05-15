@@ -132,6 +132,7 @@ public class PersonalizedGiftsPage extends HomePage{
 				if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/div")))
 				{
 					List<WebElement> tabs=getListElements(By.xpath("//div[@class='step-details flex-disp']/div"));
+					System.out.println(tabs.size());
 					for(int i=1;i<=(tabs.size()-1);i++)
 					{
 
@@ -160,7 +161,7 @@ public class PersonalizedGiftsPage extends HomePage{
 
 
 
-		pause(5000);
+		pause(7000);
 		return true;
 	}
 
