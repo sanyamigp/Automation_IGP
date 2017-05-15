@@ -27,6 +27,7 @@ import utilities.ConfigReader;
 import utilities.GlobalUtil;
 import utilities.HtmlReportUtil;
 import utilities.KeywordUtil;
+import utilities.SendMail1;
 
 @Listeners({CustomListeners.class,ExecutionStartEndListner.class})
 public class IGP_TC_113 extends KeywordUtil{
@@ -91,8 +92,8 @@ public class IGP_TC_113 extends KeywordUtil{
 		catch (Exception e){
 			if(retryCount>0)
 			{
-				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
-
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber,"Automation Bugs: "+stepInfo);
+				//SendMail1.sendingMail(imagePath,"Automation Bugs:"+stepInfo);
 				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
 				logStepError(e.getMessage());
 				HtmlReportUtil.attachScreenshot(imagePath,false);
@@ -108,7 +109,8 @@ public class IGP_TC_113 extends KeywordUtil{
 				test();
 			}
 			else{
-				String imagePath = takeScreenshot(getDriver(), getTestCaseID());
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID(),"Automation Bugs: "+stepInfo);
+				//SendMail1.sendingMail(src.getPath(),"Automation Bugs:"+stepInfo);
 				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
 				logStepError(e.getMessage());
 				HtmlReportUtil.attachScreenshot(imagePath,false);

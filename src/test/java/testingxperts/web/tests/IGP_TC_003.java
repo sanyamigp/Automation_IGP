@@ -140,8 +140,8 @@ public class IGP_TC_003 extends KeywordUtil{
 		catch (Exception e){
 			if(retryCount>0)
 			{
-				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber);
-
+				
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber,"Automation Bugs: "+stepInfo);
 				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
 				logStepError(e.getMessage());
 				HtmlReportUtil.attachScreenshot(imagePath,false);
@@ -157,7 +157,7 @@ public class IGP_TC_003 extends KeywordUtil{
 				test();
 			}
 			else{
-				String imagePath = takeScreenshot(getDriver(), getTestCaseID());
+				String imagePath = takeScreenshot(getDriver(), getTestCaseID(),"Automation Bugs: "+stepInfo);
 				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
 				logStepError(e.getMessage());
 				HtmlReportUtil.attachScreenshot(imagePath,false);

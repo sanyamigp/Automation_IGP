@@ -3,187 +3,99 @@ package utilities;
  
 
 
+import java.util.Properties;
 import javax.activation.DataHandler;
 import javax.activation.DataSource;
 import javax.activation.FileDataSource;
-import javax.mail.*;
-import javax.mail.internet.*;
+import javax.mail.BodyPart;
+import javax.mail.Message;
+import javax.mail.MessagingException;
+import javax.mail.PasswordAuthentication;
+import javax.mail.Session;
+import javax.mail.Transport;
+import javax.mail.internet.InternetAddress;
+import javax.mail.internet.MimeBodyPart;
+import javax.mail.internet.MimeMessage;
+import javax.mail.internet.MimeMultipart;
 
-import java.io.File;
-import java.io.FileInputStream;
-import java.text.SimpleDateFormat;
-import java.util.*;
-
- 
-
-public class SendMail1
-
+public class SendMail1 extends Utility
 {
-	public static final String DIR_PATH="user.dir";
-    public static void execute() throws Exception
+   public static boolean sendingMail(String path,String subject) {
+      // Recipient's email ID needs to be mentioned.
+      String to = "sanyam.arora@indiangiftsportal.com,priyesh.neema@igp.com,rishab@indiangiftsportal.com";
 
-    {
-    	System.out.println("Hello");
-    	Properties prop=new Properties();
-		try {
-			FileInputStream fs = new FileInputStream(System.getProperty(DIR_PATH) + "/src/main/resources/ConfigFiles/mail.properties");
-			prop.load(fs);
-			
+      // Sender's email ID needs to be mentioned
+      String from = "sanyam.arora@testingxperts.com";
+      final String username = "sanyam.arora@testingxperts.com";//change accordingly
+      final String password = "Sanyam123";//change accordingly
 
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		//report folder - extent reports
-		//date
-		String reportFolder=System.getProperty("user.dir") +"\\ExecutionReports\\HtmlReport";
-    	 SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
-         FileFilterDateIntervalUtils filter =
-             new FileFilterDateIntervalUtils("2017-01-04", "2050-01-20");
-         File folder =  new File(reportFolder);
-         File files[] = folder.listFiles(filter);
-        //date
-         
-  
-         String extentFilePath=reportFolder + "TestReport.html";
-        // String xsltReportPath=reportFolder+"Reports.zip";
-         
-         // mail extent reports
-                String[] to={"sanyam.arora@indiangiftsportal.com"};
+      // Assuming you are sending email through relay.jangosmtp.net
+      String host = "smtp.gmail.com";
 
-                String[] cc={};
-                String[] bcc={};
+      Properties props = new Properties();
+      props.setProperty("mail.smtp.host", "smtp.gmail.com");
+      props.setProperty("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
+      props.setProperty("mail.smtp.socketFactory.fallback", "false");
+      props.setProperty("mail.smtp.port", "465");
+      props.setProperty("mail.smtp.socketFactory.port", "465");
+      props.put("mail.smtp.auth", "true");
+      props.put("mail.debug", "true");
+      props.put("mail.store.protocol", "pop3");
+      props.put("mail.transport.protocol", "smtp");
+      Session session = Session.getInstance(props,
+         new javax.mail.Authenticator() {
+            protected PasswordAuthentication getPasswordAuthentication() {
+               return new PasswordAuthentication(username, password);
+            }
+         });
 
-                //This is for yahoo
+      try {
 
-                sendMail("sanyam.arora@testingxperts.com",
-                		            "Sanyam123",
-                		            "smtp.gmail.com",
-                		            "465",
-                		            "true",
-                		            "true",
-                		            true,
-                		            "javax.net.ssl.SSLSocketFactory",
-                		            "false",
-                		            to,
-                		            cc,
-                		            bcc,
-                		            "Automation Test Reports - Extent",
-                		            "Please find the reports attached.\n\n Regards\nWebMaster",
-                		            extentFilePath,
-                		            reportFolder);
-                
-                
-    }
+         // Create a default MimeMessage object.
+         Message message = new MimeMessage(session);
 
- 
+         // Set From: header field of the header.
+         message.setFrom(new InternetAddress(from));
 
-        public  static boolean sendMail(
-        		final String userName,
-        		final String passWord,
-        		String host,
-        		String port,
-        		String starttls,
-        		String auth,
-        		boolean debug,
-        		String socketFactoryClass,
-        		String fallback,
-        		String[] to,
-        		String[] cc,
-        		String[] bcc,
-        		String subject,
-        		String text,
-        		String attachmentPath,
-        		String attachmentName){
+         // Set To: header field of the header.
+         message.setRecipients(Message.RecipientType.TO,
+            InternetAddress.parse(to));
 
+         // Set Subject: header field
+         message.setSubject(subject);
 
+         // This mail has 2 part, the BODY and the embedded image
+         MimeMultipart multipart = new MimeMultipart("related");
 
-        	Properties props = new Properties();
-            props.put("mail.smtp.starttls.enable", starttls);
-            props.put("mail.smtp.auth",auth);
-            props.put("mail.smtp.host", host);
-            props.put("mail.smtp.port", port);
+         // first part (the html)
+         BodyPart messageBodyPart = new MimeBodyPart();
+         String htmlText = "<H1>Test Failed</H1><img src=\"cid:image\">";
+         messageBodyPart.setContent(htmlText, "text/html");
+         // add it
+         multipart.addBodyPart(messageBodyPart);
 
-        try
+         // second part (the image)
+         messageBodyPart = new MimeBodyPart();
+         DataSource fds = new FileDataSource(
+            path);
 
-        {
+         messageBodyPart.setDataHandler(new DataHandler(fds));
+         messageBodyPart.setHeader("Content-ID", "<image>");
 
-        	Session session = Session.getInstance(props,
-        	          new javax.mail.Authenticator() {
-        	            protected PasswordAuthentication getPasswordAuthentication() {
-        	                return new PasswordAuthentication(userName, passWord);
-        	            }
-        	          });
+         // add image to the multipart
+         multipart.addBodyPart(messageBodyPart);
 
-            MimeMessage msg = new MimeMessage(session);
+         // put everything together
+         message.setContent(multipart);
+         // Send message
+         Transport.send(message);
 
-            msg.setText(text);
+         System.out.println("Sent message successfully....");
+         return true;
 
-            msg.setSubject(subject);
-            //attachment start
-            // create the message part 
-           
-            Multipart multipart = new MimeMultipart();
-            MimeBodyPart messageBodyPart = new MimeBodyPart();
-            String html = "Test\n" + text + "\n<a href='http://test.com'>Test.com</a>";
-            messageBodyPart.setText(html, "UTF-8", "html");
-            DataSource source = 
-              new FileDataSource(attachmentPath);
-            messageBodyPart.setDataHandler(
-              new DataHandler(source));
-            messageBodyPart.setFileName(attachmentName);
-            multipart.addBodyPart(messageBodyPart);
-            
-            // attachment ends
-
-            // Put parts in message
-            msg.setContent(multipart);
-            msg.setFrom(new InternetAddress(userName));
-
-                        for(int i=0;i<to.length;i++){
-
-            msg.addRecipient(Message.RecipientType.TO, new InternetAddress(to[i]));
-
-                        }
-
-                        for(int i=0;i<cc.length;i++){
-
-            msg.addRecipient(Message.RecipientType.CC, new InternetAddress(cc[i]));
-
-                        }
-
-                        for(int i=0;i<bcc.length;i++){
-
-            msg.addRecipient(Message.RecipientType.BCC, new InternetAddress(bcc[i]));
-
-                        }
-
-            msg.saveChanges();
-
-                        Transport transport = session.getTransport("smtp");
-
-                        transport.connect(host, userName, passWord);
-
-                        transport.sendMessage(msg, msg.getAllRecipients());
-
-                        transport.close();
-
-                        return true;
-
-        }
-
-        catch (Exception mex)
-
-        {
-
-            mex.printStackTrace();
-
-                        return false;
-
-        }
-
-        }
-
- 
-
+      } catch (Exception mex){
+			mex.printStackTrace();
+			return false;
+      }
+   }
 }

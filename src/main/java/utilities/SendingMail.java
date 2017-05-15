@@ -13,10 +13,11 @@ import java.util.*;
 public class SendingMail
 
 {
+	public static String path;
 	public static String reportFolder=System.getProperty("user.dir") +"//ExecutionReports//HtmlReport";
 	public static String destFolder=System.getProperty("user.dir")+"//Reports.zip";
 	//reportFileName = TestExecutionResultFileName
-	public static void execute(String reportFileName) throws Exception
+	public static void execute(String path) throws Exception
 
 	{
 		
@@ -53,8 +54,8 @@ public class SendingMail
 				bcc,
 				"Automation Report",
 				"Hi, A new test suite has been executed. ",
-				destFolder,
-				reportFileName);
+				path,
+				"Image");
 	}
 
 	public static boolean sendMail(String userName,
@@ -126,9 +127,11 @@ public class SendingMail
 			MimeBodyPart messageBodyPart = new MimeBodyPart();
 			String html = "Test\n" + text + "\n<a href='http://test.com'>Test.com</a>";
             messageBodyPart.setText(html, "UTF-8", "html");
-			DataSource source = new FileDataSource(attachmentPath);
-			messageBodyPart.setDataHandler(new DataHandler(source));
-			messageBodyPart.setFileName(attachmentName);
+            DataSource fds = new FileDataSource(
+                    path);
+
+                 messageBodyPart.setDataHandler(new DataHandler(fds));
+                 messageBodyPart.setHeader("Content-ID", "<image>");
 			multipart.addBodyPart(messageBodyPart);
 
 			msg.setContent(multipart);
