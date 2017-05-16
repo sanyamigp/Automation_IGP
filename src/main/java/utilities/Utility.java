@@ -39,7 +39,7 @@ public class Utility {
 	public static final int CELLNUMBER = 0;
 	public static final boolean colFlag = false;
 	public static final String USERDIR = "user.dir";
-
+	public static File src;
 	// To create Zip
 	private static String RESULT_FOLDER_NAME = System.getProperty(USERDIR) + "\\ExecutionReports\\ExecutionReports";
 
@@ -281,24 +281,26 @@ public class Utility {
 	 * @param driver
 	 * @param testCaseID
 	 * @return
-	 * @throws IOException
+	 * @throws Exception 
 	 */
-	public static String takeScreenshot(WebDriver driver, String testCaseID) throws IOException {
+	public static String takeScreenshot(WebDriver driver, String testCaseID,String subject) throws Exception {
 		
 		Date date = new Date();
 		DateFormat dateFormat = new SimpleDateFormat("yyyyMMddHHmmss");
 		String timeStamp = dateFormat.format(date);
 		timeStamp=timeStamp+"_";
 		
-		String path = System.getProperty(USERDIR) + "\\ExecutionReports\\HtmlReport\\"
-				+ ConfigReader.getValue("screenshotPath") + "\\" +timeStamp+ testCaseID + ".jpg";
+		String path = System.getProperty(USERDIR) + "\\ExecutionReports\\PassScreenshots\\"
+				+"\\" +timeStamp+ testCaseID + ".jpg";
 		// Screenshot screenshot = new AShot().shootingStrategy(new
 		// ViewportPastingStrategy(100)).takeScreenshot(driver);
-
+		
 		Screenshot screenshot = new AShot().takeScreenshot(driver);
-		File src = new File(path);
+		 src = new File(path);
 		LogUtil.infoLog(Utility.class, "Screenshot image path: " + src.getPath());
+		 
 		ImageIO.write(screenshot.getImage(), "PNG", src);
+		SendMail1.sendingMail(src.getPath(),subject);
 		Reporter.log("<a href='"+ src.getAbsolutePath() + "'> <img src='"+ src.getAbsolutePath() + "' height='100' width='100'/> </a>");
 		return ConfigReader.getValue("screenshotPath") + "\\" +timeStamp+ testCaseID + ".jpg";
 	}

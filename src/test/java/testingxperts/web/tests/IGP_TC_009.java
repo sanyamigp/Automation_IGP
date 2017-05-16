@@ -82,7 +82,7 @@ public class IGP_TC_009 extends KeywordUtil{
 			stepInfo="Buy Now";
 			logStep(stepInfo);
 			CartPage.clikBuyNow();
-			pause(3000);
+			pause(5000);
 			
 			stepInfo="The page should navigate to cart page";
 			verifyStep(CartPage.verifyOrderDetailsPageLoaded(),stepInfo);
