@@ -51,6 +51,7 @@ public class HomePage extends KeywordUtil {
 
 	public static boolean sendgiftsWorldwide() throws InterruptedException
 	{
+		pause(3000);
 		if(isWebElementPresent(By.xpath("//img[@alt='CCS Banner']")))
 		{
 			return clickAndWait(By.xpath("//img[@alt='CCS Banner']"));
@@ -61,6 +62,7 @@ public class HomePage extends KeywordUtil {
 
 	public static boolean freeShippingtoUSA() throws InterruptedException
 	{
+		pause(3000);
 		if(isWebElementPresent(By.xpath("//img[@alt='USA free-shipping']")))
 		{
 			return clickAndWait(By.xpath("//img[@alt='USA free-shipping']"));
