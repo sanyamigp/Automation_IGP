@@ -197,7 +197,7 @@ public class CartPage extends HomePage{
 	public static boolean isItemAdded() throws Exception{
 		executeStep(click(PageMenu.menuCart),
 				"Click cart button");
-		pause(1000);
+		pause(3000);
 		waitForClickable(listCartItems);
 		return isWebElementPresent(listCartItems);
 	} 

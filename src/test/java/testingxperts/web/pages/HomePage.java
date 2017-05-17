@@ -55,9 +55,11 @@ public class HomePage extends KeywordUtil {
 		if(isWebElementPresent(By.xpath("//img[@alt='CCS Banner']")))
 		{
 			return clickAndWait(By.xpath("//img[@alt='CCS Banner']"));
+			
 		}
 		else
 			return false;
+		
 	}
 
 	public static boolean freeShippingtoUSA() throws InterruptedException
