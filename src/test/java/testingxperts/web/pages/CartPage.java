@@ -195,9 +195,10 @@ public class CartPage extends HomePage{
 
 
 	public static boolean isItemAdded() throws Exception{
+		pause(3000);
 		executeStep(click(PageMenu.menuCart),
 				"Click cart button");
-		pause(3000);
+		
 		waitForClickable(listCartItems);
 		return isWebElementPresent(listCartItems);
 	} 
@@ -271,9 +272,11 @@ public class CartPage extends HomePage{
 		return status;
 	}
 
-	public static boolean clikBuyNow(){
-
-		return click(btnBuyNow);
+	public static boolean clikBuyNow() throws InterruptedException{
+		pause(3000);
+		 click(btnBuyNow);
+		 pause(3000);
+		 return true;
 
 	}
 	public static boolean verifyOrderDetailsPageLoaded(){
