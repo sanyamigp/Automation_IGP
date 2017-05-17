@@ -290,8 +290,8 @@ public class Utility {
 		String timeStamp = dateFormat.format(date);
 		timeStamp=timeStamp+"_";
 		
-		String path = System.getProperty(USERDIR) + "\\ExecutionReports\\PassScreenshots\\"
-				+"\\" +timeStamp+ testCaseID + ".jpg";
+		String path = System.getProperty(USERDIR) + "\\ExecutionReports\\HtmlReport\\"
+				+ ConfigReader.getValue("screenshotPath") + "\\" +timeStamp+ testCaseID + ".jpg";
 		// Screenshot screenshot = new AShot().shootingStrategy(new
 		// ViewportPastingStrategy(100)).takeScreenshot(driver);
 		
