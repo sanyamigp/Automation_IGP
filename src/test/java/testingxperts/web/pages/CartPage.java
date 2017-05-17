@@ -196,7 +196,7 @@ public class CartPage extends HomePage{
 
 	public static boolean isItemAdded() throws Exception{
 		pause(3000);
-		executeStep(click(PageMenu.menuCart),
+		executeStep(clickAndWait(PageMenu.menuCart),
 				"Click cart button");
 		
 		waitForClickable(listCartItems);
@@ -273,7 +273,6 @@ public class CartPage extends HomePage{
 	}
 
 	public static boolean clikBuyNow() throws InterruptedException{
-		pause(3000);
 		 click(btnBuyNow);
 		 pause(3000);
 		 return true;
