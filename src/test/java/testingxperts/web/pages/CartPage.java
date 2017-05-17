@@ -74,6 +74,7 @@ public class CartPage extends HomePage{
 
 		executeStep(click(btnAddToCart), 
 				"Click: "+"ADD TO CART");
+		pause(3000);
 	}
 
 	public static boolean personalizedItem(GiftBy giftBy) throws InterruptedException, Exception
