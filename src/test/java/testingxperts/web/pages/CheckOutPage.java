@@ -32,7 +32,7 @@ public class CheckOutPage extends HomePage{
 		inputText(inputPassword, password);
 		pause(1000);
 		click(btnLogin);
-		pause(3000);
+		pause(5000);
 
 	}
 

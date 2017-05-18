@@ -13,6 +13,7 @@ import testingxperts.web.pages.DeliveryPage;
 import testingxperts.web.pages.HomePage;
 import testingxperts.web.pages.OrderSummaryPage;
 import testingxperts.web.pages.PaymentPage;
+import testingxperts.web.pages.PersonalizedGiftsPage;
 import testingxperts.web.pages.PaymentPage.Wallets;
 import utilities.ConfigReader;
 import utilities.GlobalUtil;
@@ -62,9 +63,7 @@ public class IGP_TC_214 extends KeywordUtil{
 			logStep(stepInfo);
 			CartPage.inputPinCode(Constants.PINCODE);
 			CartPage.checkPinCode();
-			logStep("Valid Pin code message: " + CartPage.getPinCodeValidMessage());
-			verifyStep(isWebElementVisible(CartPage.txtValidPinMessage),
-					stepInfo);
+			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
 			stepInfo="Buy Now";
 			logStep(stepInfo);
