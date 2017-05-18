@@ -103,11 +103,14 @@ public class PersonalizedGiftsPage extends HomePage{
 	{
 		try
 		{
-
-			clickAndWait(By.xpath("//input[@placeholder='Select Image']"));
-
-			pause(5000);
-			fileUpload("Personalized.jpg");
+			int i=1;
+			while(i>0)
+			{
+				clickAndWait(By.xpath("(//input[@placeholder='Select Image'])["+i+"]"));
+				pause(5000);
+				fileUpload("Personalized.jpg");
+				i++;
+			}
 		}
 		catch(Exception e)
 		{
@@ -131,12 +134,20 @@ public class PersonalizedGiftsPage extends HomePage{
 
 				if(isWebElementVisible(By.xpath("//div[@class='step-details flex-disp']/div")))
 				{
+
 					List<WebElement> tabs=getListElements(By.xpath("//div[@class='step-details flex-disp']/div"));
 					System.out.println(tabs.size());
 					for(int i=1;i<=(tabs.size()-1);i++)
 					{
-
-						executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
+						try{
+						clickAndWait(By.xpath("(//input[@placeholder='Select Image'])["+i+"]"));
+						pause(5000);
+						fileUpload("Personalized.jpg");
+						}
+						catch(Exception e)
+						{
+							
+						}
 						executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Text");
 						executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
 
@@ -149,9 +160,16 @@ public class PersonalizedGiftsPage extends HomePage{
 		{
 			try
 			{
+				if(!isWebElementPresent(ProductDetailPage.btnPersonalizeNow))
+				{
+					
+				}
+				else
+				{
 				executeStep(PersonalizedGiftsPage.attachPersonalizedImage(), "Attach Image");
 				executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Attach Image");
 				executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
+				}
 			}
 			catch(Exception e1)
 			{
