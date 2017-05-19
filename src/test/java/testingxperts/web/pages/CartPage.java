@@ -275,7 +275,7 @@ public class CartPage extends HomePage{
 
 	public static boolean clikBuyNow() throws InterruptedException{
 		pause(3000);
-		 click(btnBuyNow);
+		 clickAndWait(btnBuyNow);
 		 pause(3000);
 		 return true;
 
