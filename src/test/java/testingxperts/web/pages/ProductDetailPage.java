@@ -435,9 +435,11 @@ public class ProductDetailPage extends HomePage {
 		executeStep(isWebElementVisible(By.xpath("(//div[contains(@class,'newsletter')])[position()=2]")), "Check footer content");
 		return true;
 	}
-	public static boolean verifyclikBuyNowbutton(){
-
-		return click(CartPage.btnBuyNow);
+	public static boolean verifyclikBuyNowbutton() throws InterruptedException{
+		pause(3000);
+		clickAndWait(CartPage.btnBuyNow);
+		pause(3000);
+		return true;
 
 	}
 
