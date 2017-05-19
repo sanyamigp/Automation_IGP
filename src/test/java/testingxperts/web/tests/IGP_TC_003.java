@@ -80,7 +80,7 @@ public class IGP_TC_003 extends KeywordUtil{
 			stepInfo="Select any product other than Flowers and Cakes under Best Selling Category .";
 			logStep(stepInfo);
 			HomePage.selectHomeProduct();
-			verifyStep(HomePage.selectItemEditorPick(1),stepInfo);
+			verifyStep(HomePage.selectItemEditorPick(2),stepInfo);
 
 			stepInfo="Select International Shipping option";
 			logStep(stepInfo);

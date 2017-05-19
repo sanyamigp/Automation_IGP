@@ -148,7 +148,13 @@ public class PersonalizedGiftsPage extends HomePage{
 						{
 							
 						}
-						executeStep(PersonalizedGiftsPage.enterPersonalizedText("Gift Hampers"), "Text");
+						try{
+						writeInInputCharByChar(By.xpath("(//input[contains(@class,'pers-input-text')])["+i+"]"), "Father's Day");
+						}
+						catch(Exception e)
+						{
+							
+						}
 						executeStep(click(PersonalizedGiftsPage.btnDone),"Click Done");
 
 					}
