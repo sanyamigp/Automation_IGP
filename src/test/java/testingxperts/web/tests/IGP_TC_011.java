@@ -73,15 +73,22 @@ public class IGP_TC_011 extends KeywordUtil{
 			logStep(stepInfo);
 			verifyStep(LoginPage.newUserLink(),stepInfo);
 
-			stepInfo="Enter the sign-up details.";
-			logStep(stepInfo);
-			verifyStep(LoginPage.enterSignUpDetails("123456", "USA", "67676"), stepInfo);
-			pause(3000);
+			try
+			{
+				stepInfo="Enter the sign-up details.";
+				logStep(stepInfo);
 
-			stepInfo="Enter the user sign-up details.";
-			logStep(stepInfo);
-			verifyStep(LoginPage.userSignUpDetails("Abc", "dsds"), stepInfo);
-			
+				verifyStep(LoginPage.enterSignUpDetails("123456", "USA", "67676"), stepInfo);
+				pause(3000);
+				stepInfo="Enter the user sign-up details.";
+				logStep(stepInfo);
+				verifyStep(LoginPage.userSignUpDetails("Abc", "dsds"), stepInfo);
+			}
+			catch(Exception e)
+			{
+				isWebElementPresent(By.xpath("//div[text()='Email/Number already registered']"));
+			}
+
 
 			String elementSShot=takeScreenshotWebElement(waitForVisibile(By.xpath("//div[@id='site-wrapper']")),"Home Page");
 			HtmlReportUtil.attachScreenshotForInfo(elementSShot);
@@ -91,7 +98,7 @@ public class IGP_TC_011 extends KeywordUtil{
 		catch (Exception e){
 			if(retryCount>0)
 			{
-				
+
 				String imagePath = takeScreenshot(getDriver(), getTestCaseID()+"_"+ retryingNumber,"Automation Bugs: "+stepInfo);
 				logStepFail(stepInfo+" - "+KeywordUtil.lastAction);
 				logStepError(e.getMessage());

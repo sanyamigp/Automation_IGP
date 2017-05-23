@@ -274,7 +274,7 @@ public class CartPage extends HomePage{
 	}
 
 	public static boolean clikBuyNow() throws InterruptedException{
-		pause(3000);
+		pause(5000);
 		 clickAndWait(btnBuyNow);
 		 pause(3000);
 		 return true;
@@ -287,10 +287,10 @@ public class CartPage extends HomePage{
 	public static void clickPlaceOrder() throws Exception{
 		if(isWebElementVisible(btnPlaceOrder))
 		{
+			pause(5000);
 			executeStep(click(btnPlaceOrder), "Click place order");
 			pause(2000);
 		}
-
 
 	}
 	public static void updatePinCode(String pinCode) throws InterruptedException{

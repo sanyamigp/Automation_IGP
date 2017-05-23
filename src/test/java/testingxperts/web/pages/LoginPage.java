@@ -137,8 +137,7 @@ public class LoginPage extends HomePage {
 		Properties prop=new Properties();
 		 
 		prop.load(in);
-		try
-		{
+		
 		if(isWebElementVisible(By.id("sign-up-form")))
 		{
 			int i=Integer.parseInt(prop.getProperty("email"));
@@ -155,13 +154,11 @@ public class LoginPage extends HomePage {
 			prop.store(out, "Hello");
 	        //out.close();
 		}
-		return isWebElementVisible(By.xpath("//div[@id='sign-up-2']"));
+		 isWebElementVisible(By.name("fname"));
+		 return true;
 		}
-		catch(Exception e)
-		{
-			return isWebElementPresent(By.xpath("//div[text()='Email/Number already registered']"));
-		}
-	}
+		
+	
 	
 	public static boolean userSignUpDetails(String fname,String lname) throws InterruptedException
 	{
