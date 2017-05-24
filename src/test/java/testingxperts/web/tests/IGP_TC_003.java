@@ -88,7 +88,7 @@ public class IGP_TC_003 extends KeywordUtil{
 
 			stepInfo="Enter country name in the textbox and then click on Check button.";
 			logStep(stepInfo);
-			verifyStep(ProductDetailPage.deliverychargePresent("Australia"), stepInfo);
+			verifyStep(ProductDetailPage.deliverychargePresent("USA"), stepInfo);
 			verifyStep(PersonalizedGiftsPage.personalizedMethod(), stepInfo);
 			
 			
