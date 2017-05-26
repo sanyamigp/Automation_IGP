@@ -300,7 +300,7 @@ public class Utility {
 		LogUtil.infoLog(Utility.class, "Screenshot image path: " + src.getPath());
 		 
 		ImageIO.write(screenshot.getImage(), "PNG", src);
-		SendMail1.sendingMail(src.getPath(),subject);
+		//SendMail1.sendingMail(src.getPath(),subject);
 		Reporter.log("<a href='"+ src.getAbsolutePath() + "'> <img src='"+ src.getAbsolutePath() + "' height='100' width='100'/> </a>");
 		return ConfigReader.getValue("screenshotPath") + "\\" +timeStamp+ testCaseID + ".jpg";
 	}
